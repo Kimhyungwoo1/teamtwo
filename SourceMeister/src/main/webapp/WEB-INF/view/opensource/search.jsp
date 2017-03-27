@@ -41,5 +41,9 @@
 		<input type="button" value="검색"/>
 	</form>
 	
+	
+	<jsp:include page="/WEB-INF/view/opensource/list.jsp"></jsp:include>
+	
+	
 </body>
 </html>

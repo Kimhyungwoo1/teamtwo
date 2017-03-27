@@ -7,9 +7,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +29,7 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -74,24 +72,32 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		conn.disconnect();
 
 		JSONObject object = new JSONObject(sb.toString());
-		List<String> listApi = new ArrayList<String>();
 
 		JSONArray arr = object.getJSONArray("results"); // 배열단위로 추출하고 싶을때
 		String total = object.get("total").toString(); // Object로 추출하고 싶을때
 
 		StringBuffer list = new StringBuffer();
 
-		for (int i = 0; i < arr.length(); i++) {
-			
-			System.out.println(arr.getJSONObject(i).toString() + "\n\n");
-			
-			listApi.add(arr.getJSONObject(i).toString() + "\n\n");
-		}
+		for (int i = 0; i < arr.length(); i++)
+			list.append(arr.getJSONObject(i).toString() + "\n\n");
+
 		request.setAttribute("count", total);
-		request.setAttribute("sourceList", list);
+		request.setAttribute("sourceList", arr);
+
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/list.jsp");
-		dispatcher.forward(request, response);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("status", "success");
+		map.put("sourceList", arr.toString());
+		
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(map);
+		
+		PrintWriter writer = response.getWriter();
+		writer.write(json);
+		writer.flush();
+		writer.close();
+		
 
 	}
 

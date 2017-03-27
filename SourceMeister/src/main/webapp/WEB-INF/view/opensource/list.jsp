@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/opensource/index.jsp"></jsp:include>
+	
 	<br />
 
 	<p>총 ${count}개가 나왔습니다.</p>
