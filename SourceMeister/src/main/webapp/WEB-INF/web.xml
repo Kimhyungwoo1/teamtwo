@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-<<<<<<< HEAD
     <servlet>
     <description></description>
     <display-name>OpenSourceViewListServlet</display-name>
@@ -19,7 +18,7 @@
   <servlet-mapping>
     <servlet-name>OpenSourceViewListServlet</servlet-name>
     <url-pattern>/opensource</url-pattern>
-=======
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>ViewProjectDetailServlet</display-name>
@@ -29,6 +28,5 @@
   <servlet-mapping>
     <servlet-name>ViewProjectDetailServlet</servlet-name>
     <url-pattern>/opensource/detail</url-pattern>
->>>>>>> Detail
   </servlet-mapping>
 </web-app>
