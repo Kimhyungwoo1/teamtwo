@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/meister/commom/download/DownloadUtil.java=UTF-8
+encoding//src/main/java/com/meister/commom/download/MultipartHttpServletRequest.java=UTF-8
+encoding//src/main/java/com/meister/commom/pager/ClassicPageExplorer.java=UTF-8
+encoding//src/main/java/com/meister/commom/pager/ListPageExplorer.java=UTF-8
+encoding//src/main/java/com/meister/commom/pager/PageExplorer.java=UTF-8
+encoding//src/main/java/com/meister/commom/pager/Pager.java=UTF-8
+encoding//src/main/java/com/meister/commom/pager/Test.java=UTF-8
