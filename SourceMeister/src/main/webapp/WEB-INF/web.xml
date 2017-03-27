@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ViewMainAuthorizationServlet</display-name>
+    <servlet-name>ViewMainAuthorizationServlet</servlet-name>
+    <servlet-class>com.meister.authorization.web.ViewMainAuthorizationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMainAuthorizationServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoAddAuthorizationServlet</display-name>
+    <servlet-name>DoAddAuthorizationServlet</servlet-name>
+    <servlet-class>com.meister.authorization.web.DoAddAuthorizationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoAddAuthorizationServlet</servlet-name>
+    <url-pattern>/auth/add</url-pattern>
+  </servlet-mapping>
 </web-app>
