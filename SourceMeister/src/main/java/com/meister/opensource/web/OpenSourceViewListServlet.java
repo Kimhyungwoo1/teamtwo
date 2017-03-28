@@ -7,8 +7,6 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.google.gson.Gson;
 
 public class OpenSourceViewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,19 +35,19 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		String search = request.getParameter("search");
 
-		System.out.println(search);
+//		System.out.println(search);
 
 		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/codesearch_I/");
 		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + search + "+ext:md");
 
-		System.out.println(urlBuilder.toString());
+//		System.out.println(urlBuilder.toString());
 
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
 
-		System.out.println("Response code: " + conn.getResponseCode());
+//		System.out.println("Response code: " + conn.getResponseCode());
 
 		BufferedReader rd;
 
@@ -67,7 +63,7 @@ public class OpenSourceViewListServlet extends HttpServlet {
 			sb.append(line);
 		}
 
-		System.out.println(sb.toString());
+//		System.out.println(sb.toString());
 		rd.close();
 		conn.disconnect();
 
@@ -76,28 +72,27 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		JSONArray arr = object.getJSONArray("results"); // 배열단위로 추출하고 싶을때
 		String total = object.get("total").toString(); // Object로 추출하고 싶을때
 
+		arr.get(0).
+		
+		
 		StringBuffer list = new StringBuffer();
 
 		for (int i = 0; i < arr.length(); i++)
 			list.append(arr.getJSONObject(i).toString() + "\n\n");
 
 		request.setAttribute("count", total);
-		request.setAttribute("sourceList", arr);
 
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("status", "success");
-		map.put("sourceList", arr.toString());
-		
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(map);
-		
+		StringBuffer json = new StringBuffer();
+		json.append(" { ");
+		json.append(" \"status\" : \"success\" , ");
+		json.append(" \"sourceList\" : " + arr.toString());
+
+		json.append(" }	");
+
 		PrintWriter writer = response.getWriter();
-		writer.write(json);
+		writer.write(json.toString());
 		writer.flush();
 		writer.close();
-		
 
 	}
 

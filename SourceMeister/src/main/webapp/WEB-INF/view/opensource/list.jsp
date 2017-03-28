@@ -10,15 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<br />
 
 	<p>총 ${count}개가 나왔습니다.</p>
+	
+	<div id=temp></div>
 
-	<c:forEach items="sourceList" var="source">
 	
-	${source.name}
-	
-	</c:forEach> 
+
 </body>
 </html>
