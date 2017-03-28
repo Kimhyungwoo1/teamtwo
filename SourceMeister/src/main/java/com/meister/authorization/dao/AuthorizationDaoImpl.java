@@ -29,8 +29,8 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 
 		try {
 			conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
-//			conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
-			
+			//conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
+
 			StringBuffer query = new StringBuffer();
 			query.append(" INSERT		INTO	ATHRZTN ");
 			query.append(" 								( ");
@@ -39,15 +39,15 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 			query.append(" 								) ");
 			query.append(" VALUES						( ");
 			query.append(" 								'AT-' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24') || '-'"
-														+ " || LPAD(ATHRZTN_ID_SEQ.NEXTVAL, 6, '0') ");
+					+ " || LPAD(ATHRZTN_ID_SEQ.NEXTVAL, 6, '0') ");
 			query.append(" 								, ? ");
 			query.append(" 								) ");
-			
+
 			stmt = conn.prepareStatement(query.toString());
 			stmt.setString(1, authorizationVO.getAuthorizationName());
-			
+
 			return stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
@@ -68,7 +68,7 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 
 	@Override
 	public List<AuthorizationVO> allAuthorization() {
-		
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -81,34 +81,36 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 
 		try {
 			conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
-//			conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
-			
+			//conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
+
 			StringBuffer query = new StringBuffer();
 			query.append(" SELECT		ATHRZTN_ID ");
 			query.append(" 				, ATHRZTN_NM ");
 			query.append(" FROM			ATHRZTN ");
 			query.append(" ORDER		BY	ATHRZTN_ID DESC ");
-			
+
 			stmt = conn.prepareStatement(query.toString());
-			
+
 			rs = stmt.executeQuery();
-			
+
 			AuthorizationVO authorizationVO = null;
 			List<AuthorizationVO> authList = new ArrayList<AuthorizationVO>();
-			while(rs.next()) {
+			while (rs.next()) {
 				authorizationVO = new AuthorizationVO();
 				authorizationVO.setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				authorizationVO.setAuthorizationName(rs.getString("ATHRZTN_NM"));
-				
+
 				authList.add(authorizationVO);
 			}
 			return authList;
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
 			} catch (SQLException e1) {
 			}
 			try {
@@ -128,7 +130,7 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 
 	@Override
 	public int deleteAuthorization(String authorizationId) {
-		
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -140,18 +142,18 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 
 		try {
 			conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
-//			conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
-			
+			//conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
+
 			StringBuffer query = new StringBuffer();
 			query.append(" DELETE ");
 			query.append(" FROM		ATHRZTN ");
 			query.append(" WHERE	ATHRZTN_ID = ? ");
-			
+
 			stmt = conn.prepareStatement(query.toString());
 			stmt.setString(1, authorizationId);
-			
+
 			return stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
