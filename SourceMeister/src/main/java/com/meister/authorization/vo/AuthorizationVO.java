@@ -2,23 +2,23 @@ package com.meister.authorization.vo;
 
 public class AuthorizationVO {
 
-	private String AuthorizationId;
-	private String AuthorizationName;
+	private String authorizationId;
+	private String authorizationName;
 
 	public String getAuthorizationId() {
-		return AuthorizationId;
+		return authorizationId;
 	}
 
 	public void setAuthorizationId(String authorizationId) {
-		AuthorizationId = authorizationId;
+		this.authorizationId = authorizationId;
 	}
 
 	public String getAuthorizationName() {
-		return AuthorizationName;
+		return authorizationName;
 	}
 
 	public void setAuthorizationName(String authorizationName) {
-		AuthorizationName = authorizationName;
+		this.authorizationName = authorizationName;
 	}
-	
+
 }
