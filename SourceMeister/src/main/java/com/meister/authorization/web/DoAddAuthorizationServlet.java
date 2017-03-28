@@ -30,21 +30,14 @@ public class DoAddAuthorizationServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String authName = request.getParameter("authName");
 		
+		System.out.println(authName);
 		AuthorizationVO authVO = new AuthorizationVO();
 		authVO.setAuthorizationName(authName);
 		
 		boolean insertAuth = authorizationService.addAuthrization(authVO);
 		
 		if ( insertAuth ) {
-			StringBuffer script = new StringBuffer();
-			script.append("<script type='text/javascript'>");
-			script.append("		opner.location.reload(); ");
-			script.append("</script>");
-			
-			PrintWriter writer = response.getWriter();
-			writer.write(script.toString());
-			writer.flush();
-			writer.close();
+			response.sendRedirect("/SourceMeister/admin");
 		}
 		
 	}
