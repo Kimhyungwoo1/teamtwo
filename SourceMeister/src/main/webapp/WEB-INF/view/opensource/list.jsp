@@ -24,10 +24,10 @@
 				<td><c:forEach items="${result.langArr}" var="lang">
 				<div>${lang}</div>
 				</c:forEach><br/></td>
-				<td>${result.name}---${result.repo }<br/><br/>
+				<td><a href="/SourceMeister/opensource/detail?=${result.id}"><div id="detailLink">${result.name}---${result.repo }<br/><br/>
 				<c:forEach items="${result.lines }" var="line">
 											<div>${line.value }</div>
-											</c:forEach><br/><br/></td>
+											</c:forEach></div></a><br/><br/></td>
 				
 
 
