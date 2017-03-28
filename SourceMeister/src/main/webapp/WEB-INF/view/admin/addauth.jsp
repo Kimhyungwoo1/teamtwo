@@ -22,6 +22,7 @@
 
 	<div>
 		<form id="insertAuth">
+			<a>권한추가</a>
 			<input type="text" name="authName" placeholder="권한이름을 입력하세요." />
 			<input type="button" value="확인" />
 		</form>

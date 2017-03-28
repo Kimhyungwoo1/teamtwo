@@ -9,17 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-<servlet>
-    <description></description>
-    <display-name>ViewMainAuthorizationServlet</display-name>
-    <servlet-name>ViewMainAuthorizationServlet</servlet-name>
-    <servlet-class>com.meister.authorization.web.ViewMainAuthorizationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ViewMainAuthorizationServlet</servlet-name>
-    <url-pattern>/admin</url-pattern>
-  </servlet-mapping>
- <servlet>
+  <servlet>
     <description></description>
     <display-name>ViewReplyWriteServlet</display-name>
     <servlet-name>ViewReplyWriteServlet</servlet-name>
