@@ -9,27 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    <servlet>
-    <description></description>
-    <display-name>OpenSourceViewListServlet</display-name>
-    <servlet-name>OpenSourceViewListServlet</servlet-name>
-    <servlet-class>com.meister.opensource.web.OpenSourceViewListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>OpenSourceViewListServlet</servlet-name>
-    <url-pattern>/opensource</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ViewProjectDetailServlet</display-name>
-    <servlet-name>ViewProjectDetailServlet</servlet-name>
-    <servlet-class>com.meister.opensource.web.ViewProjectDetailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ViewProjectDetailServlet</servlet-name>
-    <url-pattern>/opensource/detail</url-pattern>
-    </servlet-mapping>
-  <servlet>
+<servlet>
     <description></description>
     <display-name>ViewMainAuthorizationServlet</display-name>
     <servlet-name>ViewMainAuthorizationServlet</servlet-name>
@@ -37,16 +17,16 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewMainAuthorizationServlet</servlet-name>
-    <url-pattern>/admin/main</url-pattern>
+    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
-  <servlet>
+ <servlet>
     <description></description>
-    <display-name>DoAddAuthorizationServlet</display-name>
-    <servlet-name>DoAddAuthorizationServlet</servlet-name>
-    <servlet-class>com.meister.authorization.web.DoAddAuthorizationServlet</servlet-class>
+    <display-name>ViewReplyWriteServlet</display-name>
+    <servlet-name>ViewReplyWriteServlet</servlet-name>
+    <servlet-class>com.meister.reply.web.ViewReplyWriteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DoAddAuthorizationServlet</servlet-name>
-    <url-pattern>/auth/add</url-pattern>
+    <servlet-name>ViewReplyWriteServlet</servlet-name>
+    <url-pattern>/reply/list</url-pattern>
   </servlet-mapping>
 </web-app>
