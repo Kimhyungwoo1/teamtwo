@@ -25,7 +25,11 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+<<<<<<< HEAD
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
+=======
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/index.jsp");
+>>>>>>> origin/master
 		dispatcher.forward(request, response);
 
 	}
