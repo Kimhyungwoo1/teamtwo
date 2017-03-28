@@ -37,7 +37,8 @@ public class ViewSignInServlet extends HttpServlet {
 		
 		if(user == null){
 			response.sendRedirect("/SourceMeister/user/signIn");
-		} else {
+		} 
+		else {
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("_USER_", user);
