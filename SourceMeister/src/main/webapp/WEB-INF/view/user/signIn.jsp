@@ -24,7 +24,7 @@
 		<form id ="signInForm">
 		 <input type="text" name = "userId" id="userId" placeholder="아이디를 입력하세요"/><br/>
 		 <input type="password" name = "userPassword" placeholder="비밀번호를 입력하세요"/><br/>
-		 <input type="button" value="submit" /> <a href="/SourceMeister/user/signUp">회원가입</a>
+		 <input type="button" value="로그인" /> <a href="/SourceMeister/user/signUp">회원가입</a>
 		 
 		</form>
 		

@@ -57,10 +57,10 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setUserName(userName);
 		user.setPassword(userPassword);
 
-		if (userService.registNewUser(user)) { // 유저 등록 성공하면
+		if (userService.registNewUser(user)) { 
 			System.out.println("유저등록 성공");
 			response.sendRedirect("/SourceMeister/user/signIn");
-		} else { // 실패하면 다시
+		} else { 
 			System.out.println("유저등록 실패");
 			response.sendRedirect("/SourceMeister/user/signUp");
 		}

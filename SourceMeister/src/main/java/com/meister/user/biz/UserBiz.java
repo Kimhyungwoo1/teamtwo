@@ -1,9 +1,5 @@
 package com.meister.user.biz;
 
-<<<<<<< HEAD
-public interface UserBiz {
-
-=======
 import java.util.List;
 
 import com.meister.user.vo.UserSearchVO;
@@ -25,5 +21,4 @@ public interface UserBiz {
 	public boolean chagerUser(String beforeAuthorization, String afterAuthorization);
 
 	public boolean isDuplicatedUserId(String userId);
->>>>>>> jun
 }

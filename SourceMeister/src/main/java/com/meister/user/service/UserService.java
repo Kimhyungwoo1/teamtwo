@@ -1,9 +1,5 @@
 package com.meister.user.service;
 
-<<<<<<< HEAD
-public interface UserService {
-
-=======
 import java.util.List;
 import java.util.Map;
 
@@ -30,5 +26,4 @@ public interface UserService {
 
 	public boolean isDuplicatedUserId(String userId);
 
->>>>>>> jun
 }

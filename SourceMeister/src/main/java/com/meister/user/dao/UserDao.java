@@ -1,9 +1,5 @@
 package com.meister.user.dao;
 
-<<<<<<< HEAD
-public interface UserDao {
-
-=======
 import java.util.List;
 
 import com.meister.user.vo.UserSearchVO;
@@ -27,5 +23,4 @@ public interface UserDao {
 	public int changeUser(String beforeAuthriztion, String afterAuthriztion);
 
 	public int selectCountByUserId(String userId);
->>>>>>> jun
 }

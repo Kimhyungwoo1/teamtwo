@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="SourceMeister/static/js/json2.js"></script>
+<script type="text/javascript" src="/SourceMeister/static/js/json2.js"></script>
 
 <script type="text/javascript">
 	$().ready(function() {
