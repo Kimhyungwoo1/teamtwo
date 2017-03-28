@@ -1,6 +1,7 @@
 package com.meister.authorization.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,10 +29,10 @@ public class ViewMainAuthorizationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String authName = request.getParameter("authName");
 		
-		AuthorizationVO authVO = new AuthorizationVO();
-		authVO.setAuthorizationId(authName);
+		List<AuthorizationVO> authList = authorizationService.allAuthList();
+		
+		request.setAttribute("authList", authList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/main.jsp");
 		dispatcher.forward(request, response);
