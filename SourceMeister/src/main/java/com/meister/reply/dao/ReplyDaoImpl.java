@@ -295,8 +295,8 @@ public class ReplyDaoImpl implements ReplyDao{
 			stmt.setString(1, replyVO.openSourceId);
 			stmt.setString(2, replyVO.comment);
 			stmt.setString(3, replyVO.writeDate);
-			/*stmt.setString(4, replyVO.UserId);
-			stmt.setString(5, replyVO.ParentReplyId);*/
+			stmt.setString(4, replyVO.userId);
+			stmt.setString(5, replyVO.parentReplyId);
 			
 			return stmt.executeUpdate();
 		
@@ -399,8 +399,8 @@ public class ReplyDaoImpl implements ReplyDao{
 			
 			stmt.setString(1, replyVO.openSourceId);
 			stmt.setString(2, replyVO.comment);
-			stmt.setString(3, replyVO.UserId);
-			stmt.setString(4, replyVO.ParentReplyId);
+			stmt.setString(3, replyVO.userId);
+			stmt.setString(4, replyVO.parentReplyId);
 			stmt.setString(5, replyVO.replyId);
 			
 			
