@@ -9,4 +9,34 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ViewSignInServlet</display-name>
+    <servlet-name>ViewSignInServlet</servlet-name>
+    <servlet-class>com.meister.user.web.ViewSignInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSignInServlet</servlet-name>
+    <url-pattern>/user/signIn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSignUpServlet</display-name>
+    <servlet-name>ViewSignUpServlet</servlet-name>
+    <servlet-class>com.meister.user.web.ViewSignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSignUpServlet</servlet-name>
+    <url-pattern>/user/signUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoCheckDuplicateUserIdServlet</display-name>
+    <servlet-name>DoCheckDuplicateUserIdServlet</servlet-name>
+    <servlet-class>com.meister.user.web.DoCheckDuplicateUserIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoCheckDuplicateUserIdServlet</servlet-name>
+    <url-pattern>/user/checkDuplicate</url-pattern>
+  </servlet-mapping>
 </web-app>
