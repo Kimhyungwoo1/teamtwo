@@ -12,7 +12,7 @@
 <script type="text/javascript">
 </script>
 <body>
-<div>
+<div id=total>
 	<div id=top>
 		<div id=login>
 			Source Meister
