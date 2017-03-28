@@ -6,7 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관리자 페이지</title>
-</head>
+<script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+</script>
 <body>
 
 	<table>

@@ -37,7 +37,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewMainAuthorizationServlet</servlet-name>
-    <url-pattern>/admin</url-pattern>
+    <url-pattern>/admin/main</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
