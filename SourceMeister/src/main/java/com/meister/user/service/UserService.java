@@ -10,7 +10,8 @@ public interface UserService {
 
 	public boolean registNewUser(UserVO newUserVO);
 
-	public List<UserVO> getAllUsers(UserSearchVO userSearchVO);
+	// public List<UserVO> getAllUsers(UserSearchVO userSearchVO);
+	//public UserVO loginUser(UserVO user);
 
 	public UserVO getOneUser(String userId);
 

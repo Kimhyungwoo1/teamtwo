@@ -16,10 +16,8 @@ public class UserServiceImpl implements UserService {
 	// private AuthorizationBiz authorizationBiz;
 
 	/*
-	 * public UserServiceImpl(){ 
-	 * userBiz = new UserBizImpl(); 
-	 * authorizationBiz = new AuthorizationBizImpl(); 
-	 * }
+	 * public UserServiceImpl(){ userBiz = new UserBizImpl(); authorizationBiz =
+	 * new AuthorizationBizImpl(); }
 	 */
 
 	@Override
@@ -28,11 +26,11 @@ public class UserServiceImpl implements UserService {
 		return userBiz.registNewUser(newUserVO);
 	}
 
-	@Override
-	public List<UserVO> getAllUsers(UserSearchVO userSearchVO) {
-
-		return userBiz.getAllUser(userSearchVO);
-	}
+	/*
+	 * @Override public List<UserVO> getAllUsers(UserSearchVO userSearchVO) {
+	 * 
+	 * return userBiz.getAllUser(userSearchVO); }
+	 */
 
 	@Override
 	public UserVO getOneUser(String userId) {
@@ -73,7 +71,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Map<String, Object> getOneUserWithAuthorizations(String userId) {
-		// AuthorizationSearchVO authorizationSearchVO = new AuthorizationSearchVO();
+		// AuthorizationSearchVO authorizationSearchVO = new
+		// AuthorizationSearchVO();
 		// authorizationSearchVO.getPager().setPageNumber(0);
 
 		Map<String, Object> user = new HashMap<String, Object>();
@@ -88,5 +87,10 @@ public class UserServiceImpl implements UserService {
 
 		return userBiz.isDuplicatedUserId(userId);
 	}
+
+	/*@Override
+	public UserVO loginUser(UserVO user) {
+		return userBiz.loginUser(user);
+	}*/
 
 }

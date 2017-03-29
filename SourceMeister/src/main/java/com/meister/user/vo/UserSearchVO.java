@@ -4,11 +4,11 @@ import com.meister.common.web.pager.Pager;
 import com.meister.common.web.pager.PagerFactory;
 
 public class UserSearchVO {
-	private Pager pager;
+	//private Pager pager;
 	private String userId;
 	private String authorizationId;
 
-	public Pager getPager() {
+	/*public Pager getPager() {
 		if (pager == null) {
 			pager = PagerFactory.getPager(Pager.ORACLE, 50, 10);
 		}
@@ -17,7 +17,7 @@ public class UserSearchVO {
 
 	public void setPager(Pager pager) {
 		this.pager = pager;
-	}
+	}*/
 
 	public String getUserId() {
 		return userId;

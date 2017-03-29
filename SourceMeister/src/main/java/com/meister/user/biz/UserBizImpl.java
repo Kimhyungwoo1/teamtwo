@@ -21,7 +21,7 @@ public class UserBizImpl implements UserBiz {
 		return userDao.insertNewUser(newUserVO) > 0;
 	}
 
-	@Override
+	/*@Override
 	public List<UserVO> getAllUser(UserSearchVO userSearchVO) {
 		int totalCount = userDao.selectAllUserCount(userSearchVO);
 		userSearchVO.getPager().setTotalArticleCount(totalCount);
@@ -32,7 +32,7 @@ public class UserBizImpl implements UserBiz {
 			return new ArrayList<UserVO>();
 		}
 		return userDao.selectAllUser(userSearchVO);
-	}
+	}*/
 
 	@Override
 	public UserVO getOneUser(String userId) {
@@ -64,10 +64,14 @@ public class UserBizImpl implements UserBiz {
 		return userDao.changeUser(beforeAuthorization, afterAuthorization) > 0;
 	}
 
-	@Override
+	
 	public boolean isDuplicatedUserId(String userId) {
 
 		return userDao.selectCountByUserId(userId) > 0;
 	}
+
+	
+
+	
 
 }

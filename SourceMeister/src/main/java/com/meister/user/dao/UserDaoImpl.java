@@ -75,7 +75,7 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	@Override
+	@/*Override
 	public List<UserVO> selectAllUser(UserSearchVO userSearchVO) {
 		openJDBC();
 
@@ -152,9 +152,9 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 
-	}
+	}*/
 
-	@Override
+	Override
 	public UserVO selectOneUser(String userId) {
 		openJDBC();
 
@@ -377,7 +377,7 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	@Override
+	/*@Override
 	public int selectAllUserCount(UserSearchVO userSearchVO) {
 		openJDBC();
 
@@ -428,7 +428,7 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 
-	}
+	}*/
 
 	@Override
 	public int changeUser(String beforeAuthriztion, String afterAuthriztion) {
@@ -479,6 +479,8 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
+
+	
 
 	@Override
 	public int selectCountByUserId(String userId) {

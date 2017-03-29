@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.meister.user.service.UserService;
 import com.meister.user.vo.UserVO;
 
 public class ViewSignInServlet extends HttpServlet {
@@ -33,7 +34,7 @@ public class ViewSignInServlet extends HttpServlet {
 		user.setUserId(userId);
 		user.setPassword(userPassword);
 		
-		//user = userService.loginUser(user);
+		//user = UserService.loginUser(user);
 		
 		if(user == null){
 			response.sendRedirect("/SourceMeister/user/signIn");
@@ -42,7 +43,7 @@ public class ViewSignInServlet extends HttpServlet {
 			
 			session.setAttribute("_USER_", user);
 			
-			response.sendRedirect("/SourceMeister/opensource");
+			response.sendRedirect("/SourceMeister/opensource/list");
 			
 		}
 	}

@@ -11,14 +11,18 @@
 			.ready(
 					function() {
 
-						$("#searchBtn").click(
+						$("#searchBtn")
+								.click(
 										function() {
 
-											$.post(
+											$
+													.post(
 															"/SourceMeister/opensource",
 															{
 
-																"search" : $("#keyword").val()
+																"search" : $(
+																		"#keyword")
+																		.val()
 
 															},
 															function(response) {
@@ -50,7 +54,7 @@
 					});
 </script>
 
-<title>검색을 해보자</title>
+<title>검색</title>
 </head>
 <body>
 
@@ -60,10 +64,11 @@
 
 
 	<form id="searchForm">
-		<input id="keyword" type="text" /> <input id="searchBtn" type="button" value="검색" />
+		<input id="keyword" type="text" /> <input id="searchBtn"
+			type="button" value="검색" />
 	</form>
 
-	
+
 
 
 

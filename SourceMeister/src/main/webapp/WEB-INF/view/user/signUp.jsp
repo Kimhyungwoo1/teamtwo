@@ -31,7 +31,7 @@
 				return;
 			}
 
-			if ($("#userPassword").val().length < 7) { // 자바스크립트에서 length는 속성에 해당.
+			if ($("#userPassword").val().length < 7) { 
 				alert("비밀번호는 8자 이상 입력해야 합니다.");
 				$("#userPassword").focus();
 				return;
@@ -75,7 +75,7 @@
 </head>
 <body>
 	<c:if test="${not empty param.errorCode }">
-		<!--  에러코드가 있는 경우 -->
+	
 		<div>
 			<c:choose>
 				<c:when test="${param.errorCode == 0 }">
