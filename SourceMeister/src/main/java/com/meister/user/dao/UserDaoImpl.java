@@ -409,6 +409,7 @@ public class UserDaoImpl implements UserDao {
 				}
 			}
 		}
+<<<<<<< HEAD
 
 	}
 	
@@ -461,5 +462,18 @@ public class UserDaoImpl implements UserDao {
 			
 		}
 	}
+=======
+
+	}
+
+	private void openJDBC() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+
+	}
+>>>>>>> 3a4247aa481e0491c076340a8833dd32814a9466
 
 }

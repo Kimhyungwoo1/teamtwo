@@ -19,7 +19,10 @@ public interface UserDao {
 	public int deleteOneUser(String userId);
 
 	public int changeUser(String beforeAuthriztion, String afterAuthriztion);
+<<<<<<< HEAD
 	
 	public int selectCountByUserId(String userId);
+=======
+>>>>>>> 3a4247aa481e0491c076340a8833dd32814a9466
 
 }
