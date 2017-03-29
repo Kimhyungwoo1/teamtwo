@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/signUp.css"/>
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/json2.js"></script>
 
@@ -96,16 +97,18 @@
 			</c:choose>
 		</div>
 	</c:if>
-	<h3>회원가입 페이지</h3>
-	<form id="signUpForm">
-		<input type="text" name="userId" id="userId"  placeholder="아이디를 입력하세요" /><br/>
-		<input type="text" name="userName" id="userName"  placeholder="닉네임을 입력하세요" /><br /> <span id="duplicated"></span> 
-		<input type="password" name="userPassword" id="userPassword"  placeholder="비밀번호 입력하세요" /><br /> 
+	<div id=total>
+		<h3>회원가입 페이지</h3>
+		<form id="signUpForm">
+			<input type="text" name="userId" id="userId"  placeholder="아이디를 입력하세요" /><br/>
+			<input type="text" name="userName" id="userName"  placeholder="닉네임을 입력하세요" /><br /> <span id="duplicated"></span> 
+			<input type="password" name="userPassword" id="userPassword"  placeholder="비밀번호 입력하세요" /><br /> 
+			
+			<h3>개인 정보</h3>
+			<hr/>
 		
-		<h3>개인 정보</h3>
-		<hr/>
-	
-		<input type="button" value="가입완료" /><br />
-	</form>
+			<input type="button" value="가입완료" /><br />
+		</form>
+	</div>
 </body>
 </html>
