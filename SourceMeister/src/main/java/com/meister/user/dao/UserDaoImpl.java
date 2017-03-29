@@ -311,6 +311,7 @@ public class UserDaoImpl implements UserDao {
 			stmt.setString(5, userVO.getPassword());
 			stmt.setString(6, userVO.getUserId());
 			stmt.setString(7, userVO.getUserName());
+			stmt.setString(8, userVO.getUserId());
 
 			return stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -409,7 +410,6 @@ public class UserDaoImpl implements UserDao {
 				}
 			}
 		}
-<<<<<<< HEAD
 
 	}
 	
@@ -462,18 +462,5 @@ public class UserDaoImpl implements UserDao {
 			
 		}
 	}
-=======
-
-	}
-
-	private void openJDBC() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		}
-
-	}
->>>>>>> 3a4247aa481e0491c076340a8833dd32814a9466
 
 }

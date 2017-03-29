@@ -14,20 +14,12 @@ public class UserServiceImpl implements UserService {
 
 	private UserBiz userBiz;
 	private AuthorizationBiz authorizationBiz;
-<<<<<<< HEAD
 
-	public UserServiceImpl() {
-		userBiz = new UserBizImpl();
-		authorizationBiz = new AuthorizationBizImpl();
-	}
-=======
 	 public UserServiceImpl(){ 
 	 userBiz = new UserBizImpl(); 
 	 authorizationBiz = new AuthorizationBizImpl(); 
 	 }
 	 
->>>>>>> 3a4247aa481e0491c076340a8833dd32814a9466
-
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
 
@@ -90,13 +82,10 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-<<<<<<< HEAD
 	@Override
 	public boolean isDuplicatedUserId(String userId) {
 		System.out.println("ssws" + userId);
 		return userBiz.isDuplicatedUserId(userId);
 	}
 
-=======
->>>>>>> 3a4247aa481e0491c076340a8833dd32814a9466
 }

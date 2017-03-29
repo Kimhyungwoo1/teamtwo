@@ -48,13 +48,10 @@ public class UserBizImpl implements UserBiz {
 	public boolean chagerUser(String beforeAuthorization, String afterAuthorization) {
 		return userDao.changeUser(beforeAuthorization, afterAuthorization) > 0;
 	}
-<<<<<<< HEAD
 	
 	@Override
 	public boolean isDuplicatedUserId(String userId) {
 		return userDao.selectCountByUserId(userId) > 0;
 	}
-=======
->>>>>>> 3a4247aa481e0491c076340a8833dd32814a9466
 
 }
