@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
 
 
@@ -134,9 +140,9 @@ public class OpenSourceViewListServlet extends HttpServlet {
 			
 			if (!langTotal.equals("0")) {
 
-				TypeToken<List<Object>> token2 = new TypeToken<List<Object>>() {
+				TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {
 				};
-				List<Object> langList = gson.fromJson(langArr.toString(), token2.getType());
+				List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
 				
 				
 				results2.setLangArr(langList);

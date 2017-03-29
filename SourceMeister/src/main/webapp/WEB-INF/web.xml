@@ -9,34 +9,44 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+    <servlet>
     <description></description>
-    <display-name>ViewSignInServlet</display-name>
-    <servlet-name>ViewSignInServlet</servlet-name>
-    <servlet-class>com.meister.user.web.ViewSignInServlet</servlet-class>
+    <display-name>OpenSourceViewListServlet</display-name>
+    <servlet-name>OpenSourceViewListServlet</servlet-name>
+    <servlet-class>com.meister.opensource.web.OpenSourceViewListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ViewSignInServlet</servlet-name>
-    <url-pattern>/user/signIn</url-pattern>
+    <servlet-name>OpenSourceViewListServlet</servlet-name>
+    <url-pattern>/opensource</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ViewSignUpServlet</display-name>
-    <servlet-name>ViewSignUpServlet</servlet-name>
-    <servlet-class>com.meister.user.web.ViewSignUpServlet</servlet-class>
+    <display-name>ViewProjectDetailServlet</display-name>
+    <servlet-name>ViewProjectDetailServlet</servlet-name>
+    <servlet-class>com.meister.opensource.web.ViewProjectDetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ViewSignUpServlet</servlet-name>
-    <url-pattern>/user/signUp</url-pattern>
+    <servlet-name>ViewProjectDetailServlet</servlet-name>
+    <url-pattern>/opensource/detail</url-pattern>
+    </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewMainAuthorizationServlet</display-name>
+    <servlet-name>ViewMainAuthorizationServlet</servlet-name>
+    <servlet-class>com.meister.authorization.web.ViewMainAuthorizationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewMainAuthorizationServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DoCheckDuplicateUserIdServlet</display-name>
-    <servlet-name>DoCheckDuplicateUserIdServlet</servlet-name>
-    <servlet-class>com.meister.user.web.DoCheckDuplicateUserIdServlet</servlet-class>
+    <display-name>DoAddAuthorizationServlet</display-name>
+    <servlet-name>DoAddAuthorizationServlet</servlet-name>
+    <servlet-class>com.meister.authorization.web.DoAddAuthorizationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DoCheckDuplicateUserIdServlet</servlet-name>
-    <url-pattern>/user/checkDuplicate</url-pattern>
+    <servlet-name>DoAddAuthorizationServlet</servlet-name>
+    <url-pattern>/auth/add</url-pattern>
   </servlet-mapping>
 </web-app>
