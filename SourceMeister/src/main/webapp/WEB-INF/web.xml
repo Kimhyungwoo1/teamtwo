@@ -88,4 +88,14 @@
     <servlet-name>DoCheckDuplicateUserIdServlet</servlet-name>
     <url-pattern>/user/checkDuplicate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoDeleteAuthorizationServlet</display-name>
+    <servlet-name>DoDeleteAuthorizationServlet</servlet-name>
+    <servlet-class>com.meister.authorization.web.DoDeleteAuthorizationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoDeleteAuthorizationServlet</servlet-name>
+    <url-pattern>/auth/delete</url-pattern>
+  </servlet-mapping>
 </web-app>
