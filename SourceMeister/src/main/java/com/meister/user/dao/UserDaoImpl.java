@@ -98,13 +98,14 @@ public class UserDaoImpl implements UserDao {
 			query.append("    			,	U.PWD	");
 			query.append("    			,	U.USR_NM  	");
 			query.append("    			,	U.EMAIL	");
-			query.append("    			,	U.GNDRT	");
+			query.append("    			,	U.GNDR	");
 			query.append("    			,	U.NCNM	");
+			query.append("    			,	U.ATHRZTN_ID U_ATHRZTN_ID	");
 			query.append("    			, 	AT.ATHRZTN_ID	");
 			query.append("    			, 	AT.ATHRZTN_NM ");
 			query.append(" FROM			USR U	");
 			query.append(" 				, ATHRZTN AT ");
-			query.append(" WHERE		U.ATHRZTN_ID =	AT.ATHRZTN_ID(+) ");
+			query.append(" WHERE		AT.ATHRZTN_ID =	U.ATHRZTN_ID(+) ");
 
 			stmt = conn.prepareStatement(query.toString());
 			rs = stmt.executeQuery();
@@ -114,15 +115,16 @@ public class UserDaoImpl implements UserDao {
 
 			while (rs.next()) {
 				userVO = new UserVO();
-				userVO.setIndex(rs.getInt("RNUM"));
 				userVO.setUserId(rs.getString("USR_ID"));
 				userVO.setUserName(rs.getString("USR_NM"));
 				userVO.setPassword(rs.getString("PWD"));
 				userVO.setEmail(rs.getString("EMAIL"));
-				userVO.setGender(rs.getString("GNDRT"));
-				userVO.setNickName(rs.getString(" USR_NM"));
+				userVO.setGender(rs.getString("GNDR"));
+				userVO.setNickName(rs.getString("NCNM"));
+				userVO.setAuthorizationId(rs.getString("U_ATHRZTN_ID"));
 				userVO.getAuthorizationVO().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				userVO.getAuthorizationVO().setAuthorizationName(rs.getString("ATHRZTN_NM"));
+				
 				userList.add(userVO);
 			}
 

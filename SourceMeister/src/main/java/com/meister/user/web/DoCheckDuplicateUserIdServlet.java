@@ -28,12 +28,12 @@ public class DoCheckDuplicateUserIdServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userId = request.getParameter("userId");
-		boolean isDuplicated = userService.isDuplicatedUserId(userId);
+	//	boolean isDuplicated = userService.isDuplicatedUserId(userId);
 
 		StringBuffer json = new StringBuffer();
 		json.append(" { ");
 		json.append(" \"status\" : \"success\", ");
-		json.append(" \"duplicated\" : " + isDuplicated);
+		//json.append(" \"duplicated\" : " + isDuplicated);
 
 		json.append(" } ");
 

@@ -46,10 +46,10 @@ public class ViewSignUpServlet extends HttpServlet {
 			response.sendRedirect("/SourceMeister/user/signUp?errorCode=2");
 			return;
 		}
-		if(userService.isDuplicatedUserId(userId)){
-			response.sendRedirect("/SourceMeister/user/signUp?errorCode=3");
-			return;
-		}
+	//	if(userService.isDuplicatedUserId(userId)){
+		//	response.sendRedirect("/SourceMeister/user/signUp?errorCode=3");
+			//return;
+	//	}
 
 		UserVO user = new UserVO();
 
@@ -58,10 +58,10 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setPassword(userPassword);
 
 		if (userService.registNewUser(user)) { 
-			System.out.println("유저등록 성공");
+			System.out.println("�쑀���벑濡� �꽦怨�");
 			response.sendRedirect("/SourceMeister/user/signIn");
 		} else { 
-			System.out.println("유저등록 실패");
+			System.out.println("�쑀���벑濡� �떎�뙣");
 			response.sendRedirect("/SourceMeister/user/signUp");
 		}
 	}
