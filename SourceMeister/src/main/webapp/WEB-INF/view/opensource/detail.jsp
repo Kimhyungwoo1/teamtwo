@@ -28,23 +28,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
-			This is a navbar!
-		</div>
-	</nav>
-
-
 	<div class="container">
-
-		<div class="search-options">
-			<form action="searchForm">
-				<div class="form-inline">
-					<input size="50" placeholder="Search Expression" type="text" name="search" value=""/>
-					<input type="submit" value="search"/>
-				</div>
-			</form>
-		</div>
 		
 		<div class="row">
 			<div class="title">

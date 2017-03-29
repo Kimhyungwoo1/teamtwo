@@ -92,7 +92,7 @@ public class OpensourceDaoImpl implements OpensourceDao {
 			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query = new StringBuffer();
-			query.append(" INSERT  INTO    ATHRZTN     ( "                                                                      );
+			query.append(" INSERT  INTO    OPNSRC     ( "                                                                      );
 			query.append("                             OPNSRC_ID "                                                             );
 			query.append("                             , LK_CNT "                                                           );
 			query.append("                         ) "                                                                      );
