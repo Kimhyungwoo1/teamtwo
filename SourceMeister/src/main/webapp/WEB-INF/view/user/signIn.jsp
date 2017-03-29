@@ -8,12 +8,13 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function () {
-		$("#signInForm").attr({
-			"mehod": "post",
-			"action" : "/SourceMeister/user/signIn" 
-				
+		$("#signInForm").find("input[type=button]").click(function(){
+			$("signInForm").attr({
+				"mehod": "post",
+				"action" : "/SourceMeister/user/signIn" 
+			});
+				$("#signInForm").submit();
 		});
-			$("#signInForm").submit();
 	});
 </script>
 

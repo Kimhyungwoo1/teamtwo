@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관리자 페이지</title>
-
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/admin.css"/>
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
@@ -15,10 +14,8 @@
 <div id=total>
 	<div id=top>
 		<div id=login>
-			Source Meister
-			관리자님 어서오세요!
+			SourceMeister 관리자님 환영합니다.
 		</div>
-		
 		<div id=adminManu>
 			관리자 메뉴
 		</div>
@@ -33,6 +30,16 @@
 				<td>성별</td>
 				<td>이메일</td>
 				<td>권한</td>
+			</tr>
+			<tr>
+				<c:forEach items="userList" var="user">
+					<td>${user.userId}</td>
+					<td>${user.userName}</td>
+					<td>${user.nickName}</td>
+					<td>${user.gender}</td>
+					<td>${user.email}</td>
+					<td>${user.AuthorizationVO.authorizationId}</td>
+				</c:forEach>
 			</tr>
 		</table>
 		<div id=add>

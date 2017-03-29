@@ -1,28 +1,22 @@
 @CHARSET "UTF-8";
 
 body {
-	font-size: 12px;
-	font-family: Dotum, '돋움', Helvetica, AppleSDGothicNeo, sans-serif;
+	font-size : 12px;
+	font-family : Dotum, '돋움', Helvetica, AppleSDGothicNeo, sans-serif;
 }
 
 span {
-	font-size: 15px;
+	font-size : 15px;
 }
 
 table {
-	table-layout: fixed;
-	width: 795px;
-	height: 600px;
-}
-
-td {
-	overflow: auto;
-	white-space: nowrap;
-	border: 1px solid #333333;
+	width : 795px;
+	height : 600px;
 }
 
 #table-content {
-	margin: 10px;
-	width: 750px;
-	height: 600px;
+	width : 795px;
+	height : 600px;
 }
+
+
