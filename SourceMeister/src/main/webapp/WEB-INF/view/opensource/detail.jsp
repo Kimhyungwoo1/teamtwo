@@ -78,7 +78,7 @@
 				</div><!-- 
 			 --><div id="likeBtn" style="display:inline-block;" data-opensourceid="${opensourceId}">
 			 		<img style="vertical-align:middle; width:50px; height:50px;" src="http://branding.daegu.com/images/icon--thumb.png"/>
-			 		<p id="likeCount">좋아요수</p>
+			 		<p id="likeCount">${likeCount}</p>
 			 	</div>
 			</div><br/>
 

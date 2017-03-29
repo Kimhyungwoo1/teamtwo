@@ -88,4 +88,14 @@
     <servlet-name>DoCheckDuplicateUserIdServlet</servlet-name>
     <url-pattern>/user/checkDuplicate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoLikeCountActionServlet</display-name>
+    <servlet-name>DoLikeCountActionServlet</servlet-name>
+    <servlet-class>com.meister.opensource.web.DoLikeCountActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoLikeCountActionServlet</servlet-name>
+    <url-pattern>/opensource/detail/likeCount</url-pattern>
+  </servlet-mapping>
 </web-app>

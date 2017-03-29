@@ -18,11 +18,17 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.meister.opensource.service.OpensourceService;
+import com.meister.opensource.service.OpensourceServiceImpl;
+import com.meister.opensource.vo.OpensourceVO;
+
 public class ViewProjectDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	private OpensourceService opensourceService;
+	
 	public ViewProjectDetailServlet() {
-		super();
+		opensourceService = new OpensourceServiceImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -76,7 +82,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		String location = jsonObject.getString("location");
 		String language = jsonObject.getString("language");
 		String md5hash = jsonObject.getString("md5hash");
-		long id = jsonObject.getLong("id");
+		int id = jsonObject.getInt("id");
 		String fileName = jsonObject.getString("filename");
 		
 		request.setAttribute("repoName", reponame);
@@ -96,6 +102,14 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		Elements fileTree = doc.select(".file-wrap");
 		
 		request.setAttribute("fileTree", fileTree);
+		
+		/*
+		 * likeCount
+		 */
+		
+		OpensourceVO opensourceVO = opensourceService.getOneOpensource("92215288");
+		
+		request.setAttribute("likeCount", opensourceVO.getLikeCount());
 		
 		/*
 		 * 결과(readme 내용)

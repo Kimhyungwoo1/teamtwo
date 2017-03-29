@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
 
 
@@ -77,8 +78,8 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray arr = object.getJSONArray("results"); // 배열단위로 추출하고 싶을때
-		String total = object.get("total").toString(); // Object로 추출하고 싶을때
+		JSONArray arr = object.getJSONArray("results"); // 諛곗뿴?⑥쐞濡?異붿텧?섍퀬 ?띠쓣??
+		String total = object.get("total").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
 
 		Gson gson = new Gson();
 
@@ -89,7 +90,7 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		request.setAttribute("results", resultList);
 		request.setAttribute("count", total);
 
-		// 2차 검색
+		// 2李?寃??
 		for (SearchResultVO results2 : resultList) {
 			String tempUrl = results2.getRepo().replaceAll("[.]git", "");
 			System.out.println(tempUrl);
@@ -139,9 +140,9 @@ public class OpenSourceViewListServlet extends HttpServlet {
 			
 			if (!langTotal.equals("0")) {
 
-				TypeToken<List<Object>> token2 = new TypeToken<List<Object>>() {
+				TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {
 				};
-				List<Object> langList = gson.fromJson(langArr.toString(), token2.getType());
+				List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
 				
 				
 				results2.setLangArr(langList);
