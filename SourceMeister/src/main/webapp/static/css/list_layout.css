@@ -9,13 +9,18 @@ span {
 	font-size : 15px;
 }
 
-table {
-	width : 795px;
-	height : 600px;
+#table-content {
+	width : 700px;
+	height : 570px;
+	table-layout: fixed;
+	word-break: break-all;
 }
 
-#table-content {
-	width : 795px;
-	height : 600px;
+table {
+	width : 700px;
+	height : 570px;
 }
+
+
+
 

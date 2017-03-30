@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+#total{
+	border: 1px solid #DDDDDD;
+	margin: 0 auto;
+	margin-top: 330px;
+	text-align: center;
+	width: 400px;
+}
