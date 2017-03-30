@@ -44,8 +44,9 @@ public class DoSignInActionServlet extends HttpServlet {
 				response.sendRedirect("/SourceMeister/user/signIn");
 		}else{
 			HttpSession session = request.getSession();
-			session.setAttribute("_USER_", user);
-			System.out.println("User ID : " + user.getUserId());
+
+			session.setAttribute("_USER_", userVO);
+			System.out.println("User ID : " + userVO.getUserId());
 			response.sendRedirect("/SourceMeister/opensource");
 		}
 		

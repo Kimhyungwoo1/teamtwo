@@ -10,6 +10,10 @@
 	$().ready(function() {
 		
 		$("#likeBtn").click(function() {
+			
+			
+			
+			
 			$.post("/SourceMeister/opensource/detail/likeCount", {
 				"opensourceId" : $("#likeBtn").data("opensourceid"),
 				"likeCount" : $("#likeCount").text()
