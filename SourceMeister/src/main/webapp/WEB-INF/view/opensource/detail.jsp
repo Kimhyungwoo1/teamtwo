@@ -22,7 +22,21 @@
 				} 
 			});
 		});
+		/* var sourceUrlTemp = $("#sourceUrl").val();
+		var sourceUrl = sourceUrlTemp.replace('https://github.com','https://cdn.rawgit.com');
 		
+		console.log(sourceUrl);
+		
+		$.ajax({
+			url : sourceUrl, 
+			dataType : "jsonp", 
+			jsonp : "callback",
+			async: false,
+			success : function(data){ 
+				console.log("result data object",data);
+			} 
+		});	 */
+
 	});
 </script>
 </head>
@@ -38,6 +52,8 @@
 				</h4>
 			</div>
 
+			<input type="hidden" id="sourceUrl" value="${sourceUrl}">
+			<input type="hidden" id="repoName" value="${repoName}">
 			<div class="header">
 				<div style="display:inline-block;">
 					<table class="table">
@@ -73,7 +89,6 @@
 			<div class="fileTree">
 				${fileTree}
 			</div>
-			
 
 			<div class="footer">
 			</div>
