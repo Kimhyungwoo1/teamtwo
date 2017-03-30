@@ -3,8 +3,8 @@
 #total {
 	margin-top: 10px;
 	margin: 0 auto;
-	width: 940px;
-	height: 100%;
+	width: 980px;
+	height: 800px;
 }
 
 #top {
@@ -15,39 +15,36 @@
 
 
 #top > #login {
-	background-color: #AA00AA;
-	font-size: 19px;
+	font-size: 20px;
 	border: 1px solid #DDDDDD;
 	width: 100%;
-	height: 130px;
+	height: 150px;
 	text-align: center;
 	line-height: 41px;
 
 	
 }
 #top > #adminManu {
-	background-color: #003333;
 	border: 1px solid #DDDDDD;
 	width: 100%;
-	height: 485px;
+	height: 600px;
 	text-align: center;
 	padding-top: 5px;
 }
 
 #botton {
 	display: inline-block;
-	width: 726px;
+	width: 827px;
 	height: auto;
 	
 }
 
 #botton > #table {
-	background-color: #005555;
 	border: 1px solid #DDDDDD;
 	width: 100%;
 	display: inline-block;
 	word-spacing: 10px;
-	height: 534px;
+	height: 669px;
 	
 
 }
@@ -55,27 +52,24 @@
 
 #botton > #add {
 	display: inline-block;
-	background-color: #999900;
 	border: 1px solid #DDDDDD;
-	width: 722px;
+	width: 823px;
 	height: 40px;
 	line-height: 37px;
 	padding-left: 4px;
 }
 
 #botton > #allAuth {
-	background-color: #222;
 	border: 1px solid #DDDDDD;
-	width: 722px;
+	width: 823px;
 	height: 40px;
 	line-height: 42px;
 	padding-left: 4px;
 }
 
 #writer {
-	background-color: #888;
 	height: 30px;
-	width: 876px;
+	width: 978px;
 	border: 1px solid #DDDDDD;
 	text-align: center;
 }

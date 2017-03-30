@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.meister.opensource.service.OpensourceService;
@@ -27,9 +27,9 @@ import com.meister.opensource.vo.OpensourceVO;
 
 public class ViewProjectDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private OpensourceService opensourceService;
-	
+
 	public ViewProjectDetailServlet() {
 		opensourceService = new OpensourceServiceImpl();
 	}
@@ -41,21 +41,19 @@ public class ViewProjectDetailServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String opensourceId = request.getParameter("opensourceId");
-		
+
 		if (opensourceService.getOneOpensource(opensourceId) == null) {
 			if (opensourceService.addOneOpensource(opensourceId)) {
 				showDetail(request, response, opensourceId);
-			}
-			else {
+			} else {
 				response.sendError(404);
 			}
-		}
-		else {
+		} else {
 			showDetail(request, response, opensourceId);
 		}
-		
+
 	}
 
 	private void showDetail(HttpServletRequest request, HttpServletResponse response, String opensourceId)
@@ -63,10 +61,11 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			ServletException {
 		BufferedReader rd;
 		/*
-		 * 프로젝트 내용 
+		 * 프로젝트 내용
 		 */
-		
-		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/related_results/"+ opensourceId +"/");
+
+		StringBuilder urlBuilder = new StringBuilder(
+				"https://searchcode.com/api/related_results/" + opensourceId + "/");
 
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = getUrlConnection(url);
@@ -83,54 +82,59 @@ public class ViewProjectDetailServlet extends HttpServlet {
 
 		rd.close();
 		conn.disconnect();
-		
+
 		String attribute = sb.toString().replace("[", "").replace("]", "");
+		System.out.println(attribute);
+
+
 		JSONObject jsonObject = new JSONObject(attribute);
-		
+
 		String sourceUrl = getAttribute(request, jsonObject);
-		
+
 		/*
 		 * 파일 트리 파싱
 		 */
 		getFileTree(request, sourceUrl);
-		
+
 		/*
 		 * likeCount
 		 */
-		
+
 		OpensourceVO opensourceVO = opensourceService.getOneOpensource(opensourceId);
-		
+
 		request.setAttribute("likeCount", opensourceVO.getLikeCount());
-		
+
 		/*
 		 * 결과(readme 내용)
 		 */
-		
-		StringBuilder codeUrlBuilder = new StringBuilder("https://searchcode.com/api/result/"+ opensourceId +"/");
-		
+
+		StringBuilder codeUrlBuilder = new StringBuilder("https://searchcode.com/api/result/" + opensourceId + "/");
+
 		URL codeUrl = new URL(codeUrlBuilder.toString());
 		conn = getUrlConnection(codeUrl);
 
 		System.out.println("2) Response code: " + conn.getResponseCode());
 
 		rd = isResponseSuccess(conn);
-		
+
 		StringBuilder sb2 = new StringBuilder();
-		
+
 		while ((line = rd.readLine()) != null) {
 			sb2.append(line);
 		}
-		
+
 		String code = sb2.toString();
 		rd.close();
 		conn.disconnect();
-		
+
 		JSONObject jsonObject2 = new JSONObject(code);
 		code = jsonObject2.getString("code");
-		
+
 		request.setAttribute("code", code);
+
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/detail.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -144,7 +148,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		String md5hash = jsonObject.getString("md5hash");
 		int id = jsonObject.getInt("id");
 		String fileName = jsonObject.getString("filename");
-		
+
 		request.setAttribute("repoName", reponame);
 		request.setAttribute("source", source);
 		request.setAttribute("sourceUrl", sourceUrl);
@@ -175,9 +179,19 @@ public class ViewProjectDetailServlet extends HttpServlet {
 	}
 
 	private void getFileTree(HttpServletRequest request, String sourceUrl) throws IOException {
-		Document doc = Jsoup.connect(sourceUrl).get();
+
+		Document doc = null;
+
+		try {
+			doc = Jsoup.connect(sourceUrl).get();
+		} catch (HttpStatusException e) {
+
+			return;
+
+		}
+
 		Elements fileTree = doc.select(".file-wrap");
-		
+
 		request.setAttribute("fileTree", fileTree);
 	}
 

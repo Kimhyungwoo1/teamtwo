@@ -48,7 +48,7 @@
 							</tr>
 							<tr>
 								<th>Repository</th>
-								<td><a href="/${sourceUrl}">${sourceUrl}</a></td>
+								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
 							</tr>
 							<!-- <tr>
 								<td colspan="5">
