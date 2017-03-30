@@ -86,12 +86,6 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		String attribute = sb.toString().replace("[", "").replace("]", "");
 		System.out.println(attribute);
 
-		if (attribute.equals("")) {
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource.jsp");
-			dispatcher.forward(request, response);
-
-		}
 
 		JSONObject jsonObject = new JSONObject(attribute);
 
@@ -138,7 +132,9 @@ public class ViewProjectDetailServlet extends HttpServlet {
 
 		request.setAttribute("code", code);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/detail.jsp");
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
 	}
 

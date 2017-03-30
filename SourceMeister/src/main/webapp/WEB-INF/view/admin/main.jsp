@@ -31,7 +31,17 @@
 				<td>이메일</td>
 				<td>권한</td>
 			</tr>
-			
+			<tr>
+				<c:forEach items="userList" var="user">
+					<td>${user.userId}</td>
+					<td>${user.userName}</td>
+					<td>${user.nickName}</td>
+					<td>${user.gender}</td>
+					<td>${user.email}</td>
+					<td>${user.authorizationVO.authorizationId}</td>
+				</c:forEach>
+				
+			</tr>
 		</table>
 		<div id=add>
 			<jsp:include page="/WEB-INF/view/admin/addauth.jsp"/>

@@ -55,20 +55,20 @@
 	</div>
 ======= --%>
 	
-	<div id="table-content">
+	<div id=table-content>
 	
 	<table>
 	
 		<colgroup>
-			<col span="1" style="width: 30%;">
-			<col span="1" style="width: 70%;">
+			<col span="1" style="width: 15%;">
+			<col span="1" style="width: 85%;">
 		</colgroup>
 		
 		<c:forEach items="${results}" var="result">
 			<tr>
 				<td>
 					<c:forEach items="${result.langArr}" var="lang" begin="0" end="2">
-						${lang.language}:${lang.count }
+						${lang.language}:${lang.count }<br>
 					</c:forEach><br />
 				</td>
 				<td>
@@ -80,8 +80,8 @@
 							</c:forEach>
 					</div>
 					
-					<br />
-					<br />
+					<br/>
+					<br/>
 				</td>
 			</tr>
 		</c:forEach>
@@ -90,8 +90,6 @@
 
 	</table>
 </div>
-
-
 
 
 </body>

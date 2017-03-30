@@ -152,6 +152,11 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		}
 
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/list.jsp");
+		
+		
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
 
