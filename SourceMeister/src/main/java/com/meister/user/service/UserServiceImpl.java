@@ -1,7 +1,6 @@
 package com.meister.user.service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.meister.authorization.biz.AuthorizationBiz;
@@ -15,22 +14,26 @@ public class UserServiceImpl implements UserService {
 	private UserBiz userBiz;
 	private AuthorizationBiz authorizationBiz;
 
-	 public UserServiceImpl(){ 
-	 userBiz = new UserBizImpl(); 
-	 authorizationBiz = new AuthorizationBizImpl(); 
+	
+	  public UserServiceImpl(){ 
+		  
+		  userBiz = new UserBizImpl();
+		  authorizationBiz = new AuthorizationBizImpl(); 
+		  
 	 }
 	 
+
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
 
 		return userBiz.registNewUser(newUserVO);
 	}
 
-	@Override
-	public List<UserVO> getAllUsers() {
-
-		return userBiz.getAllUser();
-	}
+	/*
+	 * @Override public List<UserVO> getAllUsers(UserSearchVO userSearchVO) {
+	 * 
+	 * return userBiz.getAllUser(userSearchVO); }
+	 */
 
 	@Override
 	public UserVO getOneUser(String userId) {
@@ -39,9 +42,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO getOneUser(UserVO userVO) {
+	public UserVO getOneUser(UserVO user) {
 
-		return userBiz.getOneUser(userVO);
+		return userBiz.getOneUser(user);
 	}
 
 	@Override
@@ -77,15 +80,18 @@ public class UserServiceImpl implements UserService {
 
 		Map<String, Object> user = new HashMap<String, Object>();
 		user.put("user", userBiz.getOneUser(userId));
-		// user.put("authorizations", authorizationBiz.)
+		/// user.put("authorizations", authorizationBiz.)
 
 		return null;
 	}
 
 	@Override
 	public boolean isDuplicatedUserId(String userId) {
-		System.out.println("ssws" + userId);
 		return userBiz.isDuplicatedUserId(userId);
+	}
+
+	public UserVO loginUser(UserVO user) {
+		return userBiz.loginUser(user);
 	}
 
 }
