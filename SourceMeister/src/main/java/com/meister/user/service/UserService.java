@@ -22,5 +22,7 @@ public interface UserService {
 	public boolean changeUser(String beforeAuthorization, String afterAuthorization);
 
 	public Map<String, Object> getOneUserWithAuthorizations(String userId);
+	
+	public boolean isDuplicatedUserId(String userId);
 
 }

@@ -28,23 +28,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
-			This is a navbar!
-		</div>
-	</nav>
-
-
 	<div class="container">
-
-		<div class="search-options">
-			<form action="searchForm">
-				<div class="form-inline">
-					<input size="50" placeholder="Search Expression" type="text" name="search" value=""/>
-					<input type="submit" value="search"/>
-				</div>
-			</form>
-		</div>
 		
 		<div class="row">
 			<div class="title">
@@ -64,7 +48,7 @@
 							</tr>
 							<tr>
 								<th>Repository</th>
-								<td><a href="/${sourceUrl}">${sourceUrl}</a></td>
+								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
 							</tr>
 							<!-- <tr>
 								<td colspan="5">
@@ -78,7 +62,7 @@
 				</div><!-- 
 			 --><div id="likeBtn" style="display:inline-block;" data-opensourceid="${opensourceId}">
 			 		<img style="vertical-align:middle; width:50px; height:50px;" src="http://branding.daegu.com/images/icon--thumb.png"/>
-			 		<p id="likeCount">좋아요수</p>
+			 		<p id="likeCount">${likeCount}</p>
 			 	</div>
 			</div><br/>
 

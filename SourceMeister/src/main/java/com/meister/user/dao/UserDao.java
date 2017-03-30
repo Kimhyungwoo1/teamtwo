@@ -19,5 +19,7 @@ public interface UserDao {
 	public int deleteOneUser(String userId);
 
 	public int changeUser(String beforeAuthriztion, String afterAuthriztion);
+	
+	public int selectCountByUserId(String userId);
 
 }

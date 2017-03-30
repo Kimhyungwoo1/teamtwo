@@ -16,6 +16,15 @@ public class UserDaoImpl implements UserDao {
 	private final String ID = "TEST";
 	private final String PWD = "test";
 
+	private void openJDBC() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+
+	}
+	
 	@Override
 	public int insertNewUser(UserVO newUserVO) {
 		openJDBC();
@@ -302,6 +311,7 @@ public class UserDaoImpl implements UserDao {
 			stmt.setString(5, userVO.getPassword());
 			stmt.setString(6, userVO.getUserId());
 			stmt.setString(7, userVO.getUserName());
+			stmt.setString(8, userVO.getUserId());
 
 			return stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -402,14 +412,55 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
-
-	private void openJDBC() {
+	
+	@Override
+	public int selectCountByUserId(String userId) {
+		openJDBC();
+		System.out.println("sssss"+userId);
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
+			conn = DriverManager.getConnection(URL, ID, PWD);
+			
+			StringBuffer query = new StringBuffer();
+			
+			query.append(" SELECT	COUNT(1) CNT ");
+			query.append(" FROM		USR            ");
+			query.append(" WHERE	USR_ID = ? ");
+			
+			stmt = conn.prepareStatement(query.toString());
+			
+			stmt.setString(1, userId);
+			
+			rs = stmt.executeQuery();
+			
+			if(rs.next()){
+				return rs.getInt("CNT");
+			}
+			return 0;
+			
+		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			if(rs != null){
+				try {
+					rs.close();
+				} catch (SQLException e) {	}
+			}
+			if(stmt != null){
+				try {
+					stmt.close();
+				} catch (SQLException e) {	}
+			}
+			if(conn != null){
+				try {
+					conn.close();
+				} catch (SQLException e) {	}
+			}
+			
 		}
-
 	}
 
 }

@@ -14,12 +14,12 @@ public class UserServiceImpl implements UserService {
 
 	private UserBiz userBiz;
 	private AuthorizationBiz authorizationBiz;
+
 	 public UserServiceImpl(){ 
 	 userBiz = new UserBizImpl(); 
 	 authorizationBiz = new AuthorizationBizImpl(); 
 	 }
 	 
-
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
 
@@ -71,7 +71,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Map<String, Object> getOneUserWithAuthorizations(String userId) {
-		// AuthorizationSearchVO authorizationSearchVO = new AuthorizationSearchVO();
+		// AuthorizationSearchVO authorizationSearchVO = new
+		// AuthorizationSearchVO();
 		// authorizationSearchVO.getPager().setPageNumber(0);
 
 		Map<String, Object> user = new HashMap<String, Object>();
@@ -79,6 +80,12 @@ public class UserServiceImpl implements UserService {
 		// user.put("authorizations", authorizationBiz.)
 
 		return null;
+	}
+
+	@Override
+	public boolean isDuplicatedUserId(String userId) {
+		System.out.println("ssws" + userId);
+		return userBiz.isDuplicatedUserId(userId);
 	}
 
 }

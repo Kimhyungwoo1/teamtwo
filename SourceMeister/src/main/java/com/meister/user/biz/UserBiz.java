@@ -19,5 +19,7 @@ public interface UserBiz {
 	public boolean deleteOneUser(String userId);
 
 	public boolean chagerUser(String beforeAuthorization, String afterAuthorization);
+	
+	public boolean isDuplicatedUserId(String userId);
 
 }

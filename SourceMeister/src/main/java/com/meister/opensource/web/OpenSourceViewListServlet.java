@@ -78,8 +78,8 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray arr = object.getJSONArray("results"); // 배열단위로 추출하고 싶을때
-		String total = object.get("total").toString(); // Object로 추출하고 싶을때
+		JSONArray arr = object.getJSONArray("results"); // 諛곗뿴?⑥쐞濡?異붿텧?섍퀬 ?띠쓣??
+		String total = object.get("total").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
 
 		Gson gson = new Gson();
 
@@ -90,7 +90,7 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		request.setAttribute("results", resultList);
 		request.setAttribute("count", total);
 
-		// 2차 검색
+		// 2李?寃??
 		for (SearchResultVO results2 : resultList) {
 			String tempUrl = results2.getRepo().replaceAll("[.]git", "");
 			System.out.println(tempUrl);
