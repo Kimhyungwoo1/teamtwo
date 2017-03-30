@@ -43,7 +43,6 @@ $().ready(function () {
 </head>
 <body>
 
-<<<<<<< HEAD
 	<div id="container">
 		
 <%-- <<<<<<< HEAD
