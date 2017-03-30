@@ -68,8 +68,7 @@
 					</c:forEach><br />
 				</td>
 				<td>
-					<a href="/SourceMeister/opensource/detail?opensourceId=${result.id}"></a>
-					<div id="detailLink">${result.name}---${result.repo }<br /> <br /> 
+					<div id="detailLink"><a href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br /> <br /> 
 							<c:forEach items="${result.lines }" var="line">
 								<div>
 									<span>${line.value}</span>
