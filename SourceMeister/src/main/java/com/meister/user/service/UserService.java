@@ -1,9 +1,6 @@
 package com.meister.user.service;
 
-import java.util.List;
 import java.util.Map;
-
-import com.meister.user.vo.UserSearchVO;
 import com.meister.user.vo.UserVO;
 
 public interface UserService {
@@ -11,11 +8,13 @@ public interface UserService {
 	public boolean registNewUser(UserVO newUserVO);
 
 	// public List<UserVO> getAllUsers(UserSearchVO userSearchVO);
-	//public UserVO loginUser(UserVO user);
+
+	public UserVO loginUser(UserVO user);
+	
 
 	public UserVO getOneUser(String userId);
 
-	public UserVO getOneUser(UserVO userVO);
+	public UserVO getOneUser(UserVO user);
 
 	public boolean updateUser(UserVO user);
 

@@ -7,70 +7,45 @@
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	$()
-			.ready(
-					function() {
 
-						$("#searchBtn")
-								.click(
-										function() {
+$().ready(function () {
+	
+	$("#keyword").keydown(function(e) {
+		if (e.which == 13) {
+			submitForm();
+		}
+	});
+		
+	
+	$("#searchForm").find("input[type=button]").click(function() {
+		submitForm();
+	});
+	
+	
+	function submitForm() {
+		$("#searchForm").attr({
+			"action" : "/SourceMeister/opensource",
+			"method" : "post"
+		}).submit();
+	}
+	
+	
+	
+});
 
-											$
-													.post(
-															"/SourceMeister/opensource",
-															{
 
-																"search" : $(
-																		"#keyword")
-																		.val()
 
-															},
-															function(response) {
 
-																var jsonObj = JSON
-																		.parse(response);
-
-																var sources = jsonObj.sourceList;
-
-																var tempDiv = $("#temp");
-
-																for ( var i in sources) {
-																	console
-																			.log(sources[i].id);
-
-																	var eachSource = $("<div id='" + sources[i].id +"'></div>");
-																	eachSource
-																			.text(sources[i].name);
-
-																	tempDiv
-																			.append(eachSource);
-
-																}
-
-															});
-
-										});
-
-					});
 </script>
 
 <title>검색</title>
 </head>
 <body>
 
-
-
-
-
-
 	<form id="searchForm">
-		<input id="keyword" type="text" /> <input id="searchBtn"
-			type="button" value="검색" />
+
+		<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
 	</form>
-
-
-
-
 
 	<jsp:include page="/WEB-INF/view/opensource/list.jsp"></jsp:include>
 

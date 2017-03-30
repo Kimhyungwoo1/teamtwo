@@ -1,8 +1,5 @@
 package com.meister.user.dao;
 
-import java.util.List;
-
-import com.meister.user.vo.UserSearchVO;
 import com.meister.user.vo.UserVO;
 
 public interface UserDao {

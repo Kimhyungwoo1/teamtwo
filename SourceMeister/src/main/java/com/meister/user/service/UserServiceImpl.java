@@ -1,24 +1,27 @@
 package com.meister.user.service;
 
 import java.util.HashMap;
-
-import java.util.List;
 import java.util.Map;
 
+import com.meister.authorization.biz.AuthorizationBiz;
+import com.meister.authorization.biz.AuthorizationBizImpl;
 import com.meister.user.biz.UserBiz;
 import com.meister.user.biz.UserBizImpl;
-import com.meister.user.vo.UserSearchVO;
 import com.meister.user.vo.UserVO;
 
 public class UserServiceImpl implements UserService {
 
 	private UserBiz userBiz;
-	// private AuthorizationBiz authorizationBiz;
+	private AuthorizationBiz authorizationBiz;
 
-	/*
-	 * public UserServiceImpl(){ userBiz = new UserBizImpl(); authorizationBiz =
-	 * new AuthorizationBizImpl(); }
-	 */
+	
+	  public UserServiceImpl(){ 
+		  
+		  userBiz = new UserBizImpl();
+		  authorizationBiz = new AuthorizationBizImpl(); 
+		  
+	 }
+	 
 
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
@@ -39,9 +42,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO getOneUser(UserVO userVO) {
+	public UserVO getOneUser(UserVO user) {
 
-		return userBiz.getOneUser(userVO);
+		return userBiz.getOneUser(user);
 	}
 
 	@Override
@@ -84,13 +87,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean isDuplicatedUserId(String userId) {
-
 		return userBiz.isDuplicatedUserId(userId);
 	}
 
-	/*@Override
 	public UserVO loginUser(UserVO user) {
 		return userBiz.loginUser(user);
-	}*/
+	}
 
 }

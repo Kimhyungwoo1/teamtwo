@@ -1,11 +1,7 @@
 package com.meister.user.biz;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.meister.user.dao.UserDao;
 import com.meister.user.dao.UserDaoImpl;
-import com.meister.user.vo.UserSearchVO;
 import com.meister.user.vo.UserVO;
 
 public class UserBizImpl implements UserBiz {
@@ -68,6 +64,12 @@ public class UserBizImpl implements UserBiz {
 	public boolean isDuplicatedUserId(String userId) {
 
 		return userDao.selectCountByUserId(userId) > 0;
+	}
+
+	@Override
+	public UserVO loginUser(UserVO user) {
+		
+		return (UserVO) userDao.selectOneUser(user);
 	}
 
 	

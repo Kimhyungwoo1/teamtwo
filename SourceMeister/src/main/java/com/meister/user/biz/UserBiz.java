@@ -23,5 +23,5 @@ public interface UserBiz {
 
 	public boolean isDuplicatedUserId(String userId);
 
-	//public UserVO loginUser(UserVO user);
+	public UserVO loginUser(UserVO user);
 }
