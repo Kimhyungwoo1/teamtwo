@@ -11,6 +11,7 @@ public class UserVO {
 	private String email;
 	private String nickName;
 	private String authorizationId;
+	
 	private AuthorizationVO authorizationVO;
 
 	public AuthorizationVO getAuthorizationVO() {

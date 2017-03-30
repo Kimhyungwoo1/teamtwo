@@ -1,6 +1,7 @@
 package com.meister.user.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.meister.authorization.biz.AuthorizationBiz;
@@ -14,14 +15,12 @@ public class UserServiceImpl implements UserService {
 	private UserBiz userBiz;
 	private AuthorizationBiz authorizationBiz;
 
-	
-	  public UserServiceImpl(){ 
-		  
-		  userBiz = new UserBizImpl();
-		  authorizationBiz = new AuthorizationBizImpl(); 
-		  
-	 }
-	 
+	public UserServiceImpl() {
+
+		userBiz = new UserBizImpl();
+		authorizationBiz = new AuthorizationBizImpl();
+
+	}
 
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
@@ -29,11 +28,11 @@ public class UserServiceImpl implements UserService {
 		return userBiz.registNewUser(newUserVO);
 	}
 
-	/*
-	 * @Override public List<UserVO> getAllUsers(UserSearchVO userSearchVO) {
-	 * 
-	 * return userBiz.getAllUser(userSearchVO); }
-	 */
+	@Override
+	public List<UserVO> getAllUsers() {
+
+		return userBiz.getAllUser();
+	}
 
 	@Override
 	public UserVO getOneUser(String userId) {
@@ -70,6 +69,22 @@ public class UserServiceImpl implements UserService {
 	public boolean changeUser(String beforeAuthorization, String afterAuthorization) {
 
 		return userBiz.chagerUser(beforeAuthorization, afterAuthorization);
+	}
+	
+	@Override
+	public boolean changeCheckUser(String[] userArray, String beforeAuthorization, String afterAuthorization) {
+		
+		UserVO userVO = null;
+		boolean isSuccess = false;
+		
+		for ( String userId : userArray){
+			userVO = new UserVO();
+			userVO.setUserId(userId);
+			userVO.setAuthorizationId(afterAuthorization);
+			isSuccess = userBiz.updateUser(userVO);
+		}
+		
+		return isSuccess;
 	}
 
 	@Override
