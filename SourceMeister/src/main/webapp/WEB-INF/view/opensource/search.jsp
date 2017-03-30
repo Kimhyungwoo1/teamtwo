@@ -107,12 +107,15 @@ $().ready(function () {
 			
 		</div>
 		
-		
 		<div id="right">
-			<span>검색어 순위</span>
+			<div id="serchRank">
+				<span>검색어 순위</span>
+			</div>
+			
+			<div id="reply">
+				<span>댓글</span>
+			</div>
 		</div>
-		
-		
 		<div id="footer">
 			 <span>Copyright </span>
 		</div>	
