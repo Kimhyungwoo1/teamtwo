@@ -36,12 +36,14 @@ $().ready(function () {
 
 
 
+
 </script>
 
-<title>검색을 해보자</title>
+<title>검색</title>
 </head>
 <body>
 
+<<<<<<< HEAD
 	<div id="container">
 		
 <%-- <<<<<<< HEAD
@@ -76,6 +78,14 @@ $().ready(function () {
 		</div>
 
 
+=======
+	<form id="searchForm">
+
+		<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
+	</form>
+
+	<jsp:include page="/WEB-INF/view/opensource/list.jsp"></jsp:include>
+>>>>>>> jun
 
 
 ======= --%>
