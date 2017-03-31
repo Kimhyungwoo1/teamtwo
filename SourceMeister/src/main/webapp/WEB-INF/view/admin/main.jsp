@@ -35,7 +35,7 @@
 		</div>
 	</div><!--
 	--><div id=botton>
-	<div id=table>
+	<div id=table style="text-align: center">
 	<span style="font-size: 20pt">User List</span>
 		<table id=tableContent>
 					<tr>
