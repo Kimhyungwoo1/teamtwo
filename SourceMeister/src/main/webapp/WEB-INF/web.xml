@@ -111,23 +111,34 @@
 		<url-pattern>/auth/delete</url-pattern>
 	</servlet-mapping>
 	<servlet>
-    <description></description>
-    <display-name>DoSignInActionServlet</display-name>
-    <servlet-name>DoSignInActionServlet</servlet-name>
-    <servlet-class>com.meister.user.web.DoSignInActionServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DoSignInActionServlet</servlet-name>
-    <url-pattern>/user/doSignIn</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DoSignOutActionServlet</display-name>
-    <servlet-name>DoSignOutActionServlet</servlet-name>
-    <servlet-class>com.meister.user.web.DoSignOutActionServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DoSignOutActionServlet</servlet-name>
-    <url-pattern>/user/doSignOut</url-pattern>
-  </servlet-mapping>
+		<description></description>
+		<display-name>DoChangeAuthorizationServlet</display-name>
+		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
+		<servlet-class>com.meister.user.web.DoChangeAuthorizationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
+		<url-pattern>/auth/change</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>DoSignInActionServlet</display-name>
+		<servlet-name>DoSignInActionServlet</servlet-name>
+		<servlet-class>com.meister.user.web.DoSignInActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoSignInActionServlet</servlet-name>
+		<url-pattern>/user/doSignIn</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DoSignOutActionServlet</display-name>
+		<servlet-name>DoSignOutActionServlet</servlet-name>
+		<servlet-class>com.meister.user.web.DoSignOutActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoSignOutActionServlet</servlet-name>
+		<url-pattern>/user/doSignOut</url-pattern>
+	</servlet-mapping>
 </web-app>

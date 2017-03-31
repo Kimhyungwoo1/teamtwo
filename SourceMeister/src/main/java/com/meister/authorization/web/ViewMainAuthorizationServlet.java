@@ -36,9 +36,9 @@ public class ViewMainAuthorizationServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		List<AuthorizationVO> authList = authorizationService.allAuthList();
-		//List<UserVO> userList = userService.getAllUsers();
+		List<UserVO> userList = userService.getAllUsers();
 		
-		//request.setAttribute("userList", userList);
+		request.setAttribute("userList", userList);
 		request.setAttribute("authList", authList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/main.jsp");
