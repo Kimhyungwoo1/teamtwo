@@ -100,7 +100,7 @@ public class ReplyDaoImpl implements ReplyDao{
 			query.append("                   	   , R.RPLY_ID           ");		
 			query.append("                         , R.OPNSRC_ID         ");
 			query.append("                         , R.CMNT              ");
-			query.append("                         , R.WRT_DT            ");
+			query.append("                         , TO_CHAR(R.WRT_DT,'YYYY-MM-DD HH:MM')   WRT_DT ");
 			query.append("                         , R.USR_ID R_USR_ID   ");
 			query.append("                         , R.PRNT_RPLY_ID      ");
 			query.append("                         , U.USR_ID            ");
@@ -110,27 +110,41 @@ public class ReplyDaoImpl implements ReplyDao{
 			query.append("                         , U.EMAIL             ");
 			query.append("                         , U.NCNM              ");
 			query.append("                         , U.ATHRZTN_ID        ");
-			query.append("                 FROM    RPLY R,               ");
-			query.append("                         USR U                 ");
-			query.append("                 WHERE   R.USR_ID = U.USR_ID   ");
+			query.append("                         , NVL(C.CNT,0) CHILD_CNT ");					          			     
+			query.append("                 FROM    RPLY R                   ");
+			query.append("                         , USR U                  ");
+			query.append("						   , (SELECT COUNT(1)  CNT  ");
+			query.append("						             , R.RPLY_ID    ");
+			query.append("							  FROM   RPLY R         ");
+			query.append("							         , RPLY P       ");
+			query.append("							  WHERE  R.RPLY_ID = NVL(P.PRNT_RPLY_ID,'X') ");
+			query.append("							  GROUP BY R.RPLY_ID                         ");
+			query.append("							  ) C                                        ");
+			query.append("                 WHERE   R.USR_ID = U.USR_ID   						 ");
+			query.append("			       AND     R.RPLY_ID = C.RPLY_ID (+)                     ");
+			query.append("			       AND     R.OPNSRC_ID = ?                     			 ");
 			query.append("                 START WITH R.PRNT_RPLY_ID IS NULL   ");
 			query.append("                 CONNECT BY PRIOR R.RPLY_ID = R.PRNT_RPLY_ID   ");
-			query.append("                 ORDER SIBLINGS BY R.RPLY_ID DESC   ");
+			query.append("                 ORDER SIBLINGS BY R.WRT_DT DESC   ");
 			query.append("                 ) A                           ");
 			query.append("         WHERE   ROWNUM <= ?                   ");
 			query.append("  )                                            ");
 			query.append("  WHERE  RNUM >= ?                             ");
 		
+			System.out.println("End" + replySearchVO.getPager().getEndArticleNumber());
+			System.out.println("Start" + replySearchVO.getPager().getStartArticleNumber());
+			
 			stmt = conn.prepareStatement(query.toString());
-			stmt.setInt(1, replySearchVO.getPager().getEndArticleNumber());
-			stmt.setInt(2, replySearchVO.getPager().getStartArticleNumber());
+			stmt.setString(1, replySearchVO.getOpenSourceId());
+			stmt.setInt(2, replySearchVO.getPager().getEndArticleNumber());
+			stmt.setInt(3, replySearchVO.getPager().getStartArticleNumber());
 			
 			rs = stmt.executeQuery();
 		
 			List<ReplyVO> replies = new ArrayList<ReplyVO>();
 			ReplyVO replyVO  = null;
 		
-			if( rs.next() ){
+			while( rs.next() ){
 				replyVO = new ReplyVO();
 				replyVO.setLevel(rs.getInt("LEVEL"));
 				replyVO.setReplyId(rs.getString("RPLY_ID"));
@@ -139,9 +153,16 @@ public class ReplyDaoImpl implements ReplyDao{
 				replyVO.setWriteDate(rs.getString("WRT_DT"));
 				replyVO.setUserId(rs.getString("R_USR_ID"));
 				replyVO.setParentReplyId(rs.getString("PRNT_RPLY_ID"));
-				//TODO userVO
-				replies.add(replyVO);
+				replyVO.getUser().setUserId(rs.getString("USR_ID"));
+				replyVO.getUser().setUserName(rs.getString("USR_NM"));
+				replyVO.getUser().setPassword(rs.getString("PWD"));
+				replyVO.getUser().setGender(rs.getString("GNDR"));
+				replyVO.getUser().setEmail(rs.getString("EMAIL"));
+				replyVO.getUser().setNickName(rs.getString("NCNM"));
+				replyVO.getUser().setAuthorizationId(rs.getString("ATHRZTN_ID"));
+				replyVO.setChildCnt(rs.getInt("CHILD_CNT"));
 				
+				replies.add(replyVO);
 			}
 			return replies;
 			
@@ -192,7 +213,7 @@ public class ReplyDaoImpl implements ReplyDao{
 			query.append("                 SELECT  	 R.RPLY_ID           ");		
 			query.append("                         , R.OPNSRC_ID         ");
 			query.append("                         , R.CMNT              ");
-			query.append("                         , R.WRT_DT            ");
+			query.append("                         , TO_CHAR(R.WRT_DT,'YYYY-MM-DD HH:MM:SS')    WRT_DT ");
 			query.append("                         , R.USR_ID R_USR_ID   ");
 			query.append("                         , R.PRNT_RPLY_ID      ");
 			query.append("                         , U.USR_ID            ");
@@ -223,6 +244,13 @@ public class ReplyDaoImpl implements ReplyDao{
 				replyVO.setWriteDate(rs.getString("WRT_DT"));
 				replyVO.setUserId(rs.getString("R_USR_ID"));
 				replyVO.setParentReplyId(rs.getString("PRNT_RPLY_ID"));
+				replyVO.getUser().setUserId(rs.getString("USR_ID"));
+				replyVO.getUser().setUserName(rs.getString("USR_NM"));
+				replyVO.getUser().setPassword(rs.getString("PWD"));
+				replyVO.getUser().setGender(rs.getString("GNDR"));
+				replyVO.getUser().setEmail(rs.getString("EMAIL"));
+				replyVO.getUser().setNickName(rs.getString("NCNM"));
+				replyVO.getUser().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 			
 			}
 			return replyVO;
@@ -285,7 +313,7 @@ public class ReplyDaoImpl implements ReplyDao{
 			query.append(" 				 LPAD(RPLY_ID_SEQ.NEXTVAL,6,'0')       ");
 			query.append(" 				, ?                                    ");
 			query.append(" 				, ?                                    ");
-			query.append(" 				, ?                                    ");
+			query.append(" 				, SYSDATE      						   ");
 			query.append(" 				, ?                                    ");
 			query.append(" 				, ?                                    ");
 			query.append(" 				)                                      ");
@@ -294,9 +322,8 @@ public class ReplyDaoImpl implements ReplyDao{
 			
 			stmt.setString(1, replyVO.openSourceId);
 			stmt.setString(2, replyVO.comment);
-			stmt.setString(3, replyVO.writeDate);
-			stmt.setString(4, replyVO.userId);
-			stmt.setString(5, replyVO.parentReplyId);
+			stmt.setString(3, replyVO.userId);
+			stmt.setString(4, replyVO.parentReplyId);
 			
 			return stmt.executeUpdate();
 		
