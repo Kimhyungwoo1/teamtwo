@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +91,7 @@ $().ready(function () {
 ======= --%>
 		<div id="left">
 			<div class="login">
-				<jsp:include page="/WEB-INF/view/user/signIn.jsp" flush="false"></jsp:include>
+				<c:import url="/user/signIn" />
 			</div>
 			
 			<div class="rank-repo">

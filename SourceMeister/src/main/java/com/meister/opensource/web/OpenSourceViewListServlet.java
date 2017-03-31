@@ -14,14 +14,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.meister.commom.constants.AuthConst;
 import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
+import com.meister.user.vo.UserVO;
 
 
 
@@ -79,8 +82,8 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray arr = object.getJSONArray("results"); // 諛곗뿴?⑥쐞濡?異붿텧?섍퀬 ?띠쓣??
-		String total = object.get("total").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
+		JSONArray arr = object.getJSONArray("results"); // 獄쏄퀣肉�?�뫁�맄嚥�?�빊遺욱뀱?�꼵�� ?�씈�뱽??
+		String total = object.get("total").toString(); // Object嚥�?�빊遺욱뀱?�꼵�� ?�씈�뱽??
 
 		Gson gson = new Gson();
 
@@ -91,7 +94,7 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		request.setAttribute("results", resultList);
 		request.setAttribute("count", total);
 
-		// 2李?寃??
+		// 2筌�?野꺜�??
 		for (SearchResultVO results2 : resultList) {
 			String tempUrl = results2.getRepo().replaceAll("[.]git", "");
 			System.out.println(tempUrl);

@@ -8,19 +8,27 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
+	var loginCheck = "${ sessionScope._USER_}" ;
 		$("#likeBtn").click(function() {
-			$.post("/SourceMeister/opensource/detail/likeCount", {
-				"opensourceId" : $("#likeBtn").data("opensourceid"),
-				"likeCount" : $("#likeCount").text()
-			}, function(response) {
-				var jsonObj = JSON.parse(response);
-				console.log(jsonObj);
+			if (loginCheck) {
+				$.post("/SourceMeister/opensource/detail/likeCount", {
+					"opensourceId" : $("#likeBtn").data("opensourceid"),
+					"likeCount" : $("#likeCount").text()
+				}, function(response) {
+					var jsonObj = JSON.parse(response);
+					console.log(jsonObj);
 
-				if (jsonObj.success) {
-					$("#likeCount").text(jsonObj.likeCount);
-				} 
-			});
+					if (jsonObj.success) {
+						$("#likeCount").text(jsonObj.likeCount);
+					} 
+				});
+			}
+			else {
+				alert("로그인해주세요.");
+			}
 		});
+		 
+	});
 		/* var sourceUrlTemp = $("#sourceUrl").val();
 		var sourceUrl = sourceUrlTemp.replace('https://github.com','https://cdn.rawgit.com');
 		
@@ -36,7 +44,6 @@
 			} 
 		});	 */
 
-	});
 </script>
 </head>
 <body>
