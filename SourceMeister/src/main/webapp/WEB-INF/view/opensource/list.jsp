@@ -27,12 +27,13 @@
 			<tr>
 				<td>
 					<c:forEach items="${result.langArr}" var="lang" begin="0" end="2">
-						${lang.language}:${lang.count }
+						${lang.language}:${lang.count}
 					</c:forEach><br />
 				</td>
 				<td>
 					<a href="/SourceMeister/opensource/detail?opensourceId=${result.id}"></a>
 					<div id="detailLink">${result.name}---${result.repo }<br /> <br /> 
+							
 							<c:forEach items="${result.lines }" var="line">
 								<div>
 									<span>${line.value}</span>

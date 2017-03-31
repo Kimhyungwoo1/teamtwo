@@ -49,14 +49,10 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/codesearch_I/");
 		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + search + "+ext:md");
 
-		// System.out.println(urlBuilder.toString());
-
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-
-		// System.out.println("Response code: " + conn.getResponseCode());
 
 		BufferedReader rd;
 
@@ -78,39 +74,34 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray arr = object.getJSONArray("results"); // 배열단위로 추출하고 싶을때
-		String total = object.get("total").toString(); // Object로 추출하고 싶을때
+		JSONArray arr = object.getJSONArray("results"); 
+		String total = object.get("total").toString(); 
 
 		Gson gson = new Gson();
 
-		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {
-		};
+		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {};
 		List<SearchResultVO> resultList = gson.fromJson(arr.toString(), token.getType());
 
 		request.setAttribute("results", resultList);
 		request.setAttribute("count", total);
 
-		// 2차 검색
+
 		for (SearchResultVO results2 : resultList) {
+
 			String tempUrl = results2.getRepo().replaceAll("[.]git", "");
-			System.out.println(tempUrl);
 
 			String[] parameters = tempUrl.split("/");
-			/*System.out.println(parameters[2]);
-			System.out.println(parameters[3]);*/
+
 
 			StringBuilder urlBuilder2 = new StringBuilder("https://searchcode.com/api/codesearch_I/");
 			urlBuilder2.append(
 					"?" + URLEncoder.encode("q", "UTF-8") + "=<" + "+" + "repo:" + parameters[3] + "/" + parameters[4]);
-
-			System.out.println(urlBuilder2.toString());
 
 			URL url2 = new URL(urlBuilder2.toString());
 			HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
 			conn2.setRequestMethod("GET");
 			conn2.setRequestProperty("Content-type", "application/json");
 
-			// System.out.println("Response code: " + conn2.getResponseCode());
 
 			BufferedReader rd2;
 
@@ -126,32 +117,29 @@ public class OpenSourceViewListServlet extends HttpServlet {
 				sb2.append(line2);
 			}
 
-			System.out.println(sb2.toString());
 			rd2.close();
 			conn2.disconnect();
 
 			JSONObject object2 = new JSONObject(sb2.toString());
-
+			
+			//System.out.println(sb2.toString());
+			
 			JSONArray langArr = object2.getJSONArray("language_filters");
-
 			String langTotal = object2.get("total").toString();
 
 			
 			
 			if (!langTotal.equals("0")) {
 
-				TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {
-				};
-				List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
-				
-				
+				TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {};
+				List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());	
 				results2.setLangArr(langList);
-				
 				
 			}
 
 		}
-
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
 
