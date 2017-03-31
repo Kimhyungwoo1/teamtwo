@@ -31,7 +31,6 @@
 				$("#userName").focus();
 				return;
 			}
-<<<<<<< HEAD
 			if ($("#email").val() == "") {
 				alert("이메일을 @와같이 입력해주세요");
 				$("#email").focus();
@@ -39,7 +38,6 @@
 			}
 
 			if ($("#userPassword").val().length < 7) { 
-=======
 			/*  if ($("#email").val() == "") {
 				alert("이메일을 @와같이 입력해주세요");
 				$("#email").focus();
@@ -47,7 +45,6 @@
 			}  */
 
 			if ($("#userPassword").val().length < 7) {
->>>>>>> jun
 				alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
 				$("#userPassword").focus();
 				return;
@@ -83,11 +80,6 @@
 
 				if (jsonObj.duplicated) {
 					alert("입력한 ID는 사용중입니다.\n다른 ID를 입력하세요");
-<<<<<<< HEAD
-					
-=======
-
->>>>>>> jun
 				} else {
 					$("#signUpForm").attr({
 						"method" : "post",
@@ -121,11 +113,7 @@
 </head>
 <body>
 	<c:if test="${not empty param.errorCode }">
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> jun
 		<div>
 			<c:choose>
 				<c:when test="${param.errorCode == 0 }">
@@ -140,11 +128,7 @@
 				<c:when test="${param.errorCode == 3 }">
 					이미 사용중인 ID 입니다.
 				</c:when>
-<<<<<<< HEAD
-				
-=======
 
->>>>>>> jun
 				<c:otherwise>
 					????
 				</c:otherwise>
@@ -153,7 +137,6 @@
 	</c:if>
 	<h1>회원가입 페이지</h1>
 	<form id="signUpForm">
-<<<<<<< HEAD
 		<span>아이디</span> <br/>
 		<input type="text" name="userId" id="userId"  placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br/>
 		 <br/> 
@@ -182,7 +165,6 @@
 		<br/>
 		<br/>
 		<input type="button" value="가입완료" /><br />
-=======
 		<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
 			placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
 
@@ -200,7 +182,6 @@
 			type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
 
 		<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
->>>>>>> jun
 	</form>
 </body>
 </html>

@@ -8,12 +8,7 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		
 		$("#likeBtn").click(function() {
-			
-			
-			
-			
 			$.post("/SourceMeister/opensource/detail/likeCount", {
 				"opensourceId" : $("#likeBtn").data("opensourceid"),
 				"likeCount" : $("#likeCount").text()
