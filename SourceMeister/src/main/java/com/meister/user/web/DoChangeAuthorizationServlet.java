@@ -1,7 +1,6 @@
 package com.meister.user.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 
-public class DoCheckDuplicateUserIdServlet extends HttpServlet {
+public class DoChangeAuthorizationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UserService userService;
-
-	public DoCheckDuplicateUserIdServlet() {
+	
+	public DoChangeAuthorizationServlet() {
 		userService = new UserServiceImpl();
 	}
 
@@ -27,21 +26,23 @@ public class DoCheckDuplicateUserIdServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String userId = request.getParameter("userId");
 		
-		boolean isDuplicated = userService.isDuplicatedUserId(userId);
+		String authBefore = request.getParameter("authBefore");
+		String authAfter = request.getParameter("authAfter");
+		String[] userId = request.getParameterValues("authCheck");
+		
+		boolean change = false;
+		boolean changeCheck = false;
+		
+		if (userId == null){
+			change = userService.changeUser(authBefore, authAfter);
+		} else {
+			changeCheck = userService.changeCheckUser(userId, authBefore, authAfter);
+		}
 
-		StringBuffer json = new StringBuffer();
-		json.append(" { ");
-		json.append(" \"status\" : \"success\", ");
-		json.append(" \"duplicated\" : " + isDuplicated);
-
-		json.append(" } ");
-
-		PrintWriter writer = response.getWriter();
-		writer.write(json.toString());
-		writer.flush();
-		writer.close();
+		if( change || changeCheck ) {
+			response.sendRedirect("/SourceMeister/admin");
+		}
 	}
 
 }

@@ -36,14 +36,58 @@ $().ready(function () {
 
 
 
+
 </script>
 
-<title>검색을 해보자</title>
+<title>검색</title>
 </head>
 <body>
 
 	<div id="container">
 		
+<%-- <<<<<<< HEAD
+		<div id="top">
+			<div id="login"></div>
+			<div id="search">
+				<form id="searchForm">
+					<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
+				</form>
+			</div>
+		</div>
+		
+		<div id="left-rank">
+			<div id="rank-repo">
+				<span>저장소별 소스 수</span>
+			</div>
+			<div id="rank-lan">
+				<span>언어별 소스 수</span>
+			</div>
+		</div>
+			
+		<div id="middle-content">
+			<jsp:include page="/WEB-INF/view/opensource/list.jsp" flush="false"></jsp:include>
+		</div>	
+		<div id="right-rank">
+			<span>검색어 순위</span>
+			
+		</div>
+			<div id="footer">
+			 	<span>Copyright </span>
+			</div>	
+		</div>
+
+
+=======
+	<form id="searchForm">
+
+		<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
+	</form>
+
+	<jsp:include page="/WEB-INF/view/opensource/list.jsp"></jsp:include>
+>>>>>>> jun
+
+
+======= --%>
 		<div id="left">
 			<div class="login">
 				<jsp:include page="/WEB-INF/view/user/signIn.jsp" flush="false"></jsp:include>
@@ -57,11 +101,7 @@ $().ready(function () {
 				<span>언어별 소스 수</span>
 			</div>
 			
-		</div>
-		
-		
-		
-		<div id="middle">
+		</div><div id="middle">
 		
 			<div id="search">
 				<br/><br/><br/><br/>
@@ -71,17 +111,20 @@ $().ready(function () {
 			</div>
 			
 			<div id="middle-content">
-				<jsp:include page="/WEB-INF/view/opensource/list.jsp" flush="false"></jsp:include>
+				<jsp:include page="${includeUrl}" flush="false"></jsp:include>
 			</div>	
 			
 		</div>
 		
-		
 		<div id="right">
-			<span>검색어 순위</span>
+			<div id="serchRank">
+				<span>검색어 순위</span>
+			</div>
+			
+			<div id="reply">
+				<span>댓글</span>
+			</div>
 		</div>
-		
-		
 		<div id="footer">
 			 <span>Copyright </span>
 		</div>	

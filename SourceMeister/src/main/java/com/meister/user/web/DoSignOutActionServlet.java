@@ -1,22 +1,13 @@
 package com.meister.user.web;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.meister.user.service.UserService;
-import com.meister.user.service.UserServiceImpl;
-
-public class ViewSignInServlet extends HttpServlet {
+public class DoSignOutActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public ViewSignInServlet() {
-
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,8 +16,9 @@ public class ViewSignInServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
-		dispatcher.forward(request, response);
+		request.getSession().invalidate();
+
+		response.sendRedirect("/SourceMeister/opensource");
 	}
 
 }

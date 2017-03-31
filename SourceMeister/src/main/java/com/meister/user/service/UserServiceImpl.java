@@ -14,11 +14,13 @@ public class UserServiceImpl implements UserService {
 
 	private UserBiz userBiz;
 	private AuthorizationBiz authorizationBiz;
-	 public UserServiceImpl(){ 
-	 userBiz = new UserBizImpl(); 
-	 authorizationBiz = new AuthorizationBizImpl(); 
-	 }
-	 
+
+	public UserServiceImpl() {
+
+		userBiz = new UserBizImpl();
+		authorizationBiz = new AuthorizationBizImpl();
+
+	}
 
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
@@ -39,9 +41,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO getOneUser(UserVO userVO) {
+	public UserVO getOneUser(UserVO user) {
 
-		return userBiz.getOneUser(userVO);
+		return userBiz.getOneUser(user);
 	}
 
 	@Override
@@ -68,17 +70,43 @@ public class UserServiceImpl implements UserService {
 
 		return userBiz.chagerUser(beforeAuthorization, afterAuthorization);
 	}
+	
+	@Override
+	public boolean changeCheckUser(String[] userArray, String beforeAuthorization, String afterAuthorization) {
+		
+		UserVO userVO = null;
+		boolean isSuccess = false;
+		
+		for ( String userId : userArray){
+			userVO = new UserVO();
+			userVO.setUserId(userId);
+			userVO.setAuthorizationId(afterAuthorization);
+			isSuccess = userBiz.updateUser(userVO);
+		}
+		
+		return isSuccess;
+	}
 
 	@Override
 	public Map<String, Object> getOneUserWithAuthorizations(String userId) {
-		// AuthorizationSearchVO authorizationSearchVO = new AuthorizationSearchVO();
+		// AuthorizationSearchVO authorizationSearchVO = new
+		// AuthorizationSearchVO();
 		// authorizationSearchVO.getPager().setPageNumber(0);
 
 		Map<String, Object> user = new HashMap<String, Object>();
 		user.put("user", userBiz.getOneUser(userId));
-		// user.put("authorizations", authorizationBiz.)
+		/// user.put("authorizations", authorizationBiz.)
 
 		return null;
+	}
+
+	@Override
+	public boolean isDuplicatedUserId(String userId) {
+		return userBiz.isDuplicatedUserId(userId);
+	}
+
+	public UserVO loginUser(UserVO user) {
+		return userBiz.loginUser(user);
 	}
 
 }

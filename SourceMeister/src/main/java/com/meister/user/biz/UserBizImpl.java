@@ -7,7 +7,6 @@ import com.meister.user.dao.UserDaoImpl;
 import com.meister.user.vo.UserVO;
 
 public class UserBizImpl implements UserBiz {
-	
 	private UserDao userDao;
 
 	public UserBizImpl() {
@@ -26,27 +25,48 @@ public class UserBizImpl implements UserBiz {
 
 	@Override
 	public UserVO getOneUser(String userId) {
+
 		return userDao.selectOneUser(userId);
 	}
 
 	@Override
 	public UserVO getOneUser(UserVO userVO) {
+
 		return userDao.selectOneUser(userVO);
 	}
 
 	@Override
 	public boolean updateUser(UserVO user) {
+
 		return userDao.updateUserInfo(user) > 0;
 	}
 
 	@Override
 	public boolean deleteOneUser(String userId) {
+
 		return userDao.deleteOneUser(userId) > 0;
 	}
 
 	@Override
 	public boolean chagerUser(String beforeAuthorization, String afterAuthorization) {
+
 		return userDao.changeUser(beforeAuthorization, afterAuthorization) > 0;
 	}
+
+	
+	public boolean isDuplicatedUserId(String userId) {
+
+		return userDao.selectCountByUserId(userId) > 0;
+	}
+
+	@Override
+	public UserVO loginUser(UserVO user) {
+		
+		return (UserVO) userDao.selectOneUser(user);
+	}
+
+	
+
+	
 
 }

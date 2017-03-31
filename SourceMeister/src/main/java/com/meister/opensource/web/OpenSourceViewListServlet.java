@@ -1,6 +1,7 @@
 package com.meister.opensource.web;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -21,8 +22,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
-
-
 
 
 public class OpenSourceViewListServlet extends HttpServlet {
@@ -74,8 +73,10 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
+
 		JSONArray arr = object.getJSONArray("results"); 
 		String total = object.get("total").toString(); 
+
 
 		Gson gson = new Gson();
 
@@ -138,7 +139,8 @@ public class OpenSourceViewListServlet extends HttpServlet {
 			}
 
 		}
-		
+
+
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
