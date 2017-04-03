@@ -11,9 +11,9 @@ import com.meister.user.vo.UserVO;
 public class UserDaoImpl implements UserDao {
 
 
-	private final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
-	private final String ID = "Test";
-	private final String PWD = "test";
+	private final String URL = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+	private final String ID = "TEAMTWO";
+	private final String PWD = "teamtwo";
 
 
 	@Override

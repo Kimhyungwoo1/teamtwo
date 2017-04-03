@@ -16,6 +16,15 @@ public class SearchResultVO {
 	private String id;
 	private String filename;
 	private List<LanguageVO> langArr;
+	private List<SourceVO> sourceArr;
+
+	public List<SourceVO> getSourceArr() {
+		return sourceArr;
+	}
+
+	public void setSourceArr(List<SourceVO> sourceArr) {
+		this.sourceArr = sourceArr;
+	}
 
 	public List<LanguageVO> getLangArr() {
 		return langArr;

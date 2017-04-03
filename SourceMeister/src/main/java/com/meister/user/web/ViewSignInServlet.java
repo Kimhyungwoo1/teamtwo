@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.meister.user.service.UserService;
-import com.meister.user.service.UserServiceImpl;
-
 public class ViewSignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

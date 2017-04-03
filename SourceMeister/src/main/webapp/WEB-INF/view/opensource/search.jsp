@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,12 @@ $().ready(function () {
 <title>검색</title>
 </head>
 <body>
+
+
+
+
+
+
 
 	<div id="container">
 		
@@ -99,6 +106,14 @@ $().ready(function () {
 			
 			<div class="rank-lan">
 				<span>언어별 소스 수</span>
+				
+				<c:forEach items="${languages}" var="lang">
+<span>${lang.id}</span>
+
+
+</c:forEach>
+				
+				
 			</div>
 			
 		</div><div id="middle">
@@ -108,6 +123,37 @@ $().ready(function () {
 				<form id="searchForm">
 					<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
 				</form>
+				
+				<c:if test="${ not empty page}">
+				
+				<c:if test="${page == 1}">
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page - 1}">${page}</a>
+				<span>${page+1}</span>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+4}</a>
+				
+				</c:if>
+				<c:if test="${page == 0}">
+				<span>${page+1}</span>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 3 }">${page+4}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 4 }">${page+5}</a>
+				
+				</c:if>
+				<c:if test="${page gt 1}">
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page - 1}">${page-1}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page}">${page}</a>
+				<span>${page+1}</span>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				</c:if>
+				
+				</c:if>
+				
+				
+				
 			</div>
 			
 			<div id="middle-content">
