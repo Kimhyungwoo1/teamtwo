@@ -46,21 +46,6 @@
 		});
 		 
 	//////////////////////////[ReplyStart]/////////////////////////////
-		//삭제
-		$(".delete").click(function(){
-			/*  alert("삭제" + $(this).data("replyid")); */
-			$.post("/SourceMeister/reply/delete",{
-				"replyId" :$(this).data("replyid")
-			}, function(response){
-				if (response == 'OK') {
-					//화면 새로고침
-					location.reload();
-				} else {
-					alert("아티스트 등록을 실패 했습니다.\n관리자에게 문의하세요");
-				}
-			});
-		});	
-
 		//댓글
 		$("#writeReplyBtn").click(function(){
 			//validation check
@@ -83,6 +68,22 @@
 				}
 			});
 		});	
+		//삭제
+		$(".delete").click(function(){
+			/*  alert("삭제" + $(this).data("replyid")); */
+			$.post("/SourceMeister/reply/delete",{
+				"replyId" :$(this).data("replyid")
+			}, function(response){
+				if (response == 'OK') {
+					//화면 새로고침
+					location.reload();
+				} else {
+					alert("아티스트 등록을 실패 했습니다.\n관리자에게 문의하세요");
+				}
+			});
+		});	
+
+		
 		//대댓글
 		$(".formAppender").on("click","#writeReplyBtn",function(){
 			//validation check
@@ -165,13 +166,6 @@
 								<th>Repository</th>
 								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
 							</tr>
-							<!-- <tr>
-								<td colspan="5">
-									<a href="#" id="file-tree-link"> 
-										<span id="file-tree-button" data-id="9911">View File Tree</span>
-									</a>
-								</td>
-							</tr> -->
 						</tbody>
 					</table>
 				</div><!-- 
@@ -185,12 +179,10 @@
 				<textarea readonly="readonly" style="resize: none; wrap:hard;" cols="110" rows="20">${code}</textarea>
 			</div><br/>
 			
-			<div class="fileTree">
+			<a id="fileTreeBtn">Show File Tree</a><br/><br/>
+			<div class="fileTree" style="display:none;">
 				${fileTree}
-			</div>
-
-			<div class="footer">
-			</div>
+			</div><br/><br/>
 			
 		</div>
 

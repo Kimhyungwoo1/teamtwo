@@ -15,7 +15,9 @@
 	
  		//댓글
 		$(".detailLink > a").click(function(){
-								
+				
+			<deal.jsp>.load("/SourceMeister/reply/list");
+			
 			$.post("/SourceMeister/reply/list",{
 				"openSourceId" : $(this).data("opensourceid")
 			},function(response){
