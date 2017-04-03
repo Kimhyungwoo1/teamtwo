@@ -129,16 +129,13 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		Gson gson = new Gson();
 
-		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {
-		};
+		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {};
 		List<SearchResultVO> resultList = gson.fromJson(resultarr.toString(), token.getType());
 
-		TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {
-		};
+		TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {};
 		List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
 
-		TypeToken<List<SourceVO>> token3 = new TypeToken<List<SourceVO>>() {
-		};
+		TypeToken<List<SourceVO>> token3 = new TypeToken<List<SourceVO>>() {};
 		List<SourceVO> sourceList = gson.fromJson(sourceArr.toString(), token3.getType());
 
 		request.setAttribute("results", resultList);
