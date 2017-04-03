@@ -27,31 +27,31 @@
 	<h3>로그인 페이지</h3>
 	<hr />
 	
-
+		
 
 		 <c:if test="${empty sessionScope._USER_ }">
 		 
-		<form id="signInForm">
-		<div class="userInfo">
-		<input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요" /><br />
-		<input type="password" name="userPassword" placeholder="비밀번호를 입력하세요" /><br />
-		</div>
-		<div class="btn">
-		<input type="button" value="로그인"  id="login" /> 
-		</div>
-		<div class="userHelp" >
-		<a href="/SourceMeister/user/signUp"><input type="button" value="회원가입" /></a>
-		</div>
-	</form>
+			<form id="signInForm">
+				<div class="userInfo">
+				<input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요" /><br />
+				<input type="password" name="userPassword" placeholder="비밀번호를 입력하세요" /><br />
+				</div>
+				<div class="btn">
+				<input type="button" value="로그인"  id="login" /> 
+				</div>
+				<div class="userHelp" >
+				<a href="/SourceMeister/user/signUp"><input type="button" value="회원가입" /></a>
+				</div>
+			</form>
 		</c:if>
+				<c:if test="${not empty sessionScope._USER_}">
+						${sessionScope._USER_.userName}님, 환영합니다! <br/>
+						<a href="/SourceMeister/user/doSignOut">로그아웃</a>
+				</c:if>
+				<c:if test="${isAdminUser}" >
+					<a href="/SourceMeister/admin">관리자 페이지</a>
+				</c:if>
 		
-		
-		
-		<c:if test="${not empty sessionScope._USER_ }">
-				${sessionScope._USER_.userName}님, 환영합니다! <a href="/SourceMeister/user/doSignOut">로그아웃</a>
-		</c:if> 
-		
-			
 	 
 	
 

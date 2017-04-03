@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,8 +35,6 @@ $().ready(function () {
 });
 
 
-
-
 </script>
 
 <title>검색</title>
@@ -44,62 +43,24 @@ $().ready(function () {
 
 	<div id="container">
 		
-<%-- <<<<<<< HEAD
-		<div id="top">
-			<div id="login"></div>
-			<div id="search">
-				<form id="searchForm">
-					<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
-				</form>
-			</div>
-		</div>
-		
-		<div id="left-rank">
-			<div id="rank-repo">
-				<span>저장소별 소스 수</span>
-			</div>
-			<div id="rank-lan">
-				<span>언어별 소스 수</span>
-			</div>
-		</div>
-			
-		<div id="middle-content">
-			<jsp:include page="/WEB-INF/view/opensource/list.jsp" flush="false"></jsp:include>
-		</div>	
-		<div id="right-rank">
-			<span>검색어 순위</span>
-			
-		</div>
-			<div id="footer">
-			 	<span>Copyright </span>
-			</div>	
-		</div>
-
-
-=======
-	<form id="searchForm">
-
-		<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
-	</form>
-
-	<jsp:include page="/WEB-INF/view/opensource/list.jsp"></jsp:include>
->>>>>>> jun
-
-
-======= --%>
 		<div id="left">
 			<div class="login">
-				<jsp:include page="/WEB-INF/view/user/signIn.jsp" flush="false"></jsp:include>
+				<c:import url="/user/signIn" />
 			</div>
 			
 			<div class="rank-repo">
 				<span>저장소별 소스 수</span>
+				
+				<c:forEach items="${result.langArr}" var="lang">
+						${lang.language}: ${lang.count }<br>
+				</c:forEach><br />
+				
 			</div>
 			
 			<div class="rank-lan">
 				<span>언어별 소스 수</span>
 				
-				<c:forEach items="${result.langArr}" var="lang" begin="0" end="2">
+				<c:forEach items="${result.langArr}" var="lang">
 						${lang.language}: ${lang.count }<br>
 				</c:forEach><br />
 				
@@ -121,8 +82,13 @@ $().ready(function () {
 		</div>
 		
 		<div id="right">
-			<div id="serchRank">
+			<div id="searchRank">
 				<span>검색어 순위</span>
+				
+				<c:forEach items="${result.langArr}" var="lang">
+						${lang.language}: ${lang.count }<br>
+				</c:forEach><br />
+				
 			</div>
 			
 			<div id="reply">
@@ -132,7 +98,6 @@ $().ready(function () {
 		<div id="footer">
 			 <span>Copyright </span>
 		</div>	
-		
 		
 		
 </div>

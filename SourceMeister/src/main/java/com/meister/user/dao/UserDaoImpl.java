@@ -13,10 +13,10 @@ import com.meister.user.vo.UserVO;
 public class UserDaoImpl implements UserDao {
 
 
-	private String URL = "jdbc:oracle:thin:@localhost:1521:XE";
-	// private final String URL = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
-	private final String ID = "TEST";
-	private final String PWD = "test";
+	//private String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+	private final String ID = "TEAMTWO";
+	private final String PWD = "teamtwo";
 
 
 	@Override
@@ -239,6 +239,7 @@ public class UserDaoImpl implements UserDao {
 			query.append("			, U.EMAIL                         ");
 			query.append("			, U.GNDR                          ");
 			query.append("			, U.NCNM                          ");
+			query.append("			, U.ATHRZTN_ID U_ATHRZTN_ID       ");
 			query.append("			, A.ATHRZTN_ID                    ");
 			query.append("			, A.ATHRZTN_NM                    ");
 			query.append("	FROM 	USR U                            ");
@@ -262,6 +263,7 @@ public class UserDaoImpl implements UserDao {
 				user.setEmail(rs.getString("EMAIL"));
 				user.setGender(rs.getString("GNDR"));
 				user.setNickName(rs.getString("NCNM"));
+				user.setAuthorizationId(rs.getString("U_ATHRZTN_ID"));
 				user.getAuthorizationVO().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				user.getAuthorizationVO().setAuthorizationName(rs.getString("ATHRZTN_NM"));
 
