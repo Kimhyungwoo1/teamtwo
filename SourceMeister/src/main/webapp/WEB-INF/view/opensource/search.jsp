@@ -50,7 +50,8 @@ $().ready(function () {
 			<div class="rank-repo" style="overflow-y: auto">
 				<span>저장소별 소스 수</span><br/>
 				<c:forEach items="${sources}" var="sources">
-						${sources.source}: ${sources.count}<br>
+						${sources.source}: <a href="/SourceMeister/opensource?q=${search}&src=${sources.id}">${sources.count}</a>
+						<br>
 				</c:forEach><br />
 			</div>
 			

@@ -42,13 +42,12 @@ public class OpenSourceViewListServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 
-
 		String pageNum = request.getParameter("pageNum");
 
 		if (pageNum != null) {
-
+			
 			doPost(request, response);
-
+			
 		} else {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
@@ -60,29 +59,19 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String search = request.getParameter("search");
+		String search = (request.getParameter("search") == null) ? request.getParameter("q") : request.getParameter("search");
+		String pageNum = (request.getParameter("pageNum") == null) ?  "0" : request.getParameter("pageNum");
+		String src= (request.getParameter("src") == null) ? "0" : request.getParameter("src");
 
-		if(search==null){
-			
-			search = request.getParameter("q");
-		}
 		
-		
-		System.out.println(search);
-
-		String pageNum = request.getParameter("pageNum");
-
-		System.out.println(pageNum);
-
-		if (pageNum == null) {
-			pageNum = "0";
-		}
+		//System.out.println(search);
+		//System.out.println(pageNum);
 
 		search = search.replaceAll(" ", "+");
-		System.out.println(search);
+		//System.out.println(search);
 
 		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/codesearch_I/");
-		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum);
+		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum + "&src=" + src);
 
 
 		URL url = new URL(urlBuilder.toString());
