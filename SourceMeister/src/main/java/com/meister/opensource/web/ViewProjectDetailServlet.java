@@ -19,7 +19,6 @@ import org.json.JSONObject;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import com.meister.opensource.service.OpensourceService;
 import com.meister.opensource.service.OpensourceServiceImpl;
@@ -80,65 +79,13 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			sb.append(line);
 		}
 
-		rd.close();
-		conn.disconnect();
+		endConnection(rd, conn);
 
 		String attribute = sb.toString().replace("[", "").replace("]", "");
 		System.out.println(attribute);
 
-
 		JSONObject jsonObject = new JSONObject(attribute);
 
-		String sourceUrl = getAttribute(request, jsonObject);
-
-		/*
-		 * 파일 트리 파싱
-		 */
-		getFileTree(request, sourceUrl);
-
-		/*
-		 * likeCount
-		 */
-
-		OpensourceVO opensourceVO = opensourceService.getOneOpensource(opensourceId);
-
-		request.setAttribute("likeCount", opensourceVO.getLikeCount());
-
-		/*
-		 * 결과(readme 내용)
-		 */
-
-		StringBuilder codeUrlBuilder = new StringBuilder("https://searchcode.com/api/result/" + opensourceId + "/");
-
-		URL codeUrl = new URL(codeUrlBuilder.toString());
-		conn = getUrlConnection(codeUrl);
-
-		System.out.println("2) Response code: " + conn.getResponseCode());
-
-		rd = isResponseSuccess(conn);
-
-		StringBuilder sb2 = new StringBuilder();
-
-		while ((line = rd.readLine()) != null) {
-			sb2.append(line);
-		}
-
-		String code = sb2.toString();
-		rd.close();
-		conn.disconnect();
-
-		JSONObject jsonObject2 = new JSONObject(code);
-		code = jsonObject2.getString("code");
-
-		request.setAttribute("code", code);
-
-		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
-		dispatcher.forward(request, response);
-	}
-
-	private String getAttribute(HttpServletRequest request, JSONObject jsonObject) {
 		String reponame = jsonObject.getString("reponame");
 		String source = jsonObject.getString("source");
 		String sourceUrl = jsonObject.getString("sourceurl");
@@ -158,7 +105,117 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("md5hash", md5hash);
 		request.setAttribute("opensourceId", id);
 		request.setAttribute("fileName", fileName);
-		return sourceUrl;
+
+		/*
+		 * 파일 트리 파싱
+		 */
+		String fileUrl = "https://searchcode.com/file/" + opensourceId + "/";
+
+		Document doc = null;
+
+		try {
+			doc = Jsoup.connect(fileUrl).get();
+		} catch (HttpStatusException e) {
+			return;
+		}
+
+		String fileTreeId = doc.select("#file-tree-button").attr("data-id");
+		StringBuilder fileTreeUrlBuilder = new StringBuilder(
+				"https://searchcode.com/api/directory_tree/" + fileTreeId + "/");
+
+		URL fileTreeUrl = new URL(fileTreeUrlBuilder.toString());
+		conn = getUrlConnection(fileTreeUrl);
+
+		System.out.println("2) Response code: " + conn.getResponseCode());
+
+		rd = isResponseSuccess(conn);
+
+		sb.setLength(0);
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+
+		String fileTree = sb.toString();
+
+		endConnection(rd, conn);
+
+		JSONObject fileTreeJsonObject = new JSONObject(fileTree);
+		fileTree = fileTreeJsonObject.getString("tree");
+
+		String[] split = fileTree.split("<br>");
+
+		String startA = "";
+		String text = "";
+		String fileId = "";
+
+		String fileTreeResult = "";
+		for (String oneStr : split) {
+
+			// <a href="/file/122031667/.idea/scopes/Non_Resource_Files.xml">
+			startA = oneStr.substring(0, oneStr.indexOf(">"));
+
+			// /file/122031667/.idea/scopes/Non_Resource_Files.xml"
+			fileId = startA.substring(startA.indexOf("\"") + 1, startA.lastIndexOf("\""));
+
+			// 122031667/.idea/scopes/Non_Resource_Files.xml"
+			fileId = fileId.replaceAll("/file/", "");
+
+			// 122031667
+			fileId = fileId.substring(0, fileId.indexOf("/"));
+			System.out.println("FileId : " + fileId);
+
+			text = oneStr.substring(oneStr.indexOf(">") + 1, oneStr.lastIndexOf("<"));
+			System.out.println("text : " + text);
+
+			fileTreeResult += "<a href=\"/SourceMeister/opensource/detail?opensourceId=" + fileId + "\">" + text
+					+ "</a><br>";
+		}
+
+		request.setAttribute("fileTree", fileTreeResult);
+
+		/*
+		 * likeCount
+		 */
+
+		OpensourceVO opensourceVO = opensourceService.getOneOpensource(opensourceId);
+		request.setAttribute("likeCount", opensourceVO.getLikeCount());
+
+		/*
+		 * 결과(readme 내용)
+		 */
+
+		StringBuilder codeUrlBuilder = new StringBuilder("https://searchcode.com/api/result/" + opensourceId + "/");
+
+		URL codeUrl = new URL(codeUrlBuilder.toString());
+		conn = getUrlConnection(codeUrl);
+
+		System.out.println("3) Response code: " + conn.getResponseCode());
+
+		rd = isResponseSuccess(conn);
+
+		sb.setLength(0);
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+
+		String code = sb.toString();
+
+		endConnection(rd, conn);
+
+		JSONObject codeJsonObject = new JSONObject(code);
+		code = codeJsonObject.getString("code");
+
+		request.setAttribute("code", code);
+
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void endConnection(BufferedReader rd, HttpURLConnection conn) throws IOException {
+		rd.close();
+		conn.disconnect();
 	}
 
 	private HttpURLConnection getUrlConnection(URL url) throws IOException, ProtocolException {
@@ -176,23 +233,6 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "UTF-8"));
 		}
 		return rd;
-	}
-
-	private void getFileTree(HttpServletRequest request, String sourceUrl) throws IOException {
-
-		Document doc = null;
-
-		try {
-			doc = Jsoup.connect(sourceUrl).get();
-		} catch (HttpStatusException e) {
-
-			return;
-
-		}
-
-		Elements fileTree = doc.select(".file-wrap");
-
-		request.setAttribute("fileTree", fileTree);
 	}
 
 }

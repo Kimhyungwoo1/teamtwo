@@ -10,10 +10,6 @@
 	$().ready(function() {
 		
 		$("#likeBtn").click(function() {
-			
-			
-			
-			
 			$.post("/SourceMeister/opensource/detail/likeCount", {
 				"opensourceId" : $("#likeBtn").data("opensourceid"),
 				"likeCount" : $("#likeCount").text()
@@ -26,21 +22,14 @@
 				} 
 			});
 		});
-		/* var sourceUrlTemp = $("#sourceUrl").val();
-		var sourceUrl = sourceUrlTemp.replace('https://github.com','https://cdn.rawgit.com');
 		
-		console.log(sourceUrl);
-		
-		$.ajax({
-			url : sourceUrl, 
-			dataType : "jsonp", 
-			jsonp : "callback",
-			async: false,
-			success : function(data){ 
-				console.log("result data object",data);
-			} 
-		});	 */
-
+		$("#fileTreeBtn").click(function() {
+			if ($(".fileTree").css("display") == "none") {
+				$('.fileTree').css("display", "block");
+			} else {
+				$('.fileTree').css("display", "none");
+			}
+		});
 	});
 </script>
 </head>
@@ -70,13 +59,6 @@
 								<th>Repository</th>
 								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
 							</tr>
-							<!-- <tr>
-								<td colspan="5">
-									<a href="#" id="file-tree-link"> 
-										<span id="file-tree-button" data-id="9911">View File Tree</span>
-									</a>
-								</td>
-							</tr> -->
 						</tbody>
 					</table>
 				</div><!-- 
@@ -90,12 +72,10 @@
 				<textarea readonly="readonly" style="resize: none; wrap:hard;" cols="110" rows="20">${code}</textarea>
 			</div><br/>
 			
-			<div class="fileTree">
+			<a id="fileTreeBtn">Show File Tree</a><br/><br/>
+			<div class="fileTree" style="display:none;">
 				${fileTree}
-			</div>
-
-			<div class="footer">
-			</div>
+			</div><br/><br/>
 			
 		</div>
 

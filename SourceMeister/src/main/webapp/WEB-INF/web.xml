@@ -130,4 +130,8 @@
     <servlet-name>DoSignOutActionServlet</servlet-name>
     <url-pattern>/user/doSignOut</url-pattern>
   </servlet-mapping>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/view/error/500Error.jsp</location>
+  </error-page>
 </web-app>
