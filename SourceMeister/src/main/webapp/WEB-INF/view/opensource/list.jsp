@@ -6,12 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css"
-	href="/SourceMeister/static/css/list_layout.css" />
+<!-- <link rel="stylesheet" type="text/css"
+	href="/SourceMeister/static/css/list_layout.css" /> -->
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-	
+	$().ready(function() {
+		//댓글
+		$(".detailLink > a").click(function(){
+			
+			var opensourceId = $(this).data("opensourceid");
+			alert("[opensourceId]  " + opensourceId);
+		    $(".reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId);
+		});
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -72,7 +80,7 @@
 					</c:forEach><br />
 				</td>
 				<td>
-					<div id="detailLink"><a href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br /> <br /> 
+					<div class="detailLink"><a data-opensourceid="${result.id}" href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br /> <br /> 
 							<c:forEach items="${result.lines }" var="line">
 								<div>
 									<span>${line.value}</span>
@@ -91,6 +99,10 @@
 	</table>
 </div>
 
+<div class="reply">
+ <span>댓글</span>
+ <jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
+</div>
 
 </body>
 </html>

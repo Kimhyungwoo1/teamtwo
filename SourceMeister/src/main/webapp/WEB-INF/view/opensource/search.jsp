@@ -112,7 +112,7 @@ $().ready(function () {
 			</div>
 			
 			<div id="middle-content">
-				<jsp:include page="${OpensourceUrl}" flush="false"></jsp:include>
+				<jsp:include page="${includeUrl}" flush="false"></jsp:include>
 			</div>	
 			
 		</div>

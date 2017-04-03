@@ -39,7 +39,7 @@ public class ViewReplyListServlet extends HttpServlet {
 		String openSourceId = request.getParameter("openSourceId");
 		//TODO 
 		//openSourceId =  "XX01";
-		
+		System.out.println("[[openSourceId]]" + openSourceId);
 		ReplySearchVO replySearchVO = new ReplySearchVO();
 
 		replySearchVO.getPager().setPageNumber(pageNumber);

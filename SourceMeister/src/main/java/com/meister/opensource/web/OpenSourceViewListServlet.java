@@ -152,9 +152,8 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		}
 
-		request.setAttribute("OpensourceUrl", "/WEB-INF/view/opensource/list.jsp");
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/list.jsp");
 		
-		request.setAttribute("ReplyUrl", "/WEB-INF/view/reply/list.jsp");
 		
 		
 		
@@ -164,3 +163,4 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	}
 
 }
+
