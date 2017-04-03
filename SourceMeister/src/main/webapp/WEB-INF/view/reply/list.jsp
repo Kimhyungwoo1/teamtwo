@@ -10,19 +10,7 @@
 <script type="text/javascript" >
 
 	$().ready(function(){
-		/* 
-		$("#writeForm").find("img").click(function(){
-			//AJAX로 POST보내기 (요청을보낼주소,전달할 parameter,콜백함수(아무변수명)))
-			//콜백: 전달한 parameter로 처리한 응답을 받은부분이 처리
-			//전달할 parameter 보내기방법 1. 객체 리터럴 방식으로 보내기 [name태그명 : 값]
-			$.post("/board/dowrite",{
-				"subject" :$(".subject").val(),
-				"content" :$(".content").val()
-			}, function(response){
-				alert("글쓰기가 잘 완료되었습니다.");
-			});
-		});
-		 */
+	
 		//삭제
 		$(".delete").click(function(){
 			/*  alert("삭제" + $(this).data("replyid")); */
@@ -37,16 +25,7 @@
 				}
 			});
 		});	
-			
-		
-		/* $(".controls").find(".deleteLink").click(function(){
-			if (confirm(" 댓글을 삭제하시겠습니까?") == true){   
-			    document.form.submit();
-			}else{   //취소
-			    return;
-			}
-		});
-		 */
+
 		//댓글
 		$("#writeReplyBtn").click(function(){
 			//validation check
@@ -56,11 +35,23 @@
 				return;
 			}
 			
-			$(".writeReplyForm").attr({
+			$.post("/SourceMeister/reply/write",{
+				"opensourceId" : $("#openSourceId").val(),
+				"comment" : $("#comment").text(),
+				"parentReplyId" : $("#parentReplyId").val()
+			},function(response){
+				if (response == 'OK') {
+					//화면 새로고침
+					location.reload();
+				} else {
+					alert("댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
+				}
+			});
+		/* 	$(".writeReplyForm").attr({
 				"method" : "post",
 				"action" : "/SourceMeister/reply/write"
 			});
-			$(".writeReplyForm").submit();
+			$(".writeReplyForm").submit(); */
 		});	
 		//대댓글
 		$(".formAppender").on("click","#writeReplyBtn",function(){
@@ -72,11 +63,29 @@
 					thisForm.find("textarea").focus();
 					return;
 			} 
+			
+			
+			$.post("/SourceMeister/reply/write",{
+				"opensourceId" : $("#writeReplyBtn").val(),
+				"comment" : $("#writeReplyBtn").data(),
+				"parentReplyId" : $("#writeReplyBtn").val()
+			},function(response){
+				if (response == 'OK') {
+					//화면 새로고침
+					location.reload();
+				} else {
+					alert("대댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
+				}
+			});
+			
+			/* 
 			thisForm.find("form").attr({
 				"method" : "post",
 				"action" : "/SourceMeister/reply/write"
 			});
-			thisForm.find("form").submit();
+			thisForm.find("form").submit(); */
+			
+			
 		});
 		
 		$(".ReReply").click(function(){

@@ -11,7 +11,24 @@
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+	/* $().ready(function(){
 	
+ 		//댓글
+		$(".detailLink > a").click(function(){
+								
+			$.post("/SourceMeister/reply/list",{
+				"openSourceId" : $(this).data("opensourceid")
+			},function(response){
+				if (response == 'OK') {
+					 writeDiv.load("/melon/artist/write");
+					//화면 새로고침
+					// location.reload(); 
+				} else {
+					alert("댓글 목록 load 실패 했습니다.\n관리자에게 문의하세요");
+				}
+			});  
+		});	
+	}); */
 </script>
 <title>Insert title here</title>
 </head>
@@ -72,7 +89,7 @@
 					</c:forEach><br />
 				</td>
 				<td>
-					<div id="detailLink"><a href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br /> <br /> 
+					<div class="detailLink" ><a data-opensourceid="${result.id}"  href="/SourceMeister/opensource/detail?opensourceId=${result.id}" >${result.name}---${result.repo }</a><br /> <br /> 
 							<c:forEach items="${result.lines }" var="line">
 								<div>
 									<span>${line.value}</span>

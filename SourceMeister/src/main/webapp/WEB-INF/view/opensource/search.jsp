@@ -13,7 +13,7 @@
 $().ready(function () {
 	
 	$("#keyword").keydown(function(e) {
-		if (e.which == 13) {
+		if (e.which == 13) { //13 : Enter코드
 			submitForm();
 		}
 	});
@@ -31,6 +31,27 @@ $().ready(function () {
 		}).submit();
 	}
 	
+	//댓글
+	//$("#middle-content > .detailLink > a").click(function(){
+	$("#middle-content > .detailLink").click(function(){
+		$("#reply").load("/SourceMeister/reply/list");
+		
+		var opensourceId =  $(this).data("opensourceid")
+		
+		alert("opensourceId ?? " + opensourceId);
+		/* 
+		$.post("/SourceMeister/reply/list",{
+			"openSourceId" : $(this).data("opensourceid")
+		},function(response){
+			if (response == 'OK') {
+				 writeDiv.load("/SourceMeister/reply/list");
+				//화면 새로고침
+				// location.reload(); 
+			} else {
+				alert("댓글 목록 load 실패 했습니다.\n관리자에게 문의하세요");
+			}
+		});   */
+	});	
 	
 	
 });

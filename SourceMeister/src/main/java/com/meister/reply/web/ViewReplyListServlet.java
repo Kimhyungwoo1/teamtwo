@@ -1,6 +1,7 @@
 package com.meister.reply.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,6 +41,9 @@ public class ViewReplyListServlet extends HttpServlet {
 		//TODO 
 		//openSourceId =  "XX01";
 		
+		System.out.println("[openSourceId] " + openSourceId
+				 + "[pageNumber]" + pageNumber);
+		
 		ReplySearchVO replySearchVO = new ReplySearchVO();
 
 		replySearchVO.getPager().setPageNumber(pageNumber);
@@ -55,9 +59,22 @@ public class ViewReplyListServlet extends HttpServlet {
 		request.setAttribute("pager", pages);
 		request.setAttribute("replyList", replyList);
 
+		if (totalcnt > 0) {
+			PrintWriter out = response.getWriter();
+			out.write("OK");
+			out.flush();
+			out.close();
+		}
+		else {
+			PrintWriter out = response.getWriter();
+			out.write("FAIL");
+			out.flush();
+			out.close();
+		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/reply/list.jsp");
-		dispatcher.forward(request, response);
+		
+	/*	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/reply/list.jsp");
+		dispatcher.forward(request, response);*/
 
 	}
 
