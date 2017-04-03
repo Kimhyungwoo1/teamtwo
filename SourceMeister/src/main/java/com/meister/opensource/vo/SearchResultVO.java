@@ -15,14 +15,14 @@ public class SearchResultVO {
 	private TreeMap<Integer, String> lines;
 	private String id;
 	private String filename;
-	private List<LanguageVO> langArr;
+	private List<List<LanguageVO>> langArr;
 
-	public List<LanguageVO> getLangArr() {
+	public List<List<LanguageVO>> getLangArr() {
 		return langArr;
 	}
 
 	public void setLangArr(List<LanguageVO> langArr) {
-		this.langArr = langArr;
+		this.langArr.add(langArr);
 	}
 
 	public String getRepo() {

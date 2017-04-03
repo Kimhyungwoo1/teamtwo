@@ -59,15 +59,9 @@
 		</colgroup>
 		
 		<c:forEach items="${results}" var="result">
-			<tr>
+			<tr>	
 				<td>
-					<c:forEach items="${result.langArr}" var="lang" begin="0" end="2">
-
-						${lang.language}:${lang.count }<br>
-					</c:forEach><br />
-				</td>
 				
-				<td>
 					<div id="detailLink"><a href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br /> <br /> 
 
 							<c:forEach items="${result.lines }" var="line">

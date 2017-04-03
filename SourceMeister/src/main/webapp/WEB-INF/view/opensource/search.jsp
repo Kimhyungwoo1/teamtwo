@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript"
-	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
 
@@ -99,6 +98,11 @@ $().ready(function () {
 			
 			<div class="rank-lan">
 				<span>언어별 소스 수</span>
+				
+				<c:forEach items="${result.langArr}" var="lang" begin="0" end="2">
+						${lang.language}: ${lang.count }<br>
+				</c:forEach><br />
+				
 			</div>
 			
 		</div><div id="middle">
