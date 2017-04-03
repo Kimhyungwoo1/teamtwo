@@ -34,7 +34,6 @@ $().ready(function () {
 	
 });
 
-
 </script>
 
 <title>검색</title>
@@ -48,22 +47,19 @@ $().ready(function () {
 				<c:import url="/user/signIn" />
 			</div>
 			
-			<div class="rank-repo">
-				<span>저장소별 소스 수</span>
-				
-				<c:forEach items="${result.langArr}" var="lang">
-						${lang.language}: ${lang.count }<br>
+			<div class="rank-repo" style="overflow-y: auto">
+				<span>저장소별 소스 수</span><br/>
+				<c:forEach items="${sources}" var="sources">
+						${sources.source}: ${sources.count}<br>
 				</c:forEach><br />
-				
 			</div>
 			
-			<div class="rank-lan">
-				<span>언어별 소스 수</span>
-				
-				<c:forEach items="${result.langArr}" var="lang">
-						${lang.language}: ${lang.count }<br>
+			
+			<div class="rank-lan" style="overflow-y: auto">
+				<span>언어별 소스 수</span><br/>
+				<c:forEach items="${languages}" var="languages">
+						${languages.language}: ${languages.count}<br>
 				</c:forEach><br />
-				
 			</div>
 			
 		</div><div id="middle">
@@ -73,6 +69,37 @@ $().ready(function () {
 				<form id="searchForm">
 					<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
 				</form>
+				
+				<c:if test="${ not empty page}">
+				
+				<c:if test="${page == 1}">
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page - 1}">${page}</a>
+				<span>${page+1}</span>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+4}</a>
+				
+				</c:if>
+				<c:if test="${page == 0}">
+				<span>${page+1}</span>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 3 }">${page+4}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 4 }">${page+5}</a>
+				
+				</c:if>
+				<c:if test="${page gt 1}">
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page - 1}">${page-1}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page}">${page}</a>
+				<span>${page+1}</span>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				</c:if>
+				
+				</c:if>
+				
+				
+				
 			</div>
 			
 			<div id="middle-content">
@@ -83,10 +110,10 @@ $().ready(function () {
 		
 		<div id="right">
 			<div id="searchRank">
-				<span>검색어 순위</span>
+				<span>검색어 순위</span> <br/>
 				
 				<c:forEach items="${result.langArr}" var="lang">
-						${lang.language}: ${lang.count }<br>
+						${lang.language}: ${lang.count }<br/>
 				</c:forEach><br />
 				
 			</div>
