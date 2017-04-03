@@ -31,18 +31,19 @@
 				$("#userName").focus();
 				return;
 			}
-
-			if ($("#email").val() == "") {
+			/*  if ($("#email").val() == "") {
 				alert("이메일을 @와같이 입력해주세요");
 				$("#email").focus();
 				return;
-			}
+			}  */
 
-			if ($("#userPassword").val().length < 7) { 
+			if ($("#userPassword").val().length < 7) {
 				alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
 				$("#userPassword").focus();
 				return;
 			}
+		
+			
 
 			var email = $('#email');
 			var CheckEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 

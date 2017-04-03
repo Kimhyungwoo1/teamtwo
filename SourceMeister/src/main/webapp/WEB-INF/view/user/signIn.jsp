@@ -30,7 +30,6 @@
 		
 
 		 <c:if test="${empty sessionScope._USER_ }">
-		 
 			<form id="signInForm">
 				<div class="userInfo">
 				<input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요" /><br />
@@ -49,7 +48,7 @@
 						<a href="/SourceMeister/user/doSignOut">로그아웃</a>
 				</c:if>
 				<c:if test="${isAdminUser}" >
-					<a href="/SourceMeister/admin">관리자 페이지</a>
+					<a href="/SourceMeister/authorizationadmin">관리자 페이지</a>
 				</c:if>
 		
 	 

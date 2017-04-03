@@ -12,10 +12,10 @@ import com.meister.authorization.vo.AuthorizationVO;
 
 public class AuthorizationDaoImpl implements AuthorizationDao {
 
-	private String oracleUrl = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+	private String oracleUrl = "jdbc:oracle:thin:@172.30.1.4:1521:XE";
 	//private String oracleUrl = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String ID = "TEAMTWO";
-	private String PWD = "teamtwo";
+	private String ID = "TEST";
+	private String PWD = "test";
 	
 	@Override
 	public int insertAuthorization(AuthorizationVO authorizationVO) {
@@ -34,7 +34,7 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 			conn = DriverManager.getConnection(oracleUrl, ID, PWD);
 
 			StringBuffer query = new StringBuffer();
-			query.append(" INSERT		INTO	ATHRZTN ");
+			query.append(" INSERT		INTO		ATHRZTN ");
 			query.append(" 								( ");
 			query.append(" 								ATHRZTN_ID ");
 			query.append(" 								, ATHRZTN_NM ");

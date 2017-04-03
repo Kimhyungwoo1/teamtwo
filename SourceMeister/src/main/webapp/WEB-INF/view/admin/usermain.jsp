@@ -31,7 +31,9 @@
 			SourceMeister 관리자님 환영합니다.
 		</div>
 		<div id=adminManu>
-			관리자 메뉴
+			관리자 메뉴<br/>
+			<a href="/SourceMeister/authorizationadmin">1. 권한</a><br/>
+			<a href="/SourceMeister/useradmin">2. 유저</a>
 		</div>
 	</div><!--
 	--><div id=botton>
@@ -61,10 +63,10 @@
 			</table>
 		</div>
 		<div id=add>
-			<jsp:include page="/WEB-INF/view/admin/addauth.jsp"/>
+			 <jsp:include page="/WEB-INF/view/admin/userRemove.jsp"/>
 		</div>
 		<form id="allAuth">
-			<a>권한 변경</a>
+			<!-- <a>권한 변경</a>
 			<select name="authBefore">
 				<option value="">권한없음</option>
 				<c:forEach items="${authList}" var="authList">
@@ -79,7 +81,7 @@
 				</c:forEach>
 			</select>
 			<span>로</span>
-			<input type="button" value="변경"/>
+			<input type="button" value="변경"/> -->
 		</form>
 	</div>
 	<div id=writer> copy writer Source Meister</div>
