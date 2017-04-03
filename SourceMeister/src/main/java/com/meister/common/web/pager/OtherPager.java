@@ -1,6 +1,5 @@
 package com.meister.common.web.pager;
 
-
 public class OtherPager extends Pager {
 
 	public OtherPager(int printArticle, int printPage) {

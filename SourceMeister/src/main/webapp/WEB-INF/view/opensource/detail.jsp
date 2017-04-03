@@ -8,43 +8,47 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		
+	var loginCheck = "${ sessionScope._USER_}" ;
 		$("#likeBtn").click(function() {
-			$.post("/SourceMeister/opensource/detail/likeCount", {
-				"opensourceId" : $("#likeBtn").data("opensourceid"),
-				"likeCount" : $("#likeCount").text()
-			}, function(response) {
-				var jsonObj = JSON.parse(response);
-				console.log(jsonObj);
+			if (loginCheck) {
+				$.post("/SourceMeister/opensource/detail/likeCount", {
+					"opensourceId" : $("#likeBtn").data("opensourceid"),
+					"likeCount" : $("#likeCount").text()
+				}, function(response) {
+					var jsonObj = JSON.parse(response);
+					console.log(jsonObj);
 
-				if (jsonObj.success) {
-					$("#likeCount").text(jsonObj.likeCount);
-				} 
-			});
+					if (jsonObj.success) {
+						$("#likeCount").text(jsonObj.likeCount);
+					} 
+				});
+			}
+			else {
+				alert("로그인해주세요.");
+			}
 		});
-		
+		 
 	});
+		/* var sourceUrlTemp = $("#sourceUrl").val();
+		var sourceUrl = sourceUrlTemp.replace('https://github.com','https://cdn.rawgit.com');
+		
+		console.log(sourceUrl);
+		
+		$.ajax({
+			url : sourceUrl, 
+			dataType : "jsonp", 
+			jsonp : "callback",
+			async: false,
+			success : function(data){ 
+				console.log("result data object",data);
+			} 
+		});	 */
+
 </script>
 </head>
 <body>
 
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
-			This is a navbar!
-		</div>
-	</nav>
-
-
 	<div class="container">
-
-		<div class="search-options">
-			<form action="searchForm">
-				<div class="form-inline">
-					<input size="50" placeholder="Search Expression" type="text" name="search" value=""/>
-					<input type="submit" value="search"/>
-				</div>
-			</form>
-		</div>
 		
 		<div class="row">
 			<div class="title">
@@ -54,6 +58,8 @@
 				</h4>
 			</div>
 
+			<input type="hidden" id="sourceUrl" value="${sourceUrl}">
+			<input type="hidden" id="repoName" value="${repoName}">
 			<div class="header">
 				<div style="display:inline-block;">
 					<table class="table">
@@ -64,7 +70,7 @@
 							</tr>
 							<tr>
 								<th>Repository</th>
-								<td><a href="/${sourceUrl}">${sourceUrl}</a></td>
+								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
 							</tr>
 							<!-- <tr>
 								<td colspan="5">
@@ -78,7 +84,7 @@
 				</div><!-- 
 			 --><div id="likeBtn" style="display:inline-block;" data-opensourceid="${opensourceId}">
 			 		<img style="vertical-align:middle; width:50px; height:50px;" src="http://branding.daegu.com/images/icon--thumb.png"/>
-			 		<p id="likeCount">좋아요수</p>
+			 		<p id="likeCount">${likeCount}</p>
 			 	</div>
 			</div><br/>
 

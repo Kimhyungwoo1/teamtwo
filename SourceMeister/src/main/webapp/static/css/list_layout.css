@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+body {
+	font-size : 12px;
+	font-family : Dotum, '돋움', Helvetica, AppleSDGothicNeo, sans-serif;
+}
+
+span {
+	font-size : 15px;
+}
+
+#tableContent {
+	width : 700px;
+	height : 570px;
+	table-layout: fixed;
+	word-break: break-all;
+}
+
+table {
+	width : 700px;
+	height : 570px;
+	table-layout: fixed;
+	word-break: break-all;
+}

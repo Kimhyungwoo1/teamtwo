@@ -106,9 +106,9 @@
 <body>
 
 <!-- align="center" -->
- <div id="replyDiv" style="width:220px; background-color: silver;"  >
+ <div id="replyDiv" style="width:220px;"  >
        
-총 ${totalcnt}건
+<%-- 총 ${totalcnt}건 --%>
        	<c:forEach items="${replyList}" var="reply" varStatus="index">
       
             <div class="reply"  data-parent="${reply.parentReplyId }" data-click="0" 
@@ -143,10 +143,10 @@
 			</form>
 		</div>  --%>
       
-        <div id="formWrapper" style="width:220px; position : relative; bottom :-20px; left:5px; background: gray;" >            
+        <div id="formWrapper" style="width:220px; position : relative; bottom :-20px; left:5px;" >            
             <form class="writeReplyForm">
             <!-- XX01 수정할것 -->
-                <input type="hidden" id="openSourceId" name="openSourceId" value="XX01" />
+                <input type="hidden" id="openSourceId" name="openSourceId" value="${opensourceId}"/>
                 <input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
                 <textarea id="comment" name="comment" style="width:150px;"></textarea>
                 <input type="button" id="writeReplyBtn" value="등록" />    

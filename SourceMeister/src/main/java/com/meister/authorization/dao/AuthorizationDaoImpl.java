@@ -12,9 +12,11 @@ import com.meister.authorization.vo.AuthorizationVO;
 
 public class AuthorizationDaoImpl implements AuthorizationDao {
 
-	//String oracleUrl = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
-	String oracleUrl = "jdbc:oracle:thin:@localhost:1521:XE";
-
+	private String oracleUrl = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+	//private String oracleUrl = "jdbc:oracle:thin:@localhost:1521:XE";
+	private String ID = "TEAMTWO";
+	private String PWD = "teamtwo";
+	
 	@Override
 	public int insertAuthorization(AuthorizationVO authorizationVO) {
 
@@ -28,8 +30,8 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 		PreparedStatement stmt = null;
 
 		try {
-			conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
-			//conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
+			//conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
+			conn = DriverManager.getConnection(oracleUrl, ID, PWD);
 
 			StringBuffer query = new StringBuffer();
 			query.append(" INSERT		INTO	ATHRZTN ");
@@ -80,8 +82,8 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 		ResultSet rs = null;
 
 		try {
-			conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
-			//conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
+			//conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
+			conn = DriverManager.getConnection(oracleUrl, ID, PWD);
 
 			StringBuffer query = new StringBuffer();
 			query.append(" SELECT		ATHRZTN_ID ");
@@ -141,8 +143,8 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 		PreparedStatement stmt = null;
 
 		try {
-			conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
-			//conn = DriverManager.getConnection(oracleUrl, "TEAMTWO", "teamtwo");
+			//conn = DriverManager.getConnection(oracleUrl, "TEST", "test");
+			conn = DriverManager.getConnection(oracleUrl, ID, PWD);
 
 			StringBuffer query = new StringBuffer();
 			query.append(" DELETE ");

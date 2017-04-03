@@ -31,8 +31,8 @@ public class ViewReplyWriteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+/*		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");*/
 		
 		String openSourceId = request.getParameter("openSourceId");
 		String comment = request.getParameter("comment");
@@ -48,8 +48,8 @@ public class ViewReplyWriteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("_USER_");
 		//TODO
-		/* String writer = userVO.getUserId();*/
-		String writer = "TEST";
+		String writer = userVO.getUserId();
+		//String writer = "TEST";
 
 		ReplyVO replyVO = new ReplyVO();
 		

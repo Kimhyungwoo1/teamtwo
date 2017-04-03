@@ -1,11 +1,9 @@
 package com.meister.user.biz;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.meister.user.dao.UserDao;
 import com.meister.user.dao.UserDaoImpl;
-import com.meister.user.vo.UserSearchVO;
 import com.meister.user.vo.UserVO;
 
 public class UserBizImpl implements UserBiz {
@@ -17,21 +15,12 @@ public class UserBizImpl implements UserBiz {
 
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
-
 		return userDao.insertNewUser(newUserVO) > 0;
 	}
 
 	@Override
-	public List<UserVO> getAllUser(UserSearchVO userSearchVO) {
-		int totalCount = userDao.selectAllUserCount(userSearchVO);
-		userSearchVO.getPager().setTotalArticleCount(totalCount);
-
-		System.out.println("yes=" + userSearchVO.getPager().getEndArticleNumber());
-
-		if (totalCount == 0) {
-			return new ArrayList<UserVO>();
-		}
-		return userDao.selectAllUser(userSearchVO);
+	public List<UserVO> getAllUser() {
+		return userDao.selectAllUser();
 	}
 
 	@Override
@@ -64,10 +53,20 @@ public class UserBizImpl implements UserBiz {
 		return userDao.changeUser(beforeAuthorization, afterAuthorization) > 0;
 	}
 
-	@Override
+	
 	public boolean isDuplicatedUserId(String userId) {
 
 		return userDao.selectCountByUserId(userId) > 0;
 	}
+
+	@Override
+	public UserVO loginUser(UserVO user) {
+		
+		return (UserVO) userDao.selectOneUser(user);
+	}
+
+	
+
+	
 
 }

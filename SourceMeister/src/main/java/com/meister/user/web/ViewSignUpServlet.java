@@ -30,10 +30,23 @@ public class ViewSignUpServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String userId = request.getParameter("userId");
 		String userPassword = request.getParameter("userPassword");
 		String userName = request.getParameter("userName");
-
+		String userNickName = request.getParameter("NickName");
+		String userGender = request.getParameter("userGender");
+		String userEmail = request.getParameter("email");
+		
+		
+		System.out.println(userId);
+		System.out.println(userPassword);
+		System.out.println(userName);
+		System.out.println(userNickName);
+		System.out.println(userGender);
+		System.out.println(userEmail);
+		
+		
 		if (userId == null || userId.length() == 0) {
 			response.sendRedirect("/SourceMeister/user/signUp?errorCode=0");
 			return;
@@ -56,12 +69,15 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setUserId(userId);
 		user.setUserName(userName);
 		user.setPassword(userPassword);
+		user.setNickName(userNickName);
+		user.setGender(userGender);
+		user.setEmail(userEmail);
 
 		if (userService.registNewUser(user)) { 
-			System.out.println("유저등록 성공");
-			response.sendRedirect("/SourceMeister/user/signIn");
+			System.out.println("�쉶�썝媛��엯 �꽦怨�");
+			response.sendRedirect("/SourceMeister/opensource");
 		} else { 
-			System.out.println("유저등록 실패");
+			System.out.println("�쉶�썝媛��엯 �떎�뙣");
 			response.sendRedirect("/SourceMeister/user/signUp");
 		}
 	}

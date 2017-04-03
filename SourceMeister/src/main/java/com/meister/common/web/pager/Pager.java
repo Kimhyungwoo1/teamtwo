@@ -4,25 +4,58 @@ public abstract class Pager {
 	
 	public static final boolean ORACLE = true;
 	public static final boolean OTHER = false;
-	
+	/**
+	 * 전체 게시물의 수
+	 * 검색을 할 경우, 검색된 게시글의 수
+	 */
 	private int totalArticleCount;
-
+	/**
+	 * 한 페이지에 노출할 게시글의 수
+	 * 기본 값으로 10(생성자에서 세팅)
+	 */
 	protected int printArticle;
+	/**
+	 * 한 페이지 그룹에 노출할 페이지의 수
+	 * 기본 값으로 10(생성자에서 세팅)
+	 */
 	int printPage;
-
+	/**
+	 * 어떤 페이지 번호에서 노출할 게시글의 시작번호
+	 * 예 > 1페이지의 시작번호는 1번
+	 *      2페이지의 시작번호는 11번
+	 */
 	protected int startArticleNumber;
+	/**
+	 * 어떤 페이지 번호에서 노출할 게시글의 마지막 번호
+	 */
 	protected int endArticleNumber;
-
+	/**
+	 * 전체 페이지수
+	 */
 	int totalPage;
+	/**
+	 * 전체 페이지그룹의 수
+	 */
 	int totalGroup;
-
+	/**
+	 * 현재 노출중인 페이지그룹의 번호
+	 */
 	int nowGroupNumber;
-
+	/**
+	 * 현재 노출중이 페이지 그룹의 시작 페이지 번호
+	 */
 	int groupStartPage;
-
+	/**
+	 * 현재 노출중인 페이지 그룹의 다음 페이지 그룹 번호
+	 */
 	int nextGroupPageNumber;
+	/**
+	 * 현재 노출중인 페이지 그룹의 이전 페이지 그룹 번호
+	 */
 	int prevGroupPageNumber;
-
+	/**
+	 * 현재 노출중이 페이지 번호
+	 */
 	protected int pageNo;
 	
 	/**
@@ -49,6 +82,7 @@ public abstract class Pager {
 	 * 요청된 페이지의 번호를 얻어온다.
 	 * 1 페이지의 경우 0이 입력된다.
 	 * 아무것도 입력하지 않았다면 0으로 기본 설정된다.
+	 * Group의 정보 구하기
 	 * @param pageNumber
 	 */
 	public void setPageNumber(String pageNumber) {
@@ -71,7 +105,7 @@ public abstract class Pager {
 	protected abstract void computeArticleNumbers();
 	
 	/**
-	 * 조회하려는 조건(Query)의 총 게시물 수를 정의한다.
+	 * 조회하려는 조건(Query)의 총 게시물 수를 정의한다. (가장먼저호출)
 	 * @param count
 	 */
 	public void setTotalArticleCount(int count) {
