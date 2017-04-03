@@ -34,7 +34,7 @@
 							<a
 								href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br />
 							<br />
-
+							
 							<c:forEach items="${result.lines }" var="line">
 								
 									${line.value}
