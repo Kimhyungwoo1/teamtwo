@@ -6,10 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/SourceMeister/static/js/hilitor.js"></script>
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
 
 $().ready(function () {
+	
+	
+	
 	
 	$("#keyword").keydown(function(e) {
 		if (e.which == 13) {
@@ -30,11 +34,20 @@ $().ready(function () {
 		}).submit();
 	}
 	
+	 var myHilitor = new Hilitor("#table-content");
+	  myHilitor.apply($("#keyword").val());
+	  
+
+	
 	
 	
 });
 
+
+ 
+
 </script>
+
 
 <title>검색</title>
 </head>
@@ -67,7 +80,7 @@ $().ready(function () {
 			<div id="search">
 				<br/><br/><br/><br/>
 				<form id="searchForm">
-					<input id="keyword" name="search" type="text" /> <input type="button" value="검색" />
+					<input id="keyword" name="search" type="text" value="${search}" /> <input type="button" value="검색" />
 				</form>
 				
 				<c:if test="${ not empty page}">
