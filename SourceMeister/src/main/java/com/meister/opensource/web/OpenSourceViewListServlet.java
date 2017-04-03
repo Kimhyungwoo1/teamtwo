@@ -29,25 +29,34 @@ import com.meister.commom.constants.AuthConst;
 import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
 
-
 import com.meister.opensource.vo.SourceVO;
-
 
 public class OpenSourceViewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public OpenSourceViewListServlet() {}
+	public OpenSourceViewListServlet() {
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 
 		String pageNum = request.getParameter("pageNum");
+		String langId = request.getParameter("langId");
+		String srcId = request.getParameter("srcId");
 
 		if (pageNum != null) {
 			
 			doPost(request, response);
-			
+
+		} else if (langId != null) {
+
+			doPost(request, response);
+
+		} else if (srcId != null) {
+
+			doPost(request, response);
+
 		} else {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
@@ -59,24 +68,30 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String search = (request.getParameter("search") == null) ? request.getParameter("q") : request.getParameter("search");
-		String pageNum = (request.getParameter("pageNum") == null) ?  "0" : request.getParameter("pageNum");
-		String src= (request.getParameter("src") == null) ? "0" : request.getParameter("src");
+
+		String langId = request.getParameter("langId");
+		String srcId = request.getParameter("srcId");
+		String search = (request.getParameter("search") == null) ? request.getParameter("q") :  request.getParameter("search"); 
+		String pageNum = (request.getParameter("pageNum") == null) ? "0" : request.getParameter("pageNum");
+		
+		langId = (langId == null) ? "" :  "&lan=" + langId;
+		srcId = (srcId == null) ? "" : "&src=" + srcId;
+
+	
+		System.out.println(search);
+		System.out.println(pageNum);
 
 		
-		//System.out.println(search);
-		//System.out.println(pageNum);
-
 		search = search.replaceAll(" ", "+");
-		//System.out.println(search);
 
 		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/codesearch_I/");
-		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum + "&src=" + src);
+
+		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum + langId+srcId);
 
 
 		URL url = new URL(urlBuilder.toString());
-		//System.out.println("first address = " + urlBuilder.toString());
-		
+		System.out.println("first address = " + urlBuilder.toString());
+
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
@@ -97,18 +112,18 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		rd.close();
 		conn.disconnect();
-		
-		//System.out.println("first parsing = " + sb.toString());
-		
+
+		// System.out.println("first parsing = " + sb.toString());
+
 		JSONObject object = new JSONObject(sb.toString());
 
 		JSONArray resultarr = object.getJSONArray("results"); // 諛곗뿴?⑥쐞濡?異붿텧?섍퀬
 																// ?띠쓣??
 		JSONArray langArr = object.getJSONArray("language_filters");
 		JSONArray sourceArr = object.getJSONArray("source_filters");
-		
-		//System.out.println("sourceArr = " + sourceArr.toString());
-		
+
+		// System.out.println("sourceArr = " + sourceArr.toString());
+
 		String total = object.get("total").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
 		String page = object.get("page").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
 
@@ -129,20 +144,15 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		request.setAttribute("results", resultList);
 		request.setAttribute("languages", langList);
 		request.setAttribute("sources", sourceList);
-		
 
 		request.setAttribute("page", page);
 		request.setAttribute("search", search);
 		request.setAttribute("count", total);
 		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/list.jsp");
 
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
-		
 
-		}
+	}
 
-}	
-
-
+}

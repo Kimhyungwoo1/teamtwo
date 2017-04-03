@@ -50,8 +50,9 @@ $().ready(function () {
 			<div class="rank-repo" style="overflow-y: auto">
 				<span>저장소별 소스 수</span><br/>
 				<c:forEach items="${sources}" var="sources">
-						${sources.source}: <a href="/SourceMeister/opensource?q=${search}&src=${sources.id}">${sources.count}</a>
-						<br>
+
+				<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
+
 				</c:forEach><br />
 			</div>
 			
@@ -59,7 +60,7 @@ $().ready(function () {
 			<div class="rank-lan" style="overflow-y: auto">
 				<span>언어별 소스 수</span><br/>
 				<c:forEach items="${languages}" var="languages">
-						${languages.language}: ${languages.count}<br>
+						<a href="/SourceMeister/opensource?srcId=${param.srcId}&q=${search}&langId=${languages.id}">${languages.language}: ${languages.count}</a><br>
 				</c:forEach><br />
 			</div>
 			
@@ -74,27 +75,27 @@ $().ready(function () {
 				<c:if test="${ not empty page}">
 				
 				<c:if test="${page == 1}">
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page - 1}">${page}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page}</a>
 				<span>${page+1}</span>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+4}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+4}</a>
 				
 				</c:if>
 				<c:if test="${page == 0}">
 				<span>${page+1}</span>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 3 }">${page+4}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 4 }">${page+5}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 3 }">${page+4}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 4 }">${page+5}</a>
 				
 				</c:if>
 				<c:if test="${page gt 1}">
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page - 1}">${page-1}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page}">${page}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page-1}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page}">${page}</a>
 				<span>${page+1}</span>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 1 }">${page+2}</a>
-				<a href="/SourceMeister/opensource?q=${search}&pageNum=${page + 2 }">${page+3}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
+				<a href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
 				</c:if>
 				
 				</c:if>
