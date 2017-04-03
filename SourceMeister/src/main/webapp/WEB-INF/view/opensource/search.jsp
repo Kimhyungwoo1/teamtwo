@@ -122,6 +122,7 @@ $().ready(function () {
 			
 			<div id="reply">
 				<span>댓글</span>
+				<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
 			</div>
 		</div>
 		<div id="footer">

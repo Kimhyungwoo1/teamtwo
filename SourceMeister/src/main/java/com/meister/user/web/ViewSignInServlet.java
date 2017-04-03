@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.meister.common.constants.AuthConst;
 
-import com.meister.commom.constants.AuthConst;
 import com.meister.user.vo.UserVO;
 
 

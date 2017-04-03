@@ -6,10 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,17 +16,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.tribes.util.Arrays;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.meister.commom.constants.AuthConst;
 import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
+
 
 import com.meister.opensource.vo.SourceVO;
 
@@ -153,3 +151,4 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	}
 
 }
+
