@@ -31,6 +31,15 @@
 				$("#userName").focus();
 				return;
 			}
+<<<<<<< HEAD
+			if ($("#email").val() == "") {
+				alert("이메일을 @와같이 입력해주세요");
+				$("#email").focus();
+				return;
+			}
+
+			if ($("#userPassword").val().length < 7) { 
+=======
 			/*  if ($("#email").val() == "") {
 				alert("이메일을 @와같이 입력해주세요");
 				$("#email").focus();
@@ -38,6 +47,7 @@
 			}  */
 
 			if ($("#userPassword").val().length < 7) {
+>>>>>>> jun
 				alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
 				$("#userPassword").focus();
 				return;

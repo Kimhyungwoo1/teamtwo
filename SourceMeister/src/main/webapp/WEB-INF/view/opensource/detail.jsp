@@ -8,19 +8,33 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		
+		var loginCheck = "${ sessionScope._USER_}" ;
 		$("#likeBtn").click(function() {
+
 			$.post("/SourceMeister/opensource/detail/likeCount", {
 				"opensourceId" : $("#likeBtn").data("opensourceid"),
 				"likeCount" : $("#likeCount").text()
 			}, function(response) {
 				var jsonObj = JSON.parse(response);
 				console.log(jsonObj);
-
-				if (jsonObj.success) {
-					$("#likeCount").text(jsonObj.likeCount);
-				} 
+				if (loginCheck) {
+					$.post("/SourceMeister/opensource/detail/likeCount", {
+						"opensourceId" : $("#likeBtn").data("opensourceid"),
+						"likeCount" : $("#likeCount").text()
+					}, function(response) {
+						var jsonObj = JSON.parse(response);
+						console.log(jsonObj);
+		
+						if (jsonObj.success) {
+							$("#likeCount").text(jsonObj.likeCount);
+						} 
+					});
+				}
+				else {
+					alert("로그인해주세요.");
+				}
 			});
+			
 		});
 		
 		$("#fileTreeBtn").click(function() {
@@ -31,6 +45,7 @@
 			}
 		});
 	});
+
 </script>
 </head>
 <body>

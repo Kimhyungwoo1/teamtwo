@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.meister.commom.constants.AuthConst;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
@@ -31,23 +32,27 @@ public class DoSignInActionServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPassword =  request.getParameter("userPassword");
 		
-		
 		UserVO user = new UserVO();
 		user.setUserId(userId);
 		user.setPassword(userPassword);
 		
 		UserVO userVO = null;
 		
+		
+		HttpSession session = request.getSession();
+		
+		
 		userVO = userService.getOneUser(user);
 		
+		
 		if(userVO == null){
-				response.sendRedirect("/SourceMeister/user/signIn");
+				response.sendRedirect("/SourceMeister/opensource");
 		}else{
-			HttpSession session = request.getSession();
-
 			session.setAttribute("_USER_", userVO);
+			
 			System.out.println("User ID : " + userVO.getUserId());
 			response.sendRedirect("/SourceMeister/opensource");
+			
 		}
 		
 	}
