@@ -130,11 +130,10 @@ public class ReplyDaoImpl implements ReplyDao{
 			query.append("         WHERE   ROWNUM <= ?                   ");
 			query.append("  )                                            ");
 			query.append("  WHERE  RNUM >= ?                             ");
-		
-			System.out.println("End" + replySearchVO.getPager().getEndArticleNumber());
-			System.out.println("Start" + replySearchVO.getPager().getStartArticleNumber());
+	
 			
 			stmt = conn.prepareStatement(query.toString());
+			
 			stmt.setString(1, replySearchVO.getOpenSourceId());
 			stmt.setInt(2, replySearchVO.getPager().getEndArticleNumber());
 			stmt.setInt(3, replySearchVO.getPager().getStartArticleNumber());
