@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,10 +39,7 @@ public class ViewReplyListServlet extends HttpServlet {
 		String openSourceId = request.getParameter("openSourceId");
 		//TODO 
 		//openSourceId =  "XX01";
-		
-		System.out.println("[openSourceId] " + openSourceId
-				 + "[pageNumber]" + pageNumber);
-		
+
 		ReplySearchVO replySearchVO = new ReplySearchVO();
 
 		replySearchVO.getPager().setPageNumber(pageNumber);
