@@ -142,7 +142,7 @@ $().ready(function () {
 			</div>
 			
 			<div id="middle-content">
-				<jsp:include page="${includeUrl}" flush="false"></jsp:include>
+				<jsp:include page="${includeUrl}"></jsp:include>
 			</div>	
 			
 		</div>
@@ -157,10 +157,10 @@ $().ready(function () {
 				
 			</div>
 			
-			<div id="reply">
+		<%-- 	<div id="reply">
 				<span>댓글</span>
 				<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
-			</div>
+			</div> --%>
 		</div>
 		<div id="footer">
 			 <span>Copyright </span>

@@ -42,6 +42,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String opensourceId = request.getParameter("opensourceId");
+		System.out.println("[opensourceId]" + opensourceId);
 
 		if (opensourceService.getOneOpensource(opensourceId) == null) {
 			if (opensourceService.addOneOpensource(opensourceId)) {
@@ -103,7 +104,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("md5hash", md5hash);
 		request.setAttribute("opensourceId", id);
 		request.setAttribute("fileName", fileName);
-
+/*System.out.println("[md5hash]" + md5hash);*/
 		/*
 		 * �뙆�씪 �듃由� �뙆�떛
 		 */
@@ -205,12 +206,21 @@ public class ViewProjectDetailServlet extends HttpServlet {
 
 		request.setAttribute("code", code);
 
+<<<<<<< HEAD
 
 		request.setAttribute("OpensourceUrl", "/WEB-INF/view/opensource/detail.jsp");
 		request.setAttribute("ReplyUrl", "/WEB-INF/view/reply/list.jsp");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
+=======
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
+		request.setAttribute("includeUrlReply", "/reply/list?opensourceId=" + opensourceId);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/detail.jsp");
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
+>>>>>>> ehm
 		dispatcher.forward(request, response);
+
 	}
 
 	private void endConnection(BufferedReader rd, HttpURLConnection conn) throws IOException {
@@ -236,4 +246,3 @@ public class ViewProjectDetailServlet extends HttpServlet {
 	}
 
 }
-

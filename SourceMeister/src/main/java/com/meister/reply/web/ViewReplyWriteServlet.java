@@ -36,13 +36,14 @@ public class ViewReplyWriteServlet extends HttpServlet {
 		String comment = request.getParameter("comment");
 		String parentReplyId = request.getParameter("parentReplyId");
 		
-		comment = comment.replaceAll("\n", "<br/>");
-		comment = comment.replaceAll("\r", "");
-        
 		System.out.println("[openSourceId]" + openSourceId + 
 							"[comment]" + comment  +
 							"[parentReplyId]" + parentReplyId);
 
+		comment = comment.replaceAll("\n", "<br/>");
+		comment = comment.replaceAll("\r", "");
+        
+		
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO)session.getAttribute("_USER_");
 		//TODO
@@ -56,11 +57,29 @@ public class ViewReplyWriteServlet extends HttpServlet {
 		replyVO.setParentReplyId(parentReplyId);
 		replyVO.setUserId(writer);
 		
+<<<<<<< HEAD
 		if (replyService.insertReply(replyVO) ) {
+=======
+		
+		if( replyService.insertReply(replyVO) ) {
+>>>>>>> ehm
 			PrintWriter out = response.getWriter();
 			out.write("OK");
 			out.flush();
 			out.close();
+<<<<<<< HEAD
+=======
+		}else {
+			PrintWriter out = response.getWriter();
+			out.write("FAIL");
+			out.flush();
+			out.close();
+		}
+		
+		/*if ( replyService.insertReply(replyVO) ) {
+			response.sendRedirect("/SourceMeister/opensource/detail");
+			
+>>>>>>> ehm
 		}
 		else {
 			PrintWriter out = response.getWriter();
@@ -68,7 +87,7 @@ public class ViewReplyWriteServlet extends HttpServlet {
 			out.flush();
 			out.close();
 		}
-		
+		*/
 	}
 
 }

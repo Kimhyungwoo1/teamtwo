@@ -36,14 +36,18 @@ public class ViewReplyListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String pageNumber = request.getParameter("pageNumber");
-		String openSourceId = request.getParameter("openSourceId");
+		String opensourceId = request.getParameter("opensourceId");
 		//TODO 
 		//openSourceId =  "XX01";
+<<<<<<< HEAD
 
+=======
+		System.out.println("[[openSourceId]]" + opensourceId);
+>>>>>>> ehm
 		ReplySearchVO replySearchVO = new ReplySearchVO();
 
 		replySearchVO.getPager().setPageNumber(pageNumber);
-		replySearchVO.setOpenSourceId(openSourceId);
+		replySearchVO.setOpenSourceId(opensourceId);
 		
 		List<ReplyVO> replyList = replyService.selectAllReplies(replySearchVO);
 		int totalcnt = replyService.selectAllRepliesCount(replySearchVO);
@@ -54,6 +58,7 @@ public class ViewReplyListServlet extends HttpServlet {
 	
 		request.setAttribute("pager", pages);
 		request.setAttribute("replyList", replyList);
+<<<<<<< HEAD
 
 		if (totalcnt > 0) {
 			PrintWriter out = response.getWriter();
@@ -68,6 +73,8 @@ public class ViewReplyListServlet extends HttpServlet {
 			out.close();
 		}
 		
+=======
+>>>>>>> ehm
 		
 	/*	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/reply/list.jsp");
 		dispatcher.forward(request, response);*/

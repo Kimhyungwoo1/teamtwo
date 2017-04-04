@@ -8,6 +8,7 @@
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 
 	$().ready(
 			function() {
@@ -23,17 +24,31 @@
 						});
 			});
 
+=======
+	$().ready(function() {
+		$("tr").click(function(){
+			var opensourceId = $(this).data("opensourceid");
+			console.log(opensourceId);
+			$("#list").hide();
+		    $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId); 
+		    $("#reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+		});
+		
+	});
+
+>>>>>>> ehm
 </script>
 <title>Insert title here</title>
 
 </head>
 <body>
 
+<div id="list">
 	<p>총 ${count}개가 나왔습니다.</p>
 
 	<div id=table-content>
 
-		<table>
+		<table border="1">
 
 			<colgroup>
 				<col span="1" style="width: 15%;">
@@ -42,15 +57,12 @@
 
 			<c:forEach items="${results}" var="result">
 
-				<tr>
+				<tr style="cursor: pointer;"  data-opensourceid="${result.id}">
 					<td>${result.language}</td>
 
 					<td>
 						<div id="detailLink">
-							<a
-								href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br />
-							<br />
-
+							<span >${result.name}---${result.repo }</span><br />
 							<c:forEach items="${result.lines }" var="line">
 								
 								<c:out value="${line.value}" escapeXml="true" />
@@ -106,10 +118,9 @@
 >>>>>>> 27fefc580217010cea4e64a2492d9c5d6a3319fd
 
 	</div>
+</div>
+<div id="detail"></div>
+<div id="reply"></div>
 
-	<div class="reply">
-		<span>댓글</span>
-		<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
-	</div>
 </body>
 </html>

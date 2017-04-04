@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +13,14 @@
 		$("#likeBtn").click(function() {
 
 			$.post("/SourceMeister/opensource/detail/likeCount", {
-				"opensourceId" : $("#likeBtn").data("opensourceid"),
+				"opensourceId" : $("#likeBtn").data("opensourceida"),
 				"likeCount" : $("#likeCount").text()
 			}, function(response) {
 				var jsonObj = JSON.parse(response);
 				console.log(jsonObj);
 				if (loginCheck) {
 					$.post("/SourceMeister/opensource/detail/likeCount", {
-						"opensourceId" : $("#likeBtn").data("opensourceid"),
+						"opensourceId" : $("#likeBtn").data("opensourceida"),
 						"likeCount" : $("#likeCount").text()
 					}, function(response) {
 						var jsonObj = JSON.parse(response);
@@ -143,7 +144,7 @@
 <body>
 
 	<div class="container">
-		
+	
 		<div class="row">
 			<div class="title">
 				<h4 class="codepath">
@@ -169,7 +170,7 @@
 						</tbody>
 					</table>
 				</div><!-- 
-			 --><div id="likeBtn" style="display:inline-block;" data-opensourceid="${opensourceId}">
+			 --><div id="likeBtn" style="display:inline-block;" data-opensourceida="${opensourceId}">
 			 		<img style="vertical-align:middle; width:50px; height:50px;" src="http://branding.daegu.com/images/icon--thumb.png"/>
 			 		<p id="likeCount">${likeCount}</p>
 			 	</div>
@@ -187,6 +188,7 @@
 		</div>
 
 	</div>
+<<<<<<< HEAD
 	<div id="replyDiv" style="width:220px;"  ><!-- align="center" -->
        
 	<%-- 총 ${totalcnt}건 --%>
@@ -235,6 +237,13 @@
         </div>
          
     </div>
+=======
+	
+<%-- <div id="reply" style="background: teal;" >
+ <span>댓글</span>
+ <c:import url="${includeUrlReply}"></c:import>
+</div> --%>
+>>>>>>> ehm
 	
 	
 </body>

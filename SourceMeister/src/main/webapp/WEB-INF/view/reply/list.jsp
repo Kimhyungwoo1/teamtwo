@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>댓글</title>
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" >
 
 	$().ready(function(){
+<<<<<<< HEAD
 	
+=======
+		
+>>>>>>> ehm
 		//삭제
 		$(".delete").click(function(){
 			/*  alert("삭제" + $(this).data("replyid")); */
@@ -21,12 +20,48 @@
 					//화면 새로고침
 					location.reload();
 				} else {
-					alert("아티스트 등록을 실패 했습니다.\n관리자에게 문의하세요");
+					alert("댓글 삭제를 실패 했습니다.\n관리자에게 문의하세요");
 				}
 			});
 		});	
+<<<<<<< HEAD
 
 		//댓글
+=======
+			
+		
+		/* $(".controls").find(".deleteLink").click(function(){
+			if (confirm(" 댓글을 삭제하시겠습니까?") == true){   
+			    document.form.submit();
+			}else{   //취소
+			    return;
+			}
+		});
+		 */
+		 
+		//등록
+			$("#writeReplyBtn").click(function(){
+				//validation check
+				if ( $("#comment").val() == ""){
+					alert("댓글 내용을 입력하지 않았습니다.");
+					$("#comment").focus();
+					return;
+				}
+				$.post("/SourceMeister/reply/write",{
+					'openSourceId' : $("#openSourceId").val(),
+					'parentReplyId' : $("#parentReplyId").val(),
+					'comment' : $("#comment").val()
+				}, function(response){
+					if (response == 'OK') {
+						location.reload();
+					} else {
+						alert("댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
+					}
+				});
+			});	 
+		 
+		/* //댓글
+>>>>>>> ehm
 		$("#writeReplyBtn").click(function(){
 			//validation check
 			if ( $("#comment").val() == ""){
@@ -51,8 +86,13 @@
 				"method" : "post",
 				"action" : "/SourceMeister/reply/write"
 			});
+<<<<<<< HEAD
 			$(".writeReplyForm").submit(); */
 		});	
+=======
+			$(".writeReplyForm").submit();
+		});	 */
+>>>>>>> ehm
 		//대댓글
 		$(".formAppender").on("click","#writeReplyBtn",function(){
 			//validation check
@@ -65,27 +105,47 @@
 			} 
 			
 			
+<<<<<<< HEAD
 			$.post("/SourceMeister/reply/write",{
 				"opensourceId" : $("#writeReplyBtn").val(),
 				"comment" : $("#writeReplyBtn").data(),
 				"parentReplyId" : $("#writeReplyBtn").val()
 			},function(response){
+=======
+			
+			$.post("/SourceMeister/reply/write",{
+				'openSourceId' : $("#openSourceId").val(),
+				'parentReplyId' : $("#parentReplyId").val(),
+				'comment' : $("#comment").val()
+			}, function(response){
+>>>>>>> ehm
 				if (response == 'OK') {
 					//화면 새로고침
 					location.reload();
 				} else {
+<<<<<<< HEAD
 					alert("대댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
 				}
 			});
 			
 			/* 
+=======
+					alert("댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
+				}
+			});
+
+		/* 	
+>>>>>>> ehm
 			thisForm.find("form").attr({
 				"method" : "post",
 				"action" : "/SourceMeister/reply/write"
 			});
 			thisForm.find("form").submit(); */
+<<<<<<< HEAD
 			
 			
+=======
+>>>>>>> ehm
 		});
 		
 		$(".ReReply").click(function(){
@@ -111,38 +171,32 @@
 		});
     });
 </script>
-</head>
-<body>
-
 <!-- align="center" -->
- <div id="replyDiv" style="width:220px;"  >
+ <div id="replyDiv" style="font-size: 12px;">
        
 <%-- 총 ${totalcnt}건 --%>
        	<c:forEach items="${replyList}" var="reply" varStatus="index">
-      
+           
             <div class="reply"  data-parent="${reply.parentReplyId }" data-click="0" 
                <c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 10 }px; display:none;" </c:if> 
 			>
-			    <table id="replyTable" border="1"><!--  border="1" -->
-                	<tr style="color: fuchsia;">
-                		<td style="width:170px;">${reply.user.nickName}</td>
+			    <table id="replyTable" style="height: 20px;"><!--  border="1" -->
+			    	<tr >
+                		<td style="width: 20px; text-align: left;">${reply.user.nickName}</td>
+                		<td style="width: 30px; text-align: left;">${reply.writeDate}</td>
                 	</tr>
                     <tr>
-                        <td>
-                            ${reply.comment}
-                        </td>
-                        <!-- TODO -->
-						<c:if test="${reply.user.userId eq 'TEST'}">
-						<td class="delete" style="cursor: pointer; background:lime;" data-replyid="${reply.replyId }">삭제</td>
+                        <td style="width: 400px; text-align: left;">${reply.comment} </td>
+						<c:if test="${reply.user.userId eq sessionScope._USER_.userId}">
+						
+						<td class="delete" style="cursor: pointer; background:lime; width: 10px;" data-replyid="${reply.replyId }">삭제</td>
 						</c:if>
-                   
                     </tr>
                     <tr>
-                	 	<td style="width:30px;">${reply.writeDate}</td>
-                	 	<td class="ReReply" style="cursor: pointer; background:lime; " data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
+                	 	<td class="ReReply" style="width: 20px; cursor: pointer; background:lime; " data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
                 	</tr>
                   </table>
-				  <div class="formAppender" style="margin-left: ${reply.level * 2 * 10 }px; display:none;" ></div> 
+				  <div class="formAppender" style="margin-left: ${reply.level * 10 }px; display:none;" ></div> 
             </div>
         </c:forEach>
         
@@ -151,18 +205,15 @@
 				${pager}
 			</form>
 		</div>  --%>
-      
-        <div id="formWrapper" style="width:220px; position : relative; bottom :-20px; left:5px;" >            
+      <!-- bottom :-20px;  -->
+        <div id="formWrapper" style="position : relative; left:5px;" >            
             <form class="writeReplyForm">
             <!-- XX01 수정할것 -->
                 <input type="hidden" id="openSourceId" name="openSourceId" value="${opensourceId}"/>
                 <input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
-                <textarea id="comment" name="comment" style="width:150px;"></textarea>
+                <textarea id="comment" name="comment"  style="width: 500px;"></textarea>
                 <input type="button" id="writeReplyBtn" value="등록" />    
             </form>
         </div>
          
     </div>
-
-</body>
-</html>
