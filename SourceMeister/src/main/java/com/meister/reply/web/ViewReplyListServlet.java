@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,23 +56,11 @@ public class ViewReplyListServlet extends HttpServlet {
 		request.setAttribute("pager", pages);
 		request.setAttribute("replyList", replyList);
 
+		request.setAttribute("replyList", replyList);
 
-		if (totalcnt > 0) {
-			PrintWriter out = response.getWriter();
-			out.write("OK");
-			out.flush();
-			out.close();
-		}
-		else {
-			PrintWriter out = response.getWriter();
-			out.write("FAIL");
-			out.flush();
-			out.close();
-		}
 		
-
-	/*	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/reply/list.jsp");
-		dispatcher.forward(request, response);*/
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/reply/list.jsp");
+		dispatcher.forward(request, response);
 
 	}
 

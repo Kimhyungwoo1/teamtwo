@@ -34,35 +34,10 @@ $().ready(function () {
 		}).submit();
 	}
 	
-<<<<<<< HEAD
-	//댓글
-	//$("#middle-content > .detailLink > a").click(function(){
-	$("#middle-content > .detailLink").click(function(){
-		$("#reply").load("/SourceMeister/reply/list");
-		
-		var opensourceId =  $(this).data("opensourceid")
-		
-		alert("opensourceId ?? " + opensourceId);
-		/* 
-		$.post("/SourceMeister/reply/list",{
-			"openSourceId" : $(this).data("opensourceid")
-		},function(response){
-			if (response == 'OK') {
-				 writeDiv.load("/SourceMeister/reply/list");
-				//화면 새로고침
-				// location.reload(); 
-			} else {
-				alert("댓글 목록 load 실패 했습니다.\n관리자에게 문의하세요");
-			}
-		});   */
-	});	
-=======
 	 var myHilitor = new Hilitor("#table-content");
 	  myHilitor.apply($("#keyword").val());
 	  
 
-	
->>>>>>> 27fefc580217010cea4e64a2492d9c5d6a3319fd
 	
 	
 });
