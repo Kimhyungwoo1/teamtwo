@@ -63,7 +63,9 @@ $().ready(function () {
 			<div class="rank-repo" style="overflow-y: auto">
 				<span>저장소별 소스 수</span><br/>
 				<c:forEach items="${sources}" var="sources">
-						<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
+
+				<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
+
 				</c:forEach><br />
 			</div>
 			
@@ -133,6 +135,7 @@ $().ready(function () {
 			
 			<div id="reply">
 				<span>댓글</span>
+				<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
 			</div>
 		</div>
 		<div id="footer">
