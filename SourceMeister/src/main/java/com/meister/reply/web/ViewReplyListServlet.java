@@ -36,14 +36,14 @@ public class ViewReplyListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String pageNumber = request.getParameter("pageNumber");
-		String openSourceId = request.getParameter("openSourceId");
+		String opensourceId = request.getParameter("opensourceId");
 		//TODO 
 		//openSourceId =  "XX01";
-		System.out.println("[[openSourceId]]" + openSourceId);
+		System.out.println("[[openSourceId]]" + opensourceId);
 		ReplySearchVO replySearchVO = new ReplySearchVO();
 
 		replySearchVO.getPager().setPageNumber(pageNumber);
-		replySearchVO.setOpenSourceId(openSourceId);
+		replySearchVO.setOpenSourceId(opensourceId);
 		
 		List<ReplyVO> replyList = replyService.selectAllReplies(replySearchVO);
 		int totalcnt = replyService.selectAllRepliesCount(replySearchVO);
