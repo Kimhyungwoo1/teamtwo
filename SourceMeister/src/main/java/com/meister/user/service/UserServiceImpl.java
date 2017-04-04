@@ -50,14 +50,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateUser(UserVO user) {
 
-		UserVO tempUserVo = getOneUser(user.getUserId());
-		if (user.getAuthorizationId() != null && user.getAuthorizationId().length() > 0) {
-			tempUserVo.setAuthorizationId(user.getAuthorizationId());
-		}
-		if (user.getPassword() != null && user.getPassword().length() > 0) {
-			tempUserVo.setPassword(user.getPassword());
-		}
-		return userBiz.updateUser(tempUserVo);
+	  return userBiz.updateUser(user);
 	}
 
 	@Override
@@ -86,12 +79,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean isDuplicatedUserId(String userId) {
-		return userBiz.isDuplicatedUserId(userId);
+	public boolean isDuplicatedUserId(String userId ) {
+		return userBiz.isDuplicatedUserId(userId );
 	}
 
 	public UserVO loginUser(UserVO user) {
 		return userBiz.loginUser(user);
 	}
+
+
+
 
 }

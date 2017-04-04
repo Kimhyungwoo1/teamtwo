@@ -10,7 +10,6 @@ public interface UserService {
 	// public List<UserVO> getAllUsers(UserSearchVO userSearchVO);
 
 	public UserVO loginUser(UserVO user);
-	
 
 	public UserVO getOneUser(String userId);
 
@@ -25,5 +24,6 @@ public interface UserService {
 	public Map<String, Object> getOneUserWithAuthorizations(String userId);
 
 	public boolean isDuplicatedUserId(String userId);
+
 
 }
