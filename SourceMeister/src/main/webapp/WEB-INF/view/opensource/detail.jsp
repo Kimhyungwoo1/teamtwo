@@ -13,14 +13,14 @@
 		$("#likeBtn").click(function() {
 
 			$.post("/SourceMeister/opensource/detail/likeCount", {
-				"opensourceId" : $("#likeBtn").data("opensourceid"),
+				"opensourceId" : $("#likeBtn").data("opensourceida"),
 				"likeCount" : $("#likeCount").text()
 			}, function(response) {
 				var jsonObj = JSON.parse(response);
 				console.log(jsonObj);
 				if (loginCheck) {
 					$.post("/SourceMeister/opensource/detail/likeCount", {
-						"opensourceId" : $("#likeBtn").data("opensourceid"),
+						"opensourceId" : $("#likeBtn").data("opensourceida"),
 						"likeCount" : $("#likeCount").text()
 					}, function(response) {
 						var jsonObj = JSON.parse(response);
@@ -78,7 +78,7 @@
 						</tbody>
 					</table>
 				</div><!-- 
-			 --><div id="likeBtn" style="display:inline-block;" data-opensourceid="${opensourceId}">
+			 --><div id="likeBtn" style="display:inline-block;" data-opensourceida="${opensourceId}">
 			 		<img style="vertical-align:middle; width:50px; height:50px;" src="http://branding.daegu.com/images/icon--thumb.png"/>
 			 		<p id="likeCount">${likeCount}</p>
 			 	</div>
@@ -97,11 +97,11 @@
 
 	</div>
 	
-<%-- <div class="reply" style="background: teal;" >
+<div id="reply" style="background: teal;" >
  <span>댓글</span>
  <c:import url="${includeUrlReply}"></c:import>
 </div>
-	 --%>
+	
 	
 </body>
 </html>

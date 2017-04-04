@@ -42,6 +42,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String opensourceId = request.getParameter("opensourceId");
+		System.out.println("[opensourceId]" + opensourceId);
 
 		if (opensourceService.getOneOpensource(opensourceId) == null) {
 			if (opensourceService.addOneOpensource(opensourceId)) {
