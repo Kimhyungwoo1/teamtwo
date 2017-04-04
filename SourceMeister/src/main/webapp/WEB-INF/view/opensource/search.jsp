@@ -43,15 +43,20 @@ $().ready(function () {
 	<div id="container">
 		
 		<div id="left">
-			<div class="login">
-				<c:import url="/user/signIn" />
+			
+			<div id="searchRank">
+				<span>검색어 순위</span> <br/>
+			
+				
 			</div>
+		
+	
 			
 			<div class="rank-repo" style="overflow-y: auto">
 				<span>저장소별 소스 수</span><br/>
 				<c:forEach items="${sources}" var="sources">
 
-				<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
+					<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
 
 				</c:forEach><br />
 			</div>
@@ -111,13 +116,9 @@ $().ready(function () {
 		</div>
 		
 		<div id="right">
-			<div id="searchRank">
-				<span>검색어 순위</span> <br/>
-				
-				<c:forEach items="${result.langArr}" var="lang">
-						${lang.language}: ${lang.count }<br/>
-				</c:forEach><br />
-				
+		
+			<div class="login">
+				<!--<c:import url="/user/signIn" />-->
 			</div>
 			
 			<div id="reply">

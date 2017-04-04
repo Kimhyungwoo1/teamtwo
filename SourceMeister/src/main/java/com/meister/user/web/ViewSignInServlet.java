@@ -36,6 +36,7 @@ public class ViewSignInServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
 			dispatcher.forward(request, response);
 		} 
+		
 		else{
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
 			dispatcher.forward(request, response);
