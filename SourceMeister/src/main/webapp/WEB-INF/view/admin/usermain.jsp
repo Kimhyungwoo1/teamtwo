@@ -14,12 +14,12 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function () {
-		$("#allAuth").find("input[type=button]").click(function() {
-			$("#allAuth").attr({
-				"method":"post",
-				"action":"/SourceMeister/auth/change"
+		$("#delete").click(function() {
+			$.post("/SourceMeister/user/delete", {
+				"userId":$("#userId").val()
+			}, function(){
 			});
-			$("#allAuth").submit();
+			location.reload();
 		});
 		
 	});
@@ -51,7 +51,7 @@
 					</tr>
 					<c:forEach items="${userList}" var="user">
 					<tr>
-						<td><input type="checkbox" name="authCheck" value="${user.userId}" form="allAuth"/></td>
+						<td><input type="checkbox" name="authCheck" value="${user.userId}" form="removeUser"/></td>
 						<td>${user.userId}</td>
 						<td>${user.userName}</td>
 						<td>${user.nickName}</td>
@@ -62,8 +62,23 @@
 					</c:forEach>
 			</table>
 		</div>
+		<!-- <select id="deleteUser" name="authBefore">
+						 <option value="">선택하세요</option>
+						<c:forEach items="${userList}" var="userList">
+							<option id="userId" value="${userList.userId}">${userList.userName}</option>
+						</c:forEach> 
+				</select> -->
 		<div id=add>
-			 <jsp:include page="/WEB-INF/view/admin/userRemove.jsp"/>
+			<form id="removeUser">
+				<a>유저 삭제</a>
+				<!--<select id="deleteUser" name="authBefore">
+							 <option value="">선택하세요</option>
+							<c:forEach items="${userList}" var="userList">
+								<option id="userId" value="${userList.userId}">${userList.userName}</option>
+							</c:forEach> 
+					</select>-->
+						<input type="button" id="delete" value="확인"/>
+				</form>
 		</div>
 		<form id="allAuth">
 			<!-- <a>권한 변경</a>

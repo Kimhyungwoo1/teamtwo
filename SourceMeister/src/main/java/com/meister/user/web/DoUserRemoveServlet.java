@@ -29,8 +29,13 @@ public class DoUserRemoveServlet extends HttpServlet {
 		
 		String userId = request.getParameter("userId");
 		
-		userService.deleteOneUser(userId);
+		System.out.println(userId);
 		
+		boolean userRemove = userService.deleteOneUser(userId);
+		
+		if (userRemove) {
+			response.sendRedirect("/SourceMeister/useradmin");
+		}
 	}
 
 }
