@@ -52,15 +52,6 @@
 		<servlet-name>DoAddAuthorizationServlet</servlet-name>
 		<url-pattern>/auth/add</url-pattern>
 	</servlet-mapping>
-	<filter>
-		<display-name>CharectorEncodingFillter</display-name>
-		<filter-name>CharectorEncodingFillter</filter-name>
-		<filter-class>com.meister.commom.CharectorEncodingFillter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>CharectorEncodingFillter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 	<servlet>
 		<description></description>
 		<display-name>ViewSignInServlet</display-name>
@@ -144,4 +135,43 @@
 		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
 		<url-pattern>/auth/change</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ViewReplyWriteServlet</display-name>
+		<servlet-name>ViewReplyWriteServlet</servlet-name>
+		<servlet-class>com.meister.reply.web.ViewReplyWriteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewReplyWriteServlet</servlet-name>
+		<url-pattern>/reply/write</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ViewReplyListServlet</display-name>
+		<servlet-name>ViewReplyListServlet</servlet-name>
+		<servlet-class>com.meister.reply.web.ViewReplyListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewReplyListServlet</servlet-name>
+		<url-pattern>/reply/list</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DoDeleteActionServlet</display-name>
+		<servlet-name>DoDeleteActionServlet</servlet-name>
+		<servlet-class>com.meister.reply.web.DoDeleteActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoDeleteActionServlet</servlet-name>
+		<url-pattern>/reply/delete</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<display-name>CharacterEncodingFilter</display-name>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.meister.common.web.CharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
