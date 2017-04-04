@@ -12,10 +12,10 @@ import com.meister.authorization.vo.AuthorizationVO;
 
 public class AuthorizationDaoImpl implements AuthorizationDao {
 
-	private String oracleUrl = "jdbc:oracle:thin:@172.30.1.4:1521:XE";
+	private String oracleUrl = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
 	//private String oracleUrl = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String ID = "TEST";
-	private String PWD = "test";
+	private String ID = "TEAMTWO";
+	private String PWD = "teamtwo";
 	
 	@Override
 	public int insertAuthorization(AuthorizationVO authorizationVO) {
