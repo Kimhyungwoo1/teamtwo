@@ -57,18 +57,13 @@ public class ViewReplyWriteServlet extends HttpServlet {
 		replyVO.setParentReplyId(parentReplyId);
 		replyVO.setUserId(writer);
 		
-<<<<<<< HEAD
-		if (replyService.insertReply(replyVO) ) {
-=======
+
 		
 		if( replyService.insertReply(replyVO) ) {
->>>>>>> ehm
 			PrintWriter out = response.getWriter();
 			out.write("OK");
 			out.flush();
 			out.close();
-<<<<<<< HEAD
-=======
 		}else {
 			PrintWriter out = response.getWriter();
 			out.write("FAIL");

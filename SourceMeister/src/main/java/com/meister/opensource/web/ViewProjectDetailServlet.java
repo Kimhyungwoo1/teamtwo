@@ -206,19 +206,13 @@ public class ViewProjectDetailServlet extends HttpServlet {
 
 		request.setAttribute("code", code);
 
-<<<<<<< HEAD
 
-		request.setAttribute("OpensourceUrl", "/WEB-INF/view/opensource/detail.jsp");
-		request.setAttribute("ReplyUrl", "/WEB-INF/view/reply/list.jsp");
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
-=======
 		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
 		request.setAttribute("includeUrlReply", "/reply/list?opensourceId=" + opensourceId);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/detail.jsp");
 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
->>>>>>> ehm
+
 		dispatcher.forward(request, response);
 
 	}
