@@ -54,7 +54,6 @@ public class ViewReplyListServlet extends HttpServlet {
 	
 		request.setAttribute("pager", pages);
 		request.setAttribute("replyList", replyList);
-
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/reply/list.jsp");
 		dispatcher.forward(request, response);

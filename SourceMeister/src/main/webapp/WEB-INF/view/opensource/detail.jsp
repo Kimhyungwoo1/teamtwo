@@ -52,7 +52,7 @@
 <body>
 
 	<div class="container">
-		
+	
 		<div class="row">
 			<div class="title">
 				<h4 class="codepath">
@@ -97,10 +97,10 @@
 
 	</div>
 	
-<div id="reply" style="background: teal;" >
+<%-- <div id="reply" style="background: teal;" >
  <span>댓글</span>
  <c:import url="${includeUrlReply}"></c:import>
-</div>
+</div> --%>
 	
 	
 </body>

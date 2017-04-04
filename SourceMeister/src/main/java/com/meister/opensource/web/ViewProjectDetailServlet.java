@@ -104,7 +104,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("md5hash", md5hash);
 		request.setAttribute("opensourceId", id);
 		request.setAttribute("fileName", fileName);
-
+/*System.out.println("[md5hash]" + md5hash);*/
 		/*
 		 * �뙆�씪 �듃由� �뙆�떛
 		 */

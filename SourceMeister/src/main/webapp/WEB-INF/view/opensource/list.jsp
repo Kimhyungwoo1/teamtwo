@@ -14,23 +14,11 @@
 			console.log(opensourceId);
 			$("#list").hide();
 		    $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId); 
-		    //$("#reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+		    $("#reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
 		});
 		
 	});
-	/* $().ready(
-			function() {
-				//댓글
-				$(".detailLink > a").click(
-						function() {
 
-							var opensourceId = $(this).data("opensourceid");
-							alert("[opensourceId]  " + opensourceId);
-							$(".reply").load(
-									"/SourceMeister/reply/list?opensourceId="
-											+ opensourceId);
-						});
-			}); */
 </script>
 <title>Insert title here</title>
 
@@ -56,9 +44,6 @@
 
 					<td>
 						<div id="detailLink">
-							<%-- <a
-								href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br />
-							<br /> --%>
 							<span >${result.name}---${result.repo }</span><br />
 							<c:forEach items="${result.lines }" var="line">
 								
@@ -76,10 +61,7 @@
 	</div>
 </div>
 <div id="detail"></div>
-<%-- <div class="reply">
-	<span>댓글</span>
-	<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
-</div> --%>
+<div id="reply"></div>
 
 </body>
 </html>
