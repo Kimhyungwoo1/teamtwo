@@ -59,9 +59,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			throws MalformedURLException, IOException, ProtocolException, UnsupportedEncodingException,
 			ServletException {
 		BufferedReader rd;
-		/*
-		 * 프로젝트 내용
-		 */
+	
 
 		StringBuilder urlBuilder = new StringBuilder(
 				"https://searchcode.com/api/related_results/" + opensourceId + "/");
@@ -107,7 +105,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("fileName", fileName);
 
 		/*
-		 * 파일 트리 파싱
+		 * �뙆�씪 �듃由� �뙆�떛
 		 */
 		String fileUrl = "https://searchcode.com/file/" + opensourceId + "/";
 
@@ -181,7 +179,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("likeCount", opensourceVO.getLikeCount());
 
 		/*
-		 * 결과(readme 내용)
+		 * 寃곌낵(readme �궡�슜)
 		 */
 
 		StringBuilder codeUrlBuilder = new StringBuilder("https://searchcode.com/api/result/" + opensourceId + "/");
@@ -207,11 +205,13 @@ public class ViewProjectDetailServlet extends HttpServlet {
 
 		request.setAttribute("code", code);
 
-		// request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
+		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/detail.jsp");
 		request.setAttribute("includeUrlReply", "/reply/list?opensourceId=" + opensourceId);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/detail.jsp");
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 	private void endConnection(BufferedReader rd, HttpURLConnection conn) throws IOException {
