@@ -60,7 +60,7 @@
 
 	</div>
 </div>
-<div id="detail"></div>
+<div id="detail"></div><div></div>
 <div id="reply"></div>
 
 </body>
