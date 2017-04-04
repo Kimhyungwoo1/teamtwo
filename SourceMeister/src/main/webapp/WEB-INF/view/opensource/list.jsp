@@ -19,41 +19,6 @@
 
 	<p>총 ${count}개가 나왔습니다.</p>
 
-<%-- <<<<<<< HEAD
-	<div id="table-content">
-		<table>
-			<colgroup>
-				<col span="1" style="width: 60px;">
-				<col span="1" style="width: 250px;">
-			</colgroup>
-			<c:forEach items="${results}" var="result">
-				<tr>
-
-					<td style=" text-align: center; "><c:forEach items="${result.langArr}" var="lang" begin="0"
-							end="2">
-							<div>${lang.language}:${lang.count }</div>
-						</c:forEach><br /></td>
-					<td style="padding:20px;"><a
-						href="/SourceMeister/opensource/detail?opensourceId=${result.id}"><div
-								id="detailLink">${result.name}---${result.repo }<br /><hr> <br />
-								<c:forEach items="${result.lines }" var="line">
-									
-										<xmp>${line.value }</xmp>
-									
-								</c:forEach>
-							</div><!-- </a> --><br /> <br /></td>
-
-
-
-
-				</tr>
-			</c:forEach>
-
-
-
-		</table>
-	</div>
-======= --%>
 	
 	<div id=table-content>
 	
