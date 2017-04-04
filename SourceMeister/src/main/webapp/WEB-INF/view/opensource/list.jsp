@@ -12,10 +12,10 @@
 	$().ready(function() {
 		$("tr").click(function(){
 			var opensourceId = $(this).data("opensourceid");
-			console.log(opensourceId);
+		/* 	console.log(opensourceId); */
 			$("#list").hide();
 		    $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId); 
-		    $("#reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+		    $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
 		});
 		
 	});
@@ -62,8 +62,8 @@
 	</div>
 
 </div>
-<div id="detail"></div>
-<div id="reply"></div>
+<div id="detail"></div><br/>
+<div id="replyMain"></div>
 
 </body>
 </html>

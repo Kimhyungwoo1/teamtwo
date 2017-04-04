@@ -5,33 +5,27 @@
 <script type="text/javascript" >
 
 	$().ready(function(){
-
+	
 		//삭제
 		$(".delete").click(function(){
-			/*  alert("삭제" + $(this).data("replyid")); */
+			//validation check
+			if($("#replyDiv").data("user") ==  ""){
+				alert("로그인 후 사용할수 있습니다.");
+				$("#comment").focus();
+				return;
+	    	} 
+			
 			$.post("/SourceMeister/reply/delete",{
 				"replyId" :$(this).data("replyid")
 			}, function(response){
 				if (response == 'OK') {
-					//화면 새로고침
-					location.reload();
+					$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
 				} else {
 					alert("댓글 삭제를 실패 했습니다.\n관리자에게 문의하세요");
 				}
 			});
 		});	
 
-			
-		
-		/* $(".controls").find(".deleteLink").click(function(){
-			if (confirm(" 댓글을 삭제하시겠습니까?") == true){   
-			    document.form.submit();
-			}else{   //취소
-			    return;
-			}
-		});
-		 */
-		 
 		//등록
 			$("#writeReplyBtn").click(function(){
 				//validation check
@@ -40,48 +34,24 @@
 					$("#comment").focus();
 					return;
 				}
+				 if($("#replyDiv").data("user") ==  ""){
+					alert("로그인 후 사용할수 있습니다.");
+					$("#comment").focus();
+					return;
+				} 
 				$.post("/SourceMeister/reply/write",{
 					'openSourceId' : $("#openSourceId").val(),
 					'parentReplyId' : $("#parentReplyId").val(),
 					'comment' : $("#comment").val()
 				}, function(response){
 					if (response == 'OK') {
-						location.reload();
+						$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
 					} else {
-						alert("댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
+						alert("댓글 삭제를 실패 했습니다.\n관리자에게 문의하세요");
 					}
 				});
 			});	 
 		 
-		/* //댓글
->>>>>>> ehm
-		$("#writeReplyBtn").click(function(){
-			//validation check
-			if ( $("#comment").val() == ""){
-				alert("댓글 내용을 입력하지 않았습니다.");
-				$("#comment").focus();
-				return;
-			}
-			
-			$.post("/SourceMeister/reply/write",{
-				"opensourceId" : $("#openSourceId").val(),
-				"comment" : $("#comment").text(),
-				"parentReplyId" : $("#parentReplyId").val()
-			},function(response){
-				if (response == 'OK') {
-					//화면 새로고침
-					location.reload();
-				} else {
-					alert("댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
-				}
-			});
-		/* 	$(".writeReplyForm").attr({
-				"method" : "post",
-				"action" : "/SourceMeister/reply/write"
-			});
-			$(".writeReplyForm").submit();
-		});	 */
-
 		//대댓글
 		$(".formAppender").on("click","#writeReplyBtn",function(){
 			//validation check
@@ -93,8 +63,12 @@
 					return;
 			} 
 			
-			
-	
+			if($("#replyDiv").data("user") ==  ""){
+					alert("로그인 후 사용할수 있습니다.");
+					$("#comment").focus();
+					return;
+		    } 
+
 			$.post("/SourceMeister/reply/write",{
 				'openSourceId' : $("#openSourceId").val(),
 				'parentReplyId' : $("#parentReplyId").val(),
@@ -102,8 +76,7 @@
 			}, function(response){
 
 				if (response == 'OK') {
-					//화면 새로고침
-					location.reload();
+					$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
 				} else {
 					alert("대댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
 				}
@@ -135,11 +108,12 @@
     });
 </script>
 <!-- align="center" -->
- <div id="replyDiv" style="font-size: 12px;">
-       
+ <div id="replyDiv" data-user="${sessionScope._USER_.userId}" style="font-size: 12px;">
 <%-- 총 ${totalcnt}건 --%>
-       	<c:forEach items="${replyList}" var="reply" varStatus="index">
-           
+	
+	<c:forEach items="${replyList}" var="reply" varStatus="index">
+
+		<%-- <c:forEach items="${replyList}" var="reply" varStatus="index"> --%>
             <div class="reply"  data-parent="${reply.parentReplyId }" data-click="0" 
                <c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 10 }px; display:none;" </c:if> 
 			>
@@ -162,7 +136,7 @@
 				  <div class="formAppender" style="margin-left: ${reply.level * 10 }px; display:none;" ></div> 
             </div>
         </c:forEach>
-        
+     
       <%--  <div>
 			<form id="searchForm">
 				${pager}
