@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +63,7 @@
 
 			<input type="hidden" id="sourceUrl" value="${sourceUrl}">
 			<input type="hidden" id="repoName" value="${repoName}">
+			<input type="hidden" id="title" value="${title}">
 			<div class="header">
 				<div style="display:inline-block;">
 					<table class="table">
@@ -95,5 +97,12 @@
 		</div>
 
 	</div>
+	
+<%-- <div class="reply" style="background: teal;" >
+ <span>댓글</span>
+ <c:import url="${includeUrlReply}"></c:import>
+</div>
+	 --%>
+	
 </body>
 </html>

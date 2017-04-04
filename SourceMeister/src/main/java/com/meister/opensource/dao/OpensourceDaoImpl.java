@@ -167,4 +167,68 @@ public class OpensourceDaoImpl implements OpensourceDao {
 		}
 	}
 
+	@Override
+	public OpensourceVO selectRankLikeCount() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		String url = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+
+		try {
+			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+
+			StringBuffer query = new StringBuffer();
+			query.append(" SELECT  OPNSRC_ID ");
+			query.append("         , LK_CNT ");
+			query.append(" FROM    OPNSRC ");
+			query.append(" WHERE   ROWNUM <= 10	");
+			query.append(" ORDER   BY	LK_CNT	DESC ");
+			
+
+			stmt = conn.prepareStatement(query.toString());
+
+
+			rs = stmt.executeQuery();
+
+			OpensourceVO opensourceVO = null;
+
+			if (rs.next()) {
+				opensourceVO = new OpensourceVO();
+				opensourceVO.setOpensourceId(rs.getString("OPNSRC_ID"));
+				opensourceVO.setLikeCount(rs.getInt("LK_CNT"));
+			}
+
+			return opensourceVO;
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e1) {
+			}
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+			}
+
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+			}
+		}
+	}
+
 }
