@@ -1,4 +1,4 @@
-package com.meister.commom.constants;
+package com.meister.common.constants;
 
 public interface AuthConst {
 

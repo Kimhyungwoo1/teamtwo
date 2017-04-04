@@ -60,9 +60,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 			throws MalformedURLException, IOException, ProtocolException, UnsupportedEncodingException,
 			ServletException {
 		BufferedReader rd;
-		/*
-		 * 프로젝트 내용
-		 */
+	
 
 		StringBuilder urlBuilder = new StringBuilder(
 				"https://searchcode.com/api/related_results/" + opensourceId + "/");
@@ -92,7 +90,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		String sourceUrl = getAttribute(request, jsonObject);
 
 		/*
-		 * 파일 트리 파싱
+		 * �뙆�씪 �듃由� �뙆�떛
 		 */
 		getFileTree(request, sourceUrl);
 
@@ -105,7 +103,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("likeCount", opensourceVO.getLikeCount());
 
 		/*
-		 * 결과(readme 내용)
+		 * 寃곌낵(readme �궡�슜)
 		 */
 
 		StringBuilder codeUrlBuilder = new StringBuilder("https://searchcode.com/api/result/" + opensourceId + "/");
@@ -196,3 +194,4 @@ public class ViewProjectDetailServlet extends HttpServlet {
 	}
 
 }
+
