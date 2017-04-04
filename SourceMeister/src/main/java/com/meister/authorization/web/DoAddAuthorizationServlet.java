@@ -37,7 +37,7 @@ public class DoAddAuthorizationServlet extends HttpServlet {
 		boolean insertAuth = authorizationService.addAuthrization(authVO);
 		
 		if ( insertAuth ) {
-			response.sendRedirect("/SourceMeister/authorizationadmin");
+			response.sendRedirect("/SourceMeister/admin");
 		}
 		
 	}

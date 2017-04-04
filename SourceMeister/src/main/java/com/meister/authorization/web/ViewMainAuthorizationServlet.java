@@ -46,12 +46,12 @@ public class ViewMainAuthorizationServlet extends HttpServlet {
 		request.setAttribute("userList", userList);
 		request.setAttribute("authList", authList);
 		
-		if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER)){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/authorizationmain.jsp");
+		//if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER)){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/main.jsp");
 			dispatcher.forward(request, response);
-		} else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
-			response.sendError(404);
-		}
+		//} else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
+		//	response.sendError(404);
+		//}
 		
 	}
 

@@ -31,9 +31,7 @@
 			SourceMeister 관리자님 환영합니다.
 		</div>
 		<div id=adminManu>
-			관리자 메뉴<br/>
-			<a href="/SourceMeister/authorizationadmin">1. 권한</a><br/>
-			<a href="/SourceMeister/useradmin">2. 유저</a>
+			관리자 메뉴
 		</div>
 	</div><!--
 	--><div id=botton>

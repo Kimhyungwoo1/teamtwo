@@ -1,0 +1,17 @@
+diff a/SourceMeister/src/main/webapp/WEB-INF/view/user/signUp.jsp b/SourceMeister/src/main/webapp/WEB-INF/view/user/signUp.jsp	(rejected hunks)
+@@ -31,15 +31,6 @@
+ 				$("#userName").focus();
+ 				return;
+ 			}
+-<<<<<<< HEAD
+-			if ($("#email").val() == "") {
+-				alert("이메일을 @와같이 입력해주세요");
+-				$("#email").focus();
+-				return;
+-			}
+-
+-			if ($("#userPassword").val().length < 7) { 
+-=======
+ 			/*  if ($("#email").val() == "") {
+ 				alert("이메일을 @와같이 입력해주세요");
+ 				$("#email").focus();

@@ -41,7 +41,7 @@ public class DoChangeAuthorizationServlet extends HttpServlet {
 		}
 
 		if( change || changeCheck ) {
-			response.sendRedirect("/SourceMeister/authorizationadmin");
+			response.sendRedirect("/SourceMeister/admin");
 		}
 	}
 
