@@ -97,11 +97,11 @@
 
 	</div>
 	
-<div class="reply" style="background: teal;" >
+<%-- <div class="reply" style="background: teal;" >
  <span>댓글</span>
  <c:import url="${includeUrlReply}"></c:import>
 </div>
-	
+	 --%>
 	
 </body>
 </html>

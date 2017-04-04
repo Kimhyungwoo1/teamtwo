@@ -17,7 +17,7 @@
 			console.log(opensourceId);
 			$("#list").hide();
 		    $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId); 
-		    $("#reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId);
+		 /*    $("#reply").load("/SourceMeister/reply/list?opensourceId="+opensourceId); */
 		});
 		
 	});
