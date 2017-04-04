@@ -25,16 +25,15 @@
 				"method":"post",
 				"action":"/SourceMeister/user/delete"
 			});
-			$("#removeUser").submit();
-		 -->
+			$("#removeUser").submit(); -->
 	<form id="removeUser">
 	<a>유저 삭제</a>
-	<!--<select id="deleteUser" name="authBefore">
-				 <option value="">선택하세요</option>
+	<select id="deleteUser" name="authBefore">
+				<option value="">선택하세요</option>
 				<c:forEach items="${userList}" var="userList">
 					<option id="userId" value="${userList.userId}">${userList.userName}</option>
-				</c:forEach> 
-		</select>-->
+				</c:forEach>
+		</select>
 			<input type="button" id="delete" value="확인"/>
 	</form>
 

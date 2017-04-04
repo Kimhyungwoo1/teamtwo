@@ -22,9 +22,10 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	
 	@Override
 	public boolean registNewUser(UserVO newUserVO) {
-
+		
 		return userBiz.registNewUser(newUserVO);
 	}
 

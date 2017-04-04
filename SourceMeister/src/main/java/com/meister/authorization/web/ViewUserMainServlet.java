@@ -10,22 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.meister.authorization.service.AuthorizationService;
-import com.meister.authorization.service.AuthorizationServiceImpl;
-import com.meister.authorization.vo.AuthorizationVO;
 import com.meister.commom.constants.AuthConst;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
 
-public class ViewMainAuthorizationServlet extends HttpServlet {
+public class ViewUserMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private AuthorizationService authorizationService;
+
 	private UserService userService;
 	
-	public ViewMainAuthorizationServlet() {
-		authorizationService = new AuthorizationServiceImpl();
+	public ViewUserMainServlet() {
 		userService = new UserServiceImpl();
 	}
 
@@ -40,16 +35,15 @@ public class ViewMainAuthorizationServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("_USER_");
 		
-		List<AuthorizationVO> authList = authorizationService.allAuthList();
 		List<UserVO> userList = userService.getAllUsers();
 		
 		request.setAttribute("userList", userList);
-		request.setAttribute("authList", authList);
 		
-		if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER)){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/authorizationmain.jsp");
+		if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER) ){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/usermain.jsp");
 			dispatcher.forward(request, response);
-		} else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
+		}
+		else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
 			response.sendError(404);
 		}
 		
