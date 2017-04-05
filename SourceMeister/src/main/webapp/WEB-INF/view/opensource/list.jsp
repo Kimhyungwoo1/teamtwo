@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript"
-	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/list_layout.css" />
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
+
 
 $().ready(function() {
 	$("tr").click(function(){
@@ -19,6 +21,7 @@ $().ready(function() {
 	});
 });
 
+
 </script>
 <title>Insert title here</title>
 
@@ -28,10 +31,9 @@ $().ready(function() {
 <div id="list">
 	<p>총 ${count}개가 나왔습니다.</p>
 
-
 	<div id=table-content>
 
-		<table border="1">
+		<table id="listTable" border = 1>
 
 			<colgroup>
 				<col span="1" style="width: 15%;">
@@ -62,7 +64,9 @@ $().ready(function() {
 	</div>
 
 </div>
+
 <div id="detail"></div><br/>
+
 <div id="replyMain"></div>
 
 </body>

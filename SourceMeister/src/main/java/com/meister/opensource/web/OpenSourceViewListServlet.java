@@ -23,7 +23,7 @@ import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
 import com.meister.opensource.vo.SourceVO;
 
-public class OpenSourceViewListServlet extends HttpServlet {
+public class OpenSourceViewListServlet<T> extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public OpenSourceViewListServlet() {
@@ -37,19 +37,11 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		String langId = request.getParameter("langId");
 		String srcId = request.getParameter("srcId");
 
-		if (pageNum != null) {
+		if (pageNum != null || langId != null || srcId != null) {
 			
 			doPost(request, response);
 
-		} else if (langId != null) {
-
-			doPost(request, response);
-
-		} else if (srcId != null) {
-
-			doPost(request, response);
-
-		} else {
+		}  else {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 			dispatcher.forward(request, response);
@@ -109,18 +101,18 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray resultarr = object.getJSONArray("results"); // 諛곗뿴?⑥쐞濡?異붿텧?섍퀬
-																// ?띠쓣??
+		JSONArray resultarr = object.getJSONArray("results"); 
+																
 		JSONArray langArr = object.getJSONArray("language_filters");
 		JSONArray sourceArr = object.getJSONArray("source_filters");
 
 		// System.out.println("sourceArr = " + sourceArr.toString());
 
-		String total = object.get("total").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
-		String page = object.get("page").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
+		String total = object.get("total").toString(); 
+		String page = object.get("page").toString(); 
 
 		Gson gson = new Gson();
-
+		
 		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {};
 		List<SearchResultVO> resultList = gson.fromJson(resultarr.toString(), token.getType());
 
@@ -143,5 +135,13 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
+	
+	/*
+	public void tokenList(JSONArray resultArr, T t) {
+		Gson gson = new Gson();
+		TypeToken<List<?>> token = new TypeToken<List<?>>() {};
+		List<?> result = gson.fromJson(resultArr.toString(), token.getType());
+	}
+	*/
 
 }

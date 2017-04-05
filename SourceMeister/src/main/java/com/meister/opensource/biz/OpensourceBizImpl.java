@@ -27,4 +27,9 @@ public class OpensourceBizImpl implements OpensourceBiz {
 		return opensourceDao.updateOneOpensource(opensourceId) > 0;
 	}
 
+	@Override
+	public OpensourceVO selectRankLikeCount() {
+		return opensourceDao.selectRankLikeCount();
+	}
+
 }

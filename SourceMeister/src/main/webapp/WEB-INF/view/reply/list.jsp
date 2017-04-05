@@ -125,7 +125,9 @@
 		<div class="reply" data-parent="${reply.parentReplyId }" data-click="0" align="left" 
 			<c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 4 * 10 }px; display:none;" </c:if>
 		>
+
 			<table id="replyTable" > 
+
 				<tr >
 					<td class="nickName"><p style="font-weight: bold;">${reply.user.nickName}</p></td>
 				</tr>
