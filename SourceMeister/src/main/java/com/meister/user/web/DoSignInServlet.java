@@ -54,7 +54,7 @@ public class DoSignInServlet extends HttpServlet {
 			StringBuffer script = new StringBuffer();
 			
 			script.append(" <script type='text/javascript'>    ");
-			script.append(" alert('�븘�씠�뵒 諛� 鍮꾨쾲�씠 �삱諛붾Ⅴ寃� �엯�젰�릺吏� �븡�븯嫄곕굹  �뾾�뒗�젙蹂� �엯�땲�떎!');   ");
+			script.append(" alert('비밀번호가 맞지 않습니다.');   ");
 			script.append(" location='/SourceMeister/opensource';   ");
 			script.append(" </script>    ");
 			

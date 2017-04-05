@@ -19,6 +19,7 @@
 				"method":"post",
 				"action":"/SourceMeister/auth/change"
 			});
+			alert("권한 변경 완료")
 			$("#allAuth").submit();
 		});
 		
