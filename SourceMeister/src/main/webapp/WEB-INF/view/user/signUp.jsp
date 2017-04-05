@@ -31,6 +31,7 @@
 				$("#userName").focus();
 				return;
 			}
+
 		
 
 			if ($("#userPassword").val().length < 7) {
@@ -38,8 +39,6 @@
 				$("#userPassword").focus();
 				return;
 			}
-		
-			
 
 			var email = $('#email');
 			var CheckEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
@@ -69,6 +68,7 @@
 
 				if (jsonObj.duplicated) {
 					alert("입력한 ID는 사용중입니다.\n다른 ID를 입력하세요");
+
 				} else {
 					$("#signUpForm").attr({
 						"method" : "post",

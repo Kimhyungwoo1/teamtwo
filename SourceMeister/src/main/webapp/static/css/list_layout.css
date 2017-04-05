@@ -9,7 +9,7 @@ span {
 	font-size : 15px;
 }
 
-#table-content {
+#tableContent {
 	width : 700px;
 	height : 570px;
 	table-layout: fixed;
@@ -19,4 +19,6 @@ span {
 table {
 	width : 700px;
 	height : 570px;
+	table-layout: fixed;
+	word-break: break-all;
 }

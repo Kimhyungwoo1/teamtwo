@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,29 +10,45 @@
 <script type="text/javascript">
 	$().ready(function() {
 		var loginCheck = "${ sessionScope._USER_}" ;
-		//alert(loginCheck);
-		$("#likeBtn").click(function() {
-			if (loginCheck) {
-				$.post("/SourceMeister/opensource/detail/likeCount", {
-					"opensourceId" : $("#likeBtn").data("opensourceid"),
-					"likeCount" : $("#likeCount").text()
-				}, function(response) {
-				
-					var jsonObj = JSON.parse(response);
-					console.log(jsonObj);
 
-					if (jsonObj.success) {
-						$("#likeCount").text(jsonObj.likeCount);
-					} 
-				});
-				
-			}
-			else {
-				alert("로그인해주세요!");
+		$("#likeBtn").click(function() {
+
+			$.post("/SourceMeister/opensource/detail/likeCount", {
+				"opensourceId" : $("#likeBtn").data("opensourceid"),
+				"likeCount" : $("#likeCount").text()
+			}, function(response) {
+				var jsonObj = JSON.parse(response);
+				console.log(jsonObj);
+				if (loginCheck) {
+					$.post("/SourceMeister/opensource/detail/likeCount", {
+						"opensourceId" : $("#likeBtn").data("opensourceid"),
+						"likeCount" : $("#likeCount").text()
+					}, function(response) {
+						var jsonObj = JSON.parse(response);
+						console.log(jsonObj);
+		
+						if (jsonObj.success) {
+							$("#likeCount").text(jsonObj.likeCount);
+						} 
+					});
+				}
+				else {
+					alert("로그인해주세요.");
+				}
+			});
+			
+		});
+		
+		$("#fileTreeBtn").click(function() {
+			if ($(".fileTree").css("display") == "none") {
+				$('.fileTree').css("display", "block");
+			} else {
+				$('.fileTree').css("display", "none");
 			}
 		});
-		 
+
 	});
+
 </script>
 </head>
 <body>
@@ -46,6 +63,8 @@
 				</h4>
 			</div>
 
+			<input type="hidden" id="sourceUrl" value="${sourceUrl}">
+			<input type="hidden" id="repoName" value="${repoName}">
 			<div class="header">
 				<div style="display:inline-block;">
 					<table class="table">
@@ -58,13 +77,6 @@
 								<th>Repository</th>
 								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
 							</tr>
-							<!-- <tr>
-								<td colspan="5">
-									<a href="#" id="file-tree-link"> 
-										<span id="file-tree-button" data-id="9911">View File Tree</span>
-									</a>
-								</td>
-							</tr> -->
 						</tbody>
 					</table>
 				</div><!-- 
@@ -78,16 +90,20 @@
 				<textarea readonly="readonly" style="resize: none; wrap:hard;" cols="110" rows="20">${code}</textarea>
 			</div><br/>
 			
-			<div class="fileTree">
+			<a id="fileTreeBtn">Show File Tree</a><br/><br/>
+			<div class="fileTree" style="display:none;">
 				${fileTree}
-			</div>
-			
-
-			<div class="footer">
-			</div>
+			</div><br/><br/>
 			
 		</div>
 
 	</div>
+	
+<%-- <div class="reply" style="background: teal;" >
+ <span>댓글</span>
+ <c:import url="${includeUrlReply}"></c:import>
+</div>
+	 --%>
+	
 </body>
 </html>

@@ -1,5 +1,13 @@
 @CHARSET "UTF-8";
 
+.row {
+	table-layout: fixed;
+	word-break: break-all;
+}
+.body > textarea {
+	width: 695px;
+}
+
 #carbonads {
 	margin: 0 auto;
 	padding: 1em;

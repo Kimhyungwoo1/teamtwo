@@ -74,10 +74,10 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setEmail(userEmail);
 
 		if (userService.registNewUser(user)) { 
-			System.out.println("회원가입 성공");
-			response.sendRedirect("/SourceMeister/user/signIn");
+			System.out.println("�쉶�썝媛��엯 �꽦怨�");
+			response.sendRedirect("/SourceMeister/opensource");
 		} else { 
-			System.out.println("회원가입 실패");
+			System.out.println("�쉶�썝媛��엯 �떎�뙣");
 			response.sendRedirect("/SourceMeister/user/signUp");
 		}
 	}
