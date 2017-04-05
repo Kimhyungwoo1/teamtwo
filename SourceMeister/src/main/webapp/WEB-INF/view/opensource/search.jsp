@@ -36,7 +36,7 @@ $().ready(function () {
 	 var myHilitor = new Hilitor("#table-content");
 	  myHilitor.apply($("#keyword").val());
 	  
-	  $(".login").load("/SourceMeister/user/signIn")
+	  $(".login").load("/SourceMeister/user/signIn");
 	  
 	
 });
