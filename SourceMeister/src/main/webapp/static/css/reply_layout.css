@@ -22,7 +22,6 @@
 table {
 	height: 20px;
 	width: 600px;
-
 }
 
 .nickName {
@@ -43,5 +42,4 @@ table {
 .delete{
 	cursor: pointer; background: #C8FF0D; width: 20px; text-align: center;
 }						
-
 

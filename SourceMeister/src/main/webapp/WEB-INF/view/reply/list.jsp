@@ -126,6 +126,7 @@
 			<c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 4 * 10 }px; display:none;" </c:if>
 		>
 			<table id="replyTable" > 
+
 				<tr >
 					<td class="nickName"><p style="font-weight: bold;">${reply.user.nickName}</p></td>
 				</tr>
@@ -145,4 +146,6 @@
 			<div class="formAppender" style="margin-left: ${reply.level * 4 * 10 }px; display:none;"></div>
 		</div>
 	</c:forEach>
+
 </div>
+

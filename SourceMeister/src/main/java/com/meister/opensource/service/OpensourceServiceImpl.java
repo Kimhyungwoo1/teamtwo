@@ -26,5 +26,10 @@ public class OpensourceServiceImpl implements OpensourceService {
 	public boolean updateLikeCount(String opensourceId) {
 		return opensourceBiz.updateLikeCount(opensourceId);
 	}
+
+	@Override
+	public OpensourceVO selectRankLikeCount() {
+		return opensourceBiz.selectRankLikeCount();
+	}
 	
 }

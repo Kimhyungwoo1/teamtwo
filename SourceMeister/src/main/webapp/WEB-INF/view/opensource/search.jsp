@@ -18,7 +18,6 @@ $().ready(function () {
 		}
 	});
 		
-	
 	$("#searchForm").find("input[type=image]").click(function() {
 		submitForm();
 	});
@@ -50,7 +49,7 @@ $().ready(function () {
 	<div id="container">
 		
 		<div id="left">
-			
+
 		
 			<div class="rank-repo">
 				<span>저장소별 소스 수</span><br/>
@@ -111,10 +110,11 @@ $().ready(function () {
 					
 			</div>
 			
+	
 			<div class="login">
-			 	<c:import url="/WEB-INF/view/user/signIn.jsp" /> 	
+				<c:import url="/user/signIn" />
 			</div>
-			
+
 		  
 			<div id="middle-content">
 				<jsp:include page="${includeUrl}"></jsp:include>
