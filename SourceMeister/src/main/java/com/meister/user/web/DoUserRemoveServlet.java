@@ -27,10 +27,13 @@ public class DoUserRemoveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
+		String[] userId = request.getParameterValues("userCheck");
 		
-		userService.deleteOneUser(userId);
+		boolean userDelete = userService.deleteCheckUser(userId);
 		
+		if( userDelete ){
+			response.sendRedirect("/SourceMeister/useradmin");
+		}
 	}
 
 }

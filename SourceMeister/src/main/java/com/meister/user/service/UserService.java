@@ -21,6 +21,8 @@ public interface UserService {
 
 	public boolean deleteOneUser(String userId);
 	
+	public boolean deleteCheckUser(String[] userIdCheck);
+	
 	public boolean changeUser(String beforeAuthorization, String afterAuthorization);
 
 	public boolean changeCheckUser(String [] userId, String beforeAuthorization, String afterAuthorization);

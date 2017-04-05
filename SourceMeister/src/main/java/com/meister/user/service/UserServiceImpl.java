@@ -65,6 +65,15 @@ public class UserServiceImpl implements UserService {
 
 		return userBiz.deleteOneUser(userId);
 	}
+	
+	@Override
+	public boolean deleteCheckUser(String[] userIdCheck) {
+		
+		for(String userId : userIdCheck){
+			userBiz.deleteOneUser(userId);
+		}
+		return true;
+	}
 
 	@Override
 	public boolean changeUser(String beforeAuthorization, String afterAuthorization) {
