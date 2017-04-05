@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
 			userVO = new UserVO();
 			userVO.setUserId(userId);
 			userVO.setAuthorizationId(afterAuthorization);
-			isSuccess = userBiz.updateUser(userVO);
+			isSuccess = userBiz.updateUsers(userVO);
 		}
 		
 		return isSuccess;

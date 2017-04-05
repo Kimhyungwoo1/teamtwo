@@ -40,6 +40,11 @@ public class UserBizImpl implements UserBiz {
 
 		return userDao.updateUserInfo(user) > 0;
 	}
+	
+	@Override
+	public boolean updateUsers(UserVO user) {
+		return userDao.updateUserInfos(user) > 0;
+	}
 
 	@Override
 	public boolean deleteOneUser(String userId) {

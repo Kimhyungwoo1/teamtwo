@@ -15,6 +15,8 @@ public interface UserDao {
 	public UserVO selectOneUser(UserVO userVO);
 
 	public int updateUserInfo(UserVO userVO);
+	
+	public int updateUserInfos(UserVO userVO);
 
 	public int deleteOneUser(String userId);
 

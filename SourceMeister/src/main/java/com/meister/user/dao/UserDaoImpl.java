@@ -351,6 +351,50 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
+	
+	@Override
+	public int updateUserInfos(UserVO userVO) {
+		openJDBC();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DriverManager.getConnection(URL, ID, PWD);
+			StringBuffer query = new StringBuffer();
+			query.append(" UPDATE		USR ");
+			query.append(" SET			USR_ID = ? ");
+			query.append(" 				, ATHRZTN_ID = ? ");
+			query.append(" WHERE		USR_ID = ? ");
+			
+			stmt = conn.prepareStatement(query.toString());
+			stmt.setString(1, userVO.getUserId());
+			stmt.setString(2, userVO.getAuthorizationId());
+			stmt.setString(3, userVO.getUserId());
+			
+			return stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+
+				}
+			}
+		}
+
+	}
+
 
 	@Override
 	public int deleteOneUser(String userId) {
