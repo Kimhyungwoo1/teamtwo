@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+#replyTxt {
+	font-size: 15px;
+	text-align: left;
+	padding-left: 5px;
+	font-weight: bold;
+	float: left;
+}
+
+#replyDiv {
+	font-size: 12px;
+	text-align: center;
+}
+
+#formWrapper {
+	padding-left: 10px;
+	text-align: left;
+	height: 50px
+}
+
+table {
+	height: 20px;
+	width: 600px
+}
+
+.nickName {
+	width: 10px;
+	text-align: left;
+}
+
+.comment {
+	width: 400px;
+	text-align: left;
+}
+.writeDate{
+	width: 100px; text-align: left;
+} 
+.ReReply{
+	width: 20px; cursor: pointer; background: #C8FF0D; padding-left: 300px
+}
+.delete{
+	cursor: pointer; background: #C8FF0D; width: 20px; text-align: center;
+}						
+
+

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" >
+<script type="text/javascript"
+	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/reply_layout.css" />
+<script type="text/javascript">
 	$().ready(function(){
 		//삭제
 		$(".delete").click(function(){
+			
 			//validation check
 			if($("#replyDiv").data("user") ==  ""){
 				alert("로그인 후 사용할수 있습니다.");
@@ -52,6 +55,7 @@
 		 
 		//대댓글
 		$(".formAppender").on("click","#writeReplyBtn",function(){
+			
 			//validation check
 			var thisForm = $(this).parent().parent();
 			
@@ -66,11 +70,10 @@
 					$("#comment").focus();
 					return;
 		    } 
-
 			$.post("/SourceMeister/reply/write",{
-				'openSourceId' : $("#openSourceId").val(),
-				'parentReplyId' : $("#parentReplyId").val(),
-				'comment' : $("#comment").val()
+				'openSourceId' : thisForm.find('#openSourceId').val(),
+				'parentReplyId' : thisForm.find('#parentReplyId').val(),
+				'comment' : thisForm.find('#comment').val()
 			}, function(response){
 
 				if (response == 'OK') {
@@ -78,7 +81,7 @@
 				} else {
 					alert("대댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
 				}
-			});
+			}); 
 		
 		});
 		
@@ -92,6 +95,7 @@
 			thisDiv.children("form").find("input[id=parentReplyId]").val(replyId);
 			thisDiv.children("form").attr({id:"writeReReply"});
 			thisDiv.children("form").attr({class:"writeReReplyForm"});
+			thisDiv.children("form").attr({style:"padding-left: 40px; text-align: left;"});
 			thisDiv.toggle();
 		 	
 			$(".reply").each(function (index, data) {
@@ -105,50 +109,40 @@
 		});
     });
 </script>
-<!-- align="center" -->
- <div id="replyDiv" data-user="${sessionScope._USER_.userId}" style="font-size: 12px;">
-<%-- 총 ${totalcnt}건 --%>
-	
+<span id="replyTxt" >댓글</span>
+<div id="replyDiv" data-user="${sessionScope._USER_.userId}">
+	<div id="formWrapper" >
+		<form class="writeReplyForm" >
+			<!-- XX01 수정할것 -->
+			<input type="hidden" id="openSourceId" name="openSourceId"value="${opensourceId}" /> 
+			<input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
+			<textarea id="comment" name="comment" style="width: 500px; text-align: center;"></textarea>
+			<input type="button" id="writeReplyBtn" value="등록"  style="position: relative; top: -15px"/>
+		</form>
+	</div>
+	<hr>
 	<c:forEach items="${replyList}" var="reply" varStatus="index">
-
-		<%-- <c:forEach items="${replyList}" var="reply" varStatus="index"> --%>
-            <div class="reply"  data-parent="${reply.parentReplyId }" data-click="0" 
-               <c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 10 }px; display:none;" </c:if> 
-			>
-			    <table id="replyTable" style="height: 20px;"><!--  border="1" -->
-			    	<tr >
-                		<td style="width: 20px; text-align: left;">${reply.user.nickName}</td>
-                		<td style="width: 30px; text-align: left;">${reply.writeDate}</td>
-                	</tr>
-                    <tr>
-                        <td style="width: 400px; text-align: left;">${reply.comment} </td>
-						<c:if test="${reply.user.userId eq sessionScope._USER_.userId}">
-						
-						<td class="delete" style="cursor: pointer; background:lime; width: 10px;" data-replyid="${reply.replyId }">삭제</td>
-						</c:if>
-                    </tr>
-                    <tr>
-                	 	<td class="ReReply" style="width: 20px; cursor: pointer; background:lime; " data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
-                	</tr>
-                  </table>
-				  <div class="formAppender" style="margin-left: ${reply.level * 10 }px; display:none;" ></div> 
-            </div>
-        </c:forEach>
-     
-      <%--  <div>
-			<form id="searchForm">
-				${pager}
-			</form>
-		</div>  --%>
-      <!-- bottom :-20px;  -->
-        <div id="formWrapper" style="position : relative; left:5px;" >            
-            <form class="writeReplyForm">
-            <!-- XX01 수정할것 -->
-                <input type="hidden" id="openSourceId" name="openSourceId" value="${opensourceId}"/>
-                <input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
-                <textarea id="comment" name="comment"  style="width: 500px;"></textarea>
-                <input type="button" id="writeReplyBtn" value="등록" />    
-            </form>
-        </div>
-         
-    </div>
+		<div class="reply" data-parent="${reply.parentReplyId }" data-click="0" align="left" 
+			<c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 4 * 10 }px; display:none;" </c:if>
+		>
+			<table id="replyTable" > 
+				<tr >
+					<td class="nickName"><p style="font-weight: bold;">${reply.user.nickName}</p></td>
+				</tr>
+				<tr>
+					<td class="comment">${reply.comment}</td>
+				</tr>
+				<tr >
+					<td class="writeDate" ><p style="color: #acadaf ">${reply.writeDate}</p></td>
+				</tr>
+				<tr>
+					<td class="ReReply" data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
+					<c:if test="${reply.user.userId eq sessionScope._USER_.userId}">
+						<td class="delete" data-replyid="${reply.replyId }">삭제</td>
+					</c:if>	
+				</tr>
+			</table>
+			<div class="formAppender" style="margin-left: ${reply.level * 4 * 10 }px; display:none;"></div>
+		</div>
+	</c:forEach>
+</div>

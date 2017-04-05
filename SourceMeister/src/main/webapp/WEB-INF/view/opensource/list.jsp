@@ -12,12 +12,11 @@
 	$().ready(function() {
 		$("tr").click(function(){
 			var opensourceId = $(this).data("opensourceid");
-		/* 	console.log(opensourceId); */
 			$("#list").hide();
-		    $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId); 
-		    $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+			 $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId,{},function(){
+				 $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+			 });
 		});
-		
 	});
 
 </script>
@@ -62,7 +61,7 @@
 	</div>
 
 </div>
-<div id="detail"></div><br/>
+<div id="detail"></div><hr>
 <div id="replyMain"></div>
 
 </body>
