@@ -40,7 +40,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ViewMainAuthorizationServlet</servlet-name>
-		<url-pattern>/admin</url-pattern>
+		<url-pattern>/authorizationadmin</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
@@ -52,6 +52,15 @@
 		<servlet-name>DoAddAuthorizationServlet</servlet-name>
 		<url-pattern>/auth/add</url-pattern>
 	</servlet-mapping>
+	<filter>
+		<display-name>CharectorEncodingFillter</display-name>
+		<filter-name>CharectorEncodingFillter</filter-name>
+		<filter-class>com.meister.common.web.CharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharectorEncodingFillter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<description></description>
 		<display-name>ViewSignInServlet</display-name>
@@ -103,6 +112,16 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
+		<display-name>DoChangeAuthorizationServlet</display-name>
+		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
+		<servlet-class>com.meister.user.web.DoChangeAuthorizationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
+		<url-pattern>/auth/change</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
 		<display-name>DoSignInActionServlet</display-name>
 		<servlet-name>DoSignInActionServlet</servlet-name>
 		<servlet-class>com.meister.user.web.DoSignInActionServlet</servlet-class>
@@ -121,20 +140,30 @@
 		<servlet-name>DoSignOutActionServlet</servlet-name>
 		<url-pattern>/user/doSignOut</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ViewUserMainServlet</display-name>
+		<servlet-name>ViewUserMainServlet</servlet-name>
+		<servlet-class>com.meister.authorization.web.ViewUserMainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewUserMainServlet</servlet-name>
+		<url-pattern>/useradmin</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DoUserRemoveServlet</display-name>
+		<servlet-name>DoUserRemoveServlet</servlet-name>
+		<servlet-class>com.meister.user.web.DoUserRemoveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoUserRemoveServlet</servlet-name>
+		<url-pattern>/user/delete</url-pattern>
+	</servlet-mapping>
 	<error-page>
 		<error-code>500</error-code>
 		<location>/WEB-INF/view/error/500Error.jsp</location>
 	</error-page>
-	<servlet>
-		<description></description>
-		<display-name>DoChangeAuthorizationServlet</display-name>
-		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
-		<servlet-class>com.meister.user.web.DoChangeAuthorizationServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
-		<url-pattern>/auth/change</url-pattern>
-	</servlet-mapping>
 	<servlet>
 		<description></description>
 		<display-name>ViewReplyWriteServlet</display-name>
@@ -174,4 +203,34 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DoSignUpModifyServelt</display-name>
+		<servlet-name>DoSignUpModifyServelt</servlet-name>
+		<servlet-class>com.meister.user.web.DoSignUpModifyServelt</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoSignUpModifyServelt</servlet-name>
+		<url-pattern>/user/doSignUpModify</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ViewSignUpModifyServlet</display-name>
+		<servlet-name>ViewSignUpModifyServlet</servlet-name>
+		<servlet-class>com.meister.user.web.ViewSignUpModifyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewSignUpModifyServlet</servlet-name>
+		<url-pattern>/user/signUpModify</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DoDeleteUserActionServlet</display-name>
+		<servlet-name>DoDeleteUserActionServlet</servlet-name>
+		<servlet-class>com.meister.user.web.DoDeleteUserActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoDeleteUserActionServlet</servlet-name>
+		<url-pattern>/user/doDelete</url-pattern>
+	</servlet-mapping>
 </web-app>

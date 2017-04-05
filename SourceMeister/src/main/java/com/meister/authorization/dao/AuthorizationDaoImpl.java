@@ -34,7 +34,7 @@ public class AuthorizationDaoImpl implements AuthorizationDao {
 			conn = DriverManager.getConnection(oracleUrl, ID, PWD);
 
 			StringBuffer query = new StringBuffer();
-			query.append(" INSERT		INTO	ATHRZTN ");
+			query.append(" INSERT		INTO		ATHRZTN ");
 			query.append(" 								( ");
 			query.append(" 								ATHRZTN_ID ");
 			query.append(" 								, ATHRZTN_NM ");
