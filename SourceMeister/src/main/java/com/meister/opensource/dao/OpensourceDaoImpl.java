@@ -22,7 +22,7 @@ public class OpensourceDaoImpl implements OpensourceDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		String url = "jdbc:oracle:thin:@172.30.1.4:1521:XE";
+		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 
 		try {
 			conn = DriverManager.getConnection(url, "TEST", "test");
@@ -84,7 +84,7 @@ public class OpensourceDaoImpl implements OpensourceDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
-		String url = "jdbc:oracle:thin:@172.30.1.4:1521:XE";
+		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 
 		try {
 			conn = DriverManager.getConnection(url, "TEST", "test");
@@ -133,7 +133,7 @@ public class OpensourceDaoImpl implements OpensourceDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
-		String url = "jdbc:oracle:thin:@172.30.1.4:1521:XE";
+		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 
 		try {
 			conn = DriverManager.getConnection(url, "TEST", "test");
@@ -179,7 +179,7 @@ public class OpensourceDaoImpl implements OpensourceDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		String url = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 
 		try {
 			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
