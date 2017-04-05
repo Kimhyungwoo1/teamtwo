@@ -31,4 +31,5 @@ public interface UserService {
 
 	public boolean isDuplicatedUserId(String userId);
 
+
 }

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,9 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
-	var loginCheck = "${ sessionScope._USER_}" ;
+
+		var loginCheck = "${ sessionScope._USER_}" ;
+
 		$("#likeBtn").click(function() {
 			if (loginCheck) {
 				$.post("/SourceMeister/opensource/detail/likeCount", {
@@ -27,7 +30,7 @@
 				alert("로그인해주세요.");
 			}
 		});
-		 
+
 	});
 		/* var sourceUrlTemp = $("#sourceUrl").val();
 		var sourceUrl = sourceUrlTemp.replace('https://github.com','https://cdn.rawgit.com');
@@ -102,5 +105,12 @@
 		</div>
 
 	</div>
+	
+<%-- <div class="reply" style="background: teal;" >
+ <span>댓글</span>
+ <c:import url="${includeUrlReply}"></c:import>
+</div>
+	 --%>
+	
 </body>
 </html>

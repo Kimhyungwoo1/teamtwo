@@ -19,7 +19,6 @@ public interface UserBiz {
 
 	public boolean chagerUser(String beforeAuthorization, String afterAuthorization);
 
-	public boolean isDuplicatedUserId(String userId);
-
+	public boolean isDuplicatedUserId(String userId );
 	public UserVO loginUser(UserVO user);
 }

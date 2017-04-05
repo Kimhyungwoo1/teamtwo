@@ -1,67 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>댓글</title>
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" >
-
 	$().ready(function(){
-		/* 
-		$("#writeForm").find("img").click(function(){
-			//AJAX로 POST보내기 (요청을보낼주소,전달할 parameter,콜백함수(아무변수명)))
-			//콜백: 전달한 parameter로 처리한 응답을 받은부분이 처리
-			//전달할 parameter 보내기방법 1. 객체 리터럴 방식으로 보내기 [name태그명 : 값]
-			$.post("/board/dowrite",{
-				"subject" :$(".subject").val(),
-				"content" :$(".content").val()
-			}, function(response){
-				alert("글쓰기가 잘 완료되었습니다.");
-			});
-		});
-		 */
+	
 		//삭제
 		$(".delete").click(function(){
-			/*  alert("삭제" + $(this).data("replyid")); */
+			//validation check
+			if($("#replyDiv").data("user") ==  ""){
+				alert("로그인 후 사용할수 있습니다.");
+				$("#comment").focus();
+				return;
+	    	} 
+			
 			$.post("/SourceMeister/reply/delete",{
 				"replyId" :$(this).data("replyid")
 			}, function(response){
 				if (response == 'OK') {
-					//화면 새로고침
-					location.reload();
+					$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
 				} else {
-					alert("아티스트 등록을 실패 했습니다.\n관리자에게 문의하세요");
+					alert("댓글 삭제를 실패 했습니다.\n관리자에게 문의하세요");
 				}
 			});
 		});	
-			
-		
-		/* $(".controls").find(".deleteLink").click(function(){
-			if (confirm(" 댓글을 삭제하시겠습니까?") == true){   
-			    document.form.submit();
-			}else{   //취소
-			    return;
-			}
-		});
-		 */
-		//댓글
-		$("#writeReplyBtn").click(function(){
-			//validation check
-			if ( $("#comment").val() == ""){
-				alert("댓글 내용을 입력하지 않았습니다.");
-				$("#comment").focus();
-				return;
-			}
-			
-			$(".writeReplyForm").attr({
-				"method" : "post",
-				"action" : "/SourceMeister/reply/write"
-			});
-			$(".writeReplyForm").submit();
-		});	
+
+		//등록
+			$("#writeReplyBtn").click(function(){
+				//validation check
+				if ( $("#comment").val() == ""){
+					alert("댓글 내용을 입력하지 않았습니다.");
+					$("#comment").focus();
+					return;
+				}
+				 if($("#replyDiv").data("user") ==  ""){
+					alert("로그인 후 사용할수 있습니다.");
+					$("#comment").focus();
+					return;
+				} 
+				$.post("/SourceMeister/reply/write",{
+					'openSourceId' : $("#openSourceId").val(),
+					'parentReplyId' : $("#parentReplyId").val(),
+					'comment' : $("#comment").val()
+				}, function(response){
+					if (response == 'OK') {
+						$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
+					} else {
+						alert("댓글 삭제를 실패 했습니다.\n관리자에게 문의하세요");
+					}
+				});
+			});	 
+		 
 		//대댓글
 		$(".formAppender").on("click","#writeReplyBtn",function(){
 			//validation check
@@ -72,11 +61,24 @@
 					thisForm.find("textarea").focus();
 					return;
 			} 
-			thisForm.find("form").attr({
-				"method" : "post",
-				"action" : "/SourceMeister/reply/write"
+			
+			if($("#replyDiv").data("user") ==  ""){
+					alert("로그인 후 사용할수 있습니다.");
+					$("#comment").focus();
+					return;
+		    } 
+			$.post("/SourceMeister/reply/write",{
+				'openSourceId' : $("#openSourceId").val(),
+				'parentReplyId' : $("#parentReplyId").val(),
+				'comment' : $("#comment").val()
+			}, function(response){
+				if (response == 'OK') {
+					$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
+				} else {
+					alert("대댓글 등록을 실패 했습니다.\n관리자에게 문의하세요");
+				}
 			});
-			thisForm.find("form").submit();
+		
 		});
 		
 		$(".ReReply").click(function(){
@@ -102,58 +104,50 @@
 		});
     });
 </script>
-</head>
-<body>
-
 <!-- align="center" -->
- <div id="replyDiv" style="width:220px;"  >
-       
+ <div id="replyDiv" data-user="${sessionScope._USER_.userId}" style="font-size: 12px;">
 <%-- 총 ${totalcnt}건 --%>
-       	<c:forEach items="${replyList}" var="reply" varStatus="index">
-      
+	
+	<c:forEach items="${replyList}" var="reply" varStatus="index">
+
+		<%-- <c:forEach items="${replyList}" var="reply" varStatus="index"> --%>
             <div class="reply"  data-parent="${reply.parentReplyId }" data-click="0" 
                <c:if test="${reply.level==2}"> style="margin-left: ${reply.level * 10 }px; display:none;" </c:if> 
 			>
-			    <table id="replyTable" border="1"><!--  border="1" -->
-                	<tr style="color: fuchsia;">
-                		<td style="width:170px;">${reply.user.nickName}</td>
+			    <table id="replyTable" style="height: 20px;"><!--  border="1" -->
+			    	<tr >
+                		<td style="width: 20px; text-align: left;">${reply.user.nickName}</td>
+                		<td style="width: 30px; text-align: left;">${reply.writeDate}</td>
                 	</tr>
                     <tr>
-                        <td>
-                            ${reply.comment}
-                        </td>
-                        <!-- TODO -->
-						<c:if test="${reply.user.userId eq 'TEST'}">
-						<td class="delete" style="cursor: pointer; background:lime;" data-replyid="${reply.replyId }">삭제</td>
+                        <td style="width: 400px; text-align: left;">${reply.comment} </td>
+						<c:if test="${reply.user.userId eq sessionScope._USER_.userId}">
+						
+						<td class="delete" style="cursor: pointer; background:lime; width: 10px;" data-replyid="${reply.replyId }">삭제</td>
 						</c:if>
-                   
                     </tr>
                     <tr>
-                	 	<td style="width:30px;">${reply.writeDate}</td>
-                	 	<td class="ReReply" style="cursor: pointer; background:lime; " data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
+                	 	<td class="ReReply" style="width: 20px; cursor: pointer; background:lime; " data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
                 	</tr>
                   </table>
-				  <div class="formAppender" style="margin-left: ${reply.level * 2 * 10 }px; display:none;" ></div> 
+				  <div class="formAppender" style="margin-left: ${reply.level * 10 }px; display:none;" ></div> 
             </div>
         </c:forEach>
-        
+     
       <%--  <div>
 			<form id="searchForm">
 				${pager}
 			</form>
 		</div>  --%>
-      
-        <div id="formWrapper" style="width:220px; position : relative; bottom :-20px; left:5px;" >            
+      <!-- bottom :-20px;  -->
+        <div id="formWrapper" style="position : relative; left:5px;" >            
             <form class="writeReplyForm">
             <!-- XX01 수정할것 -->
                 <input type="hidden" id="openSourceId" name="openSourceId" value="${opensourceId}"/>
                 <input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
-                <textarea id="comment" name="comment" style="width:150px;"></textarea>
+                <textarea id="comment" name="comment"  style="width: 500px;"></textarea>
                 <input type="button" id="writeReplyBtn" value="등록" />    
             </form>
         </div>
          
     </div>
-
-</body>
-</html>

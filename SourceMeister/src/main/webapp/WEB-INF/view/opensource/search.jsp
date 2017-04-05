@@ -16,13 +16,13 @@ $().ready(function () {
 	
 	
 	$("#keyword").keydown(function(e) {
-		if (e.which == 13) {
+		if (e.which == 13) { //13 : Enter코드
 			submitForm();
 		}
 	});
 		
 	
-	$("#searchForm").find("input[type=button]").click(function() {
+	$("#searchBtn").click(function() {
 		submitForm();
 	});
 	
@@ -38,7 +38,6 @@ $().ready(function () {
 	  myHilitor.apply($("#keyword").val());
 	  
 
-	
 	
 	
 });
@@ -57,7 +56,7 @@ $().ready(function () {
 		
 		<div id="left">
 			<div class="login">
-				<c:import url="/user/signIn" />
+				<c:import url="/WEB-INF/view/user/signIn.jsp" />
 			</div>
 			
 			<div class="rank-repo" style="overflow-y: auto">
@@ -82,7 +81,7 @@ $().ready(function () {
 			<div id="search">
 				<br/><br/><br/><br/>
 				<form id="searchForm">
-					<input id="keyword" name="search" type="text" value="${search}" /> <input type="button" value="검색" />
+					<input id="keyword" name="search" type="text" value="${search}" /> <input id="searchBtn" type="button" value="검색" />
 				</form>
 				
 				<c:if test="${ not empty page}">
@@ -118,7 +117,7 @@ $().ready(function () {
 			</div>
 			
 			<div id="middle-content">
-				<jsp:include page="${includeUrl}" flush="false"></jsp:include>
+				<jsp:include page="${includeUrl}"></jsp:include>
 			</div>	
 			
 		</div>
@@ -133,10 +132,10 @@ $().ready(function () {
 				
 			</div>
 			
-			<div id="reply">
+		<%-- 	<div id="reply">
 				<span>댓글</span>
 				<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
-			</div>
+			</div> --%>
 		</div>
 		<div id="footer">
 			 <span>Copyright </span>
