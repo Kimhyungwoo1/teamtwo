@@ -36,6 +36,8 @@ $().ready(function () {
 	 var myHilitor = new Hilitor("#table-content");
 	  myHilitor.apply($("#keyword").val());
 	  
+	  $(".login").load("/SourceMeister/user/signIn")
+	  
 	
 });
 
@@ -117,7 +119,6 @@ $().ready(function () {
 			
 	
 			<div class="login">
-				<c:import url="/user/signIn" />
 			</div>
 
 			
