@@ -13,7 +13,7 @@
 		$("#loginBtn").click(function() {
 			$("#signInForm").attr({
 				"method" : "post",
-				"action" : "/SourceMeister/user/signIn"
+				"action" : "/SourceMeister/user/doSignIn"
 			});
 			$("#signInForm").submit();
 		});
