@@ -28,7 +28,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
@@ -87,7 +87,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
@@ -205,7 +205,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
@@ -293,7 +293,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
@@ -360,7 +360,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
@@ -409,7 +409,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
@@ -466,7 +466,7 @@ public class ReplyDaoImpl implements ReplyDao{
 		String url = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
 		
 		try {
-			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			conn = DriverManager.getConnection(url, "TEST", "test");
 			
 			StringBuffer query  = new StringBuffer();
 			
