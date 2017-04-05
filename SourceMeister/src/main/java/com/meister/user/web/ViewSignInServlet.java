@@ -14,6 +14,7 @@ import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
 
+
 public class ViewSignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService;
@@ -34,6 +35,7 @@ public class ViewSignInServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String userId = request.getParameter("userId");
 		String userPassword = request.getParameter("userPassword");
 		
@@ -45,6 +47,7 @@ public class ViewSignInServlet extends HttpServlet {
 		UserVO userVO = null;
 
 		userVO = userService.getOneUser(user);
+		
 
 		if (userVO != null) {
 
@@ -69,6 +72,7 @@ public class ViewSignInServlet extends HttpServlet {
 			writer.flush();
 			writer.close();
 			
+
 		}
 	}
 

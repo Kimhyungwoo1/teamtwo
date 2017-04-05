@@ -6,19 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 페이지</title>
-<script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript"
+	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		$("#signInForm").find("input[type=button]").click(function() {
-					$("#signInForm").attr({
-						"method" : "post" ,
-						"action" : "/SourceMeister/user/signIn"
-					});
-					$("#signInForm").submit();
+		$("#loginBtn").click(function() {
+			$("#signInForm").attr({
+				"method" : "post",
+				"action" : "/SourceMeister/user/signIn"
+			});
+			$("#signInForm").submit();
 		});
 	});
-
-
 </script>
 </head>
 <body>
@@ -36,7 +35,7 @@
 					name="userPassword" id="userPassword" placeholder="비밀번호를 입력하세요" /><br />
 			</div>
 			<div id="btn">
-				<input type="button" value="로그인" />
+				<input id="loginBtn" type="button" value="로그인" />
 			</div>
 			<div id="userHelp">
 				<a href="/SourceMeister/user/signUp"><input type="button"
@@ -50,10 +49,10 @@
 	<c:if test="${not empty sessionScope._USER_ }">
 				${sessionScope._USER_.userName}님, 환영합니다! 
 				<a href="/SourceMeister/user/doSignOut">로그아웃</a>
-		 		<a href="/SourceMeister/user/signUpModify?userId=${sessionScope._USER_.userId}">회원정보수정</a> 
+		<a
+			href="/SourceMeister/user/signUpModify?userId=${sessionScope._USER_.userId}">회원정보수정</a>
 
 	</c:if>
-
 
 
 

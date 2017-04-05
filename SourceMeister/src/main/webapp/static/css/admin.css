@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+*{
+	font-style: inherit;
+}
+
 #total {
 	margin-top: 10px;
 	margin: 0 auto;
@@ -27,7 +31,7 @@
 #top > #adminManu {
 	border: 1px solid #DDDDDD;
 	width: 100%;
-	height: 600px;
+	height: 597px;
 	text-align: center;
 	padding-top: 5px;
 }
@@ -39,16 +43,20 @@
 	
 }
 
+
 #botton > #table {
 	border: 1px solid #DDDDDD;
 	width: 100%;
 	display: inline-block;
 	word-spacing: 10px;
 	height: 669px;
-	
-
+	text-align: center;
 }
 
+#botton > #table > #tableContent {
+	margin: auto;
+	margin-top: 5px;
+}
 
 #botton > #add {
 	display: inline-block;
@@ -58,6 +66,7 @@
 	line-height: 37px;
 	padding-left: 4px;
 }
+
 
 #botton > #allAuth {
 	border: 1px solid #DDDDDD;
@@ -69,7 +78,7 @@
 
 #writer {
 	height: 30px;
-	width: 978px;
+	width: 977px;
 	border: 1px solid #DDDDDD;
 	text-align: center;
 }

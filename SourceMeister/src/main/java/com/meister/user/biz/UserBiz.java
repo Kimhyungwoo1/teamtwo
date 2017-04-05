@@ -1,11 +1,13 @@
 package com.meister.user.biz;
 
+import java.util.List;
+
 import com.meister.user.vo.UserVO;
 
 public interface UserBiz {
 	public boolean registNewUser(UserVO newUserVO);
 
-	//public List<UserVO> getAllUser(UserSearchVO userSearchVO);
+	public List<UserVO> getAllUser();
 
 	public UserVO getOneUser(String userId);
 
