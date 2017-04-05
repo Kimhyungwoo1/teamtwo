@@ -15,9 +15,10 @@
 				$("#comment").focus();
 				return;
 	    	} 
-			
+			alert("childcnt" + $(this).data("childcnt"));
 			$.post("/SourceMeister/reply/delete",{
-				"replyId" :$(this).data("replyid")
+				"replyId" :$(this).data("replyid"),
+				"childCnt" :$(this).data("childcnt")
 			}, function(response){
 				if (response == 'OK') {
 					$("#replyMain").load("/SourceMeister/reply/list?opensourceId="+ $("#openSourceId").val());
@@ -116,8 +117,8 @@
 			<!-- XX01 수정할것 -->
 			<input type="hidden" id="openSourceId" name="openSourceId"value="${opensourceId}" /> 
 			<input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
-			<textarea id="comment" name="comment" style="width: 500px; text-align: center;"></textarea>
-			<input type="button" id="writeReplyBtn" value="등록"  style="position: relative; top: -15px"/>
+			<textarea id="comment" name="comment" style="width: 500px; text-align: left;"></textarea>
+			<input type="button" id="writeReplyBtn" value="등록"  style="position: relative; top: -15px;"/>
 		</form>
 	</div>
 	<hr>
@@ -137,9 +138,9 @@
 					<td class="writeDate" ><p style="color: #acadaf ">${reply.writeDate}</p></td>
 				</tr>
 				<tr>
-					<td class="ReReply" data-replyid="${reply.replyId }">답글${reply.childCnt}</td>
+					<td class="ReReply" data-replyid="${reply.replyId }" >답글${reply.childCnt}</td>
 					<c:if test="${reply.user.userId eq sessionScope._USER_.userId}">
-						<td class="delete" data-replyid="${reply.replyId }">삭제</td>
+						<td class="delete" data-replyid="${reply.replyId }" data-childcnt="${reply.childCnt}">삭제</td>
 					</c:if>	
 				</tr>
 			</table>

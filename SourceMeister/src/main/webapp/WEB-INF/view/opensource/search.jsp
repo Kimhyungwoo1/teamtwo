@@ -33,7 +33,8 @@ $().ready(function () {
 	 var myHilitor = new Hilitor("#table-content");
 	  myHilitor.apply($("#keyword").val());
 	  
-	
+	  $(".login").load("/SourceMeister/user/signIn"); 
+
 });
 
 
@@ -46,9 +47,9 @@ $().ready(function () {
 </head>
 <body>
 
-	<div id="container">
+	<div id="container" >
 		
-		<div id="left">
+		<div id="left" draggable="true">
 
 		
 			<div class="rank-repo">
@@ -65,7 +66,7 @@ $().ready(function () {
 				<span>언어별 소스 수</span><br/>
 				<c:forEach items="${languages}" var="languages">
 						<a href="/SourceMeister/opensource?srcId=${param.srcId}&q=${search}&langId=${languages.id}">${languages.language}: ${languages.count}</a><br>
-				</c:forEach><br />
+				</c:forEach><br /> 
 			</div>
 			
 		</div>
@@ -112,7 +113,7 @@ $().ready(function () {
 			
 	
 			<div class="login">
-				<c:import url="/user/signIn" />
+				<%-- <c:import url="/user/signIn" /> --%>
 			</div>
 
 		  
