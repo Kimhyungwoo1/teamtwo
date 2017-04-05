@@ -34,9 +34,11 @@ public class UserDaoImpl implements UserDao {
 			query.append("		   , NCNM           ");
 			query.append("		   , USR_NM        ");
 			query.append("		   , USR_ID        ");
+			query.append("		   , ATHRZTN_ID        ");
 			query.append("		   )               ");
 			query.append("		VALUES (           ");
 			query.append("		            ?       ");
+			query.append("		          , ?       ");
 			query.append("		          , ?       ");
 			query.append("		          , ?       ");
 			query.append("		          , ?       ");
@@ -52,6 +54,7 @@ public class UserDaoImpl implements UserDao {
 			stmt.setString(4, newUserVO.getNickName());
 			stmt.setString(5, newUserVO.getUserName());
 			stmt.setString(6, newUserVO.getUserId());
+			stmt.setString(7, newUserVO.getAuthorizationId());
 
 			return stmt.executeUpdate();
 

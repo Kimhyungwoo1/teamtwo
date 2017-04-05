@@ -9,16 +9,15 @@
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 
-	$().ready(function() {
-		$("tr").click(function(){
-			var opensourceId = $(this).data("opensourceid");
-		/* 	console.log(opensourceId); */
-			$("#list").hide();
-		    $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId); 
-		    $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
-		});
-		
+$().ready(function() {
+	$("tr").click(function(){
+		var opensourceId = $(this).data("opensourceid");
+		$("#list").hide();
+		 $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId,{},function(){
+			 $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+		 });
 	});
+});
 
 </script>
 <title>Insert title here</title>

@@ -48,6 +48,7 @@
 						<a href="/SourceMeister/user/doSignOut">로그아웃</a>
 						<a href="/SourceMeister/user/signUpModify?userId=${sessionScope._USER_.userId}">회원정보수정</a>
 				</c:if>
+				<br/>
 				<c:if test="${isAdminUser}" >
 					<a href="/SourceMeister/authorizationadmin">관리자 페이지</a>
 				</c:if>
