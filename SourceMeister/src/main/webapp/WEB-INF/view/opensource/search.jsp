@@ -13,8 +13,6 @@
 $().ready(function () {
 	
 	
-	
-	
 	$("#keyword").keydown(function(e) {
 		if (e.which == 13) { //13 : Enter코드
 			submitForm();
@@ -22,7 +20,8 @@ $().ready(function () {
 	});
 		
 	
-	$("#searchBtn").click(function() {
+
+	$("#searchForm").find("input[type=image]").click(function() {
 		submitForm();
 	});
 	
@@ -37,8 +36,6 @@ $().ready(function () {
 	 var myHilitor = new Hilitor("#table-content");
 	  myHilitor.apply($("#keyword").val());
 	  
-
-	
 	
 });
 
@@ -55,33 +52,37 @@ $().ready(function () {
 	<div id="container">
 		
 		<div id="left">
-			<div class="login">
-				<c:import url="/user/signIn" />
-			</div>
-			
-			<div class="rank-repo" style="overflow-y: auto">
+
+		
+			<div class="rank-repo">
 				<span>저장소별 소스 수</span><br/>
 				<c:forEach items="${sources}" var="sources">
 
-				<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
+					<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
 
 				</c:forEach><br />
 			</div>
 			
 			
-			<div class="rank-lan" style="overflow-y: auto">
+			<div class="rank-lan">
 				<span>언어별 소스 수</span><br/>
 				<c:forEach items="${languages}" var="languages">
 						<a href="/SourceMeister/opensource?srcId=${param.srcId}&q=${search}&langId=${languages.id}">${languages.language}: ${languages.count}</a><br>
 				</c:forEach><br />
 			</div>
 			
-		</div><div id="middle">
+		</div>
+		
+		<div id="middle">
 		
 			<div id="search">
-				<br/><br/><br/><br/>
+			
+				<br/><br/><br/>
 				<form id="searchForm">
-					<input id="keyword" name="search" type="text" value="${search}" /> <input id="searchBtn" type="button" value="검색" />
+
+					<input id="keyword" name="search" type="text" value="${search}" /> 
+					<input type="image" src="/SourceMeister/static/img/search-icon2.png" alt="Submit" width="40" height="40" style="position:relative; top:17px;">
+
 				</form>
 				
 				<c:if test="${ not empty page}">
@@ -111,32 +112,23 @@ $().ready(function () {
 				</c:if>
 				
 				</c:if>
-				
-				
-				
+					
 			</div>
 			
+	
+			<div class="login">
+				<c:import url="/user/signIn" />
+			</div>
+
+			
+		  
 			<div id="middle-content">
 				<jsp:include page="${includeUrl}"></jsp:include>
 			</div>	
-			
+		
 		</div>
 		
-		<div id="right">
-			<div id="searchRank">
-				<span>검색어 순위</span> <br/>
-				
-				<c:forEach items="${result.langArr}" var="lang">
-						${lang.language}: ${lang.count }<br/>
-				</c:forEach><br />
-				
-			</div>
-			
-		<%-- 	<div id="reply">
-				<span>댓글</span>
-				<jsp:include page="${ReplyUrl}" flush="false"></jsp:include>
-			</div> --%>
-		</div>
+		
 		<div id="footer">
 			 <span>Copyright </span>
 		</div>	
@@ -148,3 +140,4 @@ $().ready(function () {
 		
 </body>
 </html>
+			
