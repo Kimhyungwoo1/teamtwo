@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/meister/opensource/web/DoLikeCountActionServlet.java=UTF-8
 encoding//src/main/java/com/meister/opensource/web/OpenSourceViewListServlet.java=UTF-8
+encoding//src/main/java/com/meister/opensource/web/ViewProjectDetailServlet.java=UTF-8
+encoding//src/main/java/com/meister/user/web/DoSignInServlet.java=UTF-8
+encoding//src/main/java/com/meister/user/web/ViewSignInServlet.java=UTF-8
 encoding//src/main/java/com/meister/user/web/ViewSignUpServlet.java=UTF-8

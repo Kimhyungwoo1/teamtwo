@@ -31,11 +31,6 @@
 				$("#userName").focus();
 				return;
 			}
-			/*  if ($("#email").val() == "") {
-				alert("이메일을 @와같이 입력해주세요");
-				$("#email").focus();
-				return;
-			}  */
 
 			if ($("#userPassword").val().length < 7) {
 				alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
@@ -73,11 +68,13 @@
 
 				if (jsonObj.duplicated) {
 					alert("입력한 ID는 사용중입니다.\n다른 ID를 입력하세요");
+
 				} else {
 					$("#signUpForm").attr({
 						"method" : "post",
 						"action" : "/SourceMeister/user/signUp"
 					});
+					alert("회원가입 완료")
 					$("#signUpForm").submit();
 
 				}

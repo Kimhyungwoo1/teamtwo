@@ -14,6 +14,7 @@
 				"method":"post",
 				"action":"/SourceMeister/auth/add"
 			});
+			alert("권한 추가 완료")
 			$("#insertAuth").submit();
 		});
 		
@@ -22,6 +23,7 @@
 				"authorizationId":$("#authId").val()
 			}, function(){
 			});
+			alert("권한 삭제 완료")
 			location.reload();
 		});
 		

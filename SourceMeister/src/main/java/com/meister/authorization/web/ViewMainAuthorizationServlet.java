@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.meister.authorization.service.AuthorizationService;
 import com.meister.authorization.service.AuthorizationServiceImpl;
 import com.meister.authorization.vo.AuthorizationVO;
-import com.meister.commom.constants.AuthConst;
+import com.meister.common.constants.AuthConst;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;

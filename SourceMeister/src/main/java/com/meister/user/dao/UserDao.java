@@ -7,6 +7,7 @@ import com.meister.user.vo.UserVO;
 public interface UserDao {
 	public int insertNewUser(UserVO newUserVO);
 
+
 	public List<UserVO> selectAllUser();
 
 	public UserVO selectOneUser(String userId);
@@ -14,13 +15,13 @@ public interface UserDao {
 	public UserVO selectOneUser(UserVO userVO);
 
 	public int updateUserInfo(UserVO userVO);
+	
+	public int updateUserInfos(UserVO userVO);
 
 	public int deleteOneUser(String userId);
-
-	//public int selectAllUserCount(UserSearchVO userSearchVO);
 
 	public int changeUser(String beforeAuthriztion, String afterAuthriztion);
 
 	public int selectCountByUserId(String userId);
-	
+
 }

@@ -50,20 +50,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateUser(UserVO user) {
 
-		UserVO tempUserVo = getOneUser(user.getUserId());
-		if (user.getAuthorizationId() != null && user.getAuthorizationId().length() > 0) {
-			tempUserVo.setAuthorizationId(user.getAuthorizationId());
-		}
-		if (user.getPassword() != null && user.getPassword().length() > 0) {
-			tempUserVo.setPassword(user.getPassword());
-		}
-		return userBiz.updateUser(tempUserVo);
+	  return userBiz.updateUser(user);
 	}
 
 	@Override
 	public boolean deleteOneUser(String userId) {
 
 		return userBiz.deleteOneUser(userId);
+	}
+	
+	@Override
+	public boolean deleteCheckUser(String[] userIdCheck) {
+		
+		for(String userId : userIdCheck){
+			userBiz.deleteOneUser(userId);
+		}
+		return true;
 	}
 
 	@Override
@@ -82,7 +84,7 @@ public class UserServiceImpl implements UserService {
 			userVO = new UserVO();
 			userVO.setUserId(userId);
 			userVO.setAuthorizationId(afterAuthorization);
-			isSuccess = userBiz.updateUser(userVO);
+			isSuccess = userBiz.updateUsers(userVO);
 		}
 		
 		return isSuccess;
@@ -102,12 +104,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean isDuplicatedUserId(String userId) {
-		return userBiz.isDuplicatedUserId(userId);
+	public boolean isDuplicatedUserId(String userId ) {
+		return userBiz.isDuplicatedUserId(userId );
 	}
 
 	public UserVO loginUser(UserVO user) {
 		return userBiz.loginUser(user);
 	}
+
+
+
 
 }

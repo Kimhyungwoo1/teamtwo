@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
 body {
+	
 	font-size : 12px;
 	font-family : Dotum, '돋움', Helvetica, AppleSDGothicNeo, sans-serif;
 }
@@ -10,14 +11,16 @@ span {
 }
 
 #tableContent {
-	width : 700px;
+	width : 900px;
 	height : 570px;
 	table-layout: fixed;
 	word-break: break-all;
 }
 
-table {
-	width : 700px;
+#listTable {
+	margin : auto;
+	text-align:center;
+	width : 900px;
 	height : 570px;
 	table-layout: fixed;
 	word-break: break-all;

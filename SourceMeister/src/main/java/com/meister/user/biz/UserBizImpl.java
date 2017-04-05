@@ -40,6 +40,11 @@ public class UserBizImpl implements UserBiz {
 
 		return userDao.updateUserInfo(user) > 0;
 	}
+	
+	@Override
+	public boolean updateUsers(UserVO user) {
+		return userDao.updateUserInfos(user) > 0;
+	}
 
 	@Override
 	public boolean deleteOneUser(String userId) {
@@ -54,7 +59,7 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	
-	public boolean isDuplicatedUserId(String userId) {
+	public boolean isDuplicatedUserId(String userId ) {
 
 		return userDao.selectCountByUserId(userId) > 0;
 	}
@@ -64,6 +69,7 @@ public class UserBizImpl implements UserBiz {
 		
 		return (UserVO) userDao.selectOneUser(user);
 	}
+
 
 	
 
