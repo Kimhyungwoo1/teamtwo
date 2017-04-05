@@ -36,8 +36,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public boolean deleteReply(String replyId) {
-		return replyBiz.deleteReply(replyId);
+	public boolean deleteReply(String replyId, int childCnt) {
+		return replyBiz.deleteReply(replyId,childCnt);
 	}
 
 	@Override

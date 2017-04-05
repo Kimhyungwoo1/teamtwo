@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +18,6 @@ $().ready(function () {
 		}
 	});
 		
-	
-
 	$("#searchForm").find("input[type=image]").click(function() {
 		submitForm();
 	});
@@ -35,10 +32,9 @@ $().ready(function () {
 	
 	 var myHilitor = new Hilitor("#table-content");
 	  myHilitor.apply($("#keyword").val());
-	  
+
 	  $(".login").load("/SourceMeister/user/signIn");
-	  
-	
+
 });
 
 
@@ -51,9 +47,9 @@ $().ready(function () {
 </head>
 <body>
 
-	<div id="container">
+	<div id="container" >
 		
-		<div id="left">
+		<div id="left" draggable="true">
 
 		
 			<div class="rank-repo">
@@ -70,7 +66,7 @@ $().ready(function () {
 				<span>언어별 소스 수</span><br/>
 				<c:forEach items="${languages}" var="languages">
 						<a href="/SourceMeister/opensource?srcId=${param.srcId}&q=${search}&langId=${languages.id}">${languages.language}: ${languages.count}</a><br>
-				</c:forEach><br />
+				</c:forEach><br /> 
 			</div>
 			
 		</div>
@@ -81,10 +77,8 @@ $().ready(function () {
 			
 				<br/><br/><br/>
 				<form id="searchForm">
-
 					<input id="keyword" name="search" type="text" value="${search}" /> 
 					<input type="image" src="/SourceMeister/static/img/search-icon2.png" alt="Submit" width="40" height="40" style="position:relative; top:17px;">
-
 				</form>
 				
 				<c:if test="${ not empty page}">
@@ -119,9 +113,12 @@ $().ready(function () {
 			
 	
 			<div class="login">
+<<<<<<< HEAD
+=======
+				<%-- <c:import url="/user/signIn" /> --%>
+>>>>>>> ehm
 			</div>
 
-			
 		  
 			<div id="middle-content">
 				<jsp:include page="${includeUrl}"></jsp:include>
@@ -141,4 +138,4 @@ $().ready(function () {
 		
 </body>
 </html>
-			
+

@@ -16,6 +16,8 @@ public interface ReplyDao {
 	public int insertReply(ReplyVO replyVO);
 
 	public int deleteReply(String replyId);
+	
+	public int deleteReplyByParentId(String parentId);
 
 	public int updateReply(ReplyVO replyVO);
 
