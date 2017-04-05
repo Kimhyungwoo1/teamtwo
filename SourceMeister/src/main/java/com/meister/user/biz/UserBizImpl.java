@@ -54,7 +54,7 @@ public class UserBizImpl implements UserBiz {
 	}
 
 	
-	public boolean isDuplicatedUserId(String userId) {
+	public boolean isDuplicatedUserId(String userId ) {
 
 		return userDao.selectCountByUserId(userId) > 0;
 	}
@@ -64,6 +64,7 @@ public class UserBizImpl implements UserBiz {
 		
 		return (UserVO) userDao.selectOneUser(user);
 	}
+
 
 	
 

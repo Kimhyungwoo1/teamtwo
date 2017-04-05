@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 
-public class DoChangeAuthorizationServlet extends HttpServlet {
+public class DoUserRemoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UserService userService;
 	
-	public DoChangeAuthorizationServlet() {
+	public DoUserRemoveServlet() {
 		userService = new UserServiceImpl();
 	}
 
@@ -27,21 +27,12 @@ public class DoChangeAuthorizationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String authBefore = request.getParameter("authBefore");
-		String authAfter = request.getParameter("authAfter");
-		String[] userId = request.getParameterValues("authCheck");
+		String[] userId = request.getParameterValues("userCheck");
 		
-		boolean change = false;
-		boolean changeCheck = false;
+		boolean userDelete = userService.deleteCheckUser(userId);
 		
-		if (userId == null){
-			change = userService.changeUser(authBefore, authAfter);
-		} else {
-			changeCheck = userService.changeCheckUser(userId, authBefore, authAfter);
-		}
-
-		if( change || changeCheck ) {
-			response.sendRedirect("/SourceMeister/authorizationadmin");
+		if( userDelete ){
+			response.sendRedirect("/SourceMeister/useradmin");
 		}
 	}
 

@@ -20,6 +20,7 @@ $().ready(function () {
 	});
 		
 	
+
 	$("#searchForm").find("input[type=image]").click(function() {
 		submitForm();
 	});
@@ -51,7 +52,7 @@ $().ready(function () {
 	<div id="container">
 		
 		<div id="left">
-			
+
 		
 			<div class="rank-repo">
 				<span>저장소별 소스 수</span><br/>
@@ -78,8 +79,10 @@ $().ready(function () {
 			
 				<br/><br/><br/>
 				<form id="searchForm">
+
 					<input id="keyword" name="search" type="text" value="${search}" /> 
 					<input type="image" src="/SourceMeister/static/img/search-icon2.png" alt="Submit" width="40" height="40" style="position:relative; top:17px;">
+
 				</form>
 				
 				<c:if test="${ not empty page}">
@@ -112,9 +115,11 @@ $().ready(function () {
 					
 			</div>
 			
+	
 			<div class="login">
-			 	<c:import url="/user/signIn" /> 	
+				<jsp:include page="/WEB-INF/view/user/signIn.jsp" />
 			</div>
+
 			
 		  
 			<div id="middle-content">

@@ -10,15 +10,16 @@
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
 
-	$().ready(function() {
-		$("tr").click(function(){
-			var opensourceId = $(this).data("opensourceid");
-			$("#list").hide();
-			 $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId,{},function(){
-				 $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
-			 });
-		});
+
+$().ready(function() {
+	$("tr").click(function(){
+		var opensourceId = $(this).data("opensourceid");
+		$("#list").hide();
+		 $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId,{},function(){
+			 $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+		 });
 	});
+});
 
 
 </script>
@@ -60,10 +61,13 @@
 
 		</table>
 
+
 	</div>
 
 </div>
-<div id="detail"></div>
+
+<div id="detail"></div><br/>
+
 <div id="replyMain"></div>
 
 </body>

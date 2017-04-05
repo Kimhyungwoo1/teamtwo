@@ -21,6 +21,8 @@ public interface UserService {
 
 	public boolean deleteOneUser(String userId);
 	
+	public boolean deleteCheckUser(String[] userIdCheck);
+	
 	public boolean changeUser(String beforeAuthorization, String afterAuthorization);
 
 	public boolean changeCheckUser(String [] userId, String beforeAuthorization, String afterAuthorization);
@@ -28,5 +30,6 @@ public interface UserService {
 	public Map<String, Object> getOneUserWithAuthorizations(String userId);
 
 	public boolean isDuplicatedUserId(String userId);
+
 
 }
