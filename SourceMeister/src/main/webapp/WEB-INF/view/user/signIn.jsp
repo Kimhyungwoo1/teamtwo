@@ -44,13 +44,14 @@
 	</c:if>
 
 	<c:if test="${not empty sessionScope._USER_}">
-						${sessionScope._USER_.userName}님, 환영합니다! <br/>
-						<a href="/SourceMeister/user/doSignOut">로그아웃</a>
-						<a href="/SourceMeister/user/signUpModify?userId=${sessionScope._USER_.userId}">회원정보수정</a>
-				</c:if>
-				<c:if test="${isAdminUser}" >
-					<a href="/SourceMeister/authorizationadmin">관리자 페이지</a>
-				</c:if>
+		${sessionScope._USER_.userName}님, 환영합니다! <br/>
+		<a href="/SourceMeister/user/doSignOut">로그아웃</a>
+		<a href="/SourceMeister/user/signUpModify?userId=${sessionScope._USER_.userId}">회원정보수정</a>
+	</c:if>
+	<br/>
+	<c:if test="${isAdminUser}">
+		<a href="/SourceMeister/authorizationadmin">관리자 페이지</a>
+	</c:if>
 
 
 </body>
