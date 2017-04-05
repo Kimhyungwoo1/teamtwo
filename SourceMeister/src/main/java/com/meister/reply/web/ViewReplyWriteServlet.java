@@ -31,9 +31,6 @@ public class ViewReplyWriteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO
-/*		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");*/
 		
 		String openSourceId = request.getParameter("openSourceId");
 		String comment = request.getParameter("comment");
@@ -60,6 +57,7 @@ public class ViewReplyWriteServlet extends HttpServlet {
 		replyVO.setParentReplyId(parentReplyId);
 		replyVO.setUserId(writer);
 		
+
 		
 		if( replyService.insertReply(replyVO) ) {
 			PrintWriter out = response.getWriter();
@@ -76,9 +74,13 @@ public class ViewReplyWriteServlet extends HttpServlet {
 		/*if ( replyService.insertReply(replyVO) ) {
 			response.sendRedirect("/SourceMeister/opensource/detail");
 			
+>>>>>>> ehm
 		}
 		else {
-			response.sendRedirect("/SourceMeister/reply/write");
+			PrintWriter out = response.getWriter();
+			out.write("FAIL");
+			out.flush();
+			out.close();
 		}
 		*/
 	}

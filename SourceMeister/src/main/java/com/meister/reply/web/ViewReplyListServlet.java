@@ -1,6 +1,7 @@
 package com.meister.reply.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -38,8 +39,8 @@ public class ViewReplyListServlet extends HttpServlet {
 		String pageNumber = request.getParameter("pageNumber");
 		String opensourceId = request.getParameter("opensourceId");
 		//TODO 
-		//openSourceId =  "XX01";
 		System.out.println("[[openSourceId]]" + opensourceId);
+
 		ReplySearchVO replySearchVO = new ReplySearchVO();
 
 		replySearchVO.getPager().setPageNumber(pageNumber);
@@ -53,6 +54,8 @@ public class ViewReplyListServlet extends HttpServlet {
 		String pages = pageExplorer.getPagingList("pageNo", "[@]", "PREV", "NEXT", "searchForm");
 	
 		request.setAttribute("pager", pages);
+		request.setAttribute("replyList", replyList);
+
 		request.setAttribute("replyList", replyList);
 
 		

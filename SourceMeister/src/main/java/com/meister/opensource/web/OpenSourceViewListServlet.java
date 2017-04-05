@@ -21,11 +21,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
+import com.meister.opensource.vo.SourceVO;
 
-
-
-
-public class OpenSourceViewListServlet extends HttpServlet {
+public class OpenSourceViewListServlet<T> extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public OpenSourceViewListServlet() {
@@ -34,29 +32,53 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
-		dispatcher.forward(request, response);
+
+		String pageNum = request.getParameter("pageNum");
+		String langId = request.getParameter("langId");
+		String srcId = request.getParameter("srcId");
+
+		if (pageNum != null || langId != null || srcId != null) {
+			
+			doPost(request, response);
+
+		}  else {
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
+			dispatcher.forward(request, response);
+		}
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String search = request.getParameter("search");
 
+		String langId = request.getParameter("langId");
+		String srcId = request.getParameter("srcId");
+		String search = (request.getParameter("search") == null) ? request.getParameter("q") :  request.getParameter("search"); 
+		String pageNum = (request.getParameter("pageNum") == null) ? "0" : request.getParameter("pageNum");
+		
+		langId = (langId == null) ? "" :  "&lan=" + langId;
+		srcId = (srcId == null) ? "" : "&src=" + srcId;
+
+	
 		System.out.println(search);
+		System.out.println(pageNum);
+
+		
+		search = search.replaceAll(" ", "+");
 
 		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/codesearch_I/");
-		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + search + "+ext:md");
 
-		// System.out.println(urlBuilder.toString());
+		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum + langId+srcId);
+
 
 		URL url = new URL(urlBuilder.toString());
+		System.out.println("first address = " + urlBuilder.toString());
+
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-
-		// System.out.println("Response code: " + conn.getResponseCode());
 
 		BufferedReader rd;
 
@@ -72,95 +94,54 @@ public class OpenSourceViewListServlet extends HttpServlet {
 			sb.append(line);
 		}
 
-		// System.out.println(sb.toString());
 		rd.close();
 		conn.disconnect();
 
+		// System.out.println("first parsing = " + sb.toString());
+
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray arr = object.getJSONArray("results"); // 獄쏄퀣肉�?�뫁�맄嚥�?�빊遺욱뀱?�꼵�� ?�씈�뱽??
-		String total = object.get("total").toString(); // Object嚥�?�빊遺욱뀱?�꼵�� ?�씈�뱽??
+		JSONArray resultarr = object.getJSONArray("results"); 
+																
+		JSONArray langArr = object.getJSONArray("language_filters");
+		JSONArray sourceArr = object.getJSONArray("source_filters");
+
+		// System.out.println("sourceArr = " + sourceArr.toString());
+
+		String total = object.get("total").toString(); 
+		String page = object.get("page").toString(); 
 
 		Gson gson = new Gson();
+		
+		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {};
+		List<SearchResultVO> resultList = gson.fromJson(resultarr.toString(), token.getType());
 
-		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {
-		};
-		List<SearchResultVO> resultList = gson.fromJson(arr.toString(), token.getType());
+		TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {};
+		List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
+
+		TypeToken<List<SourceVO>> token3 = new TypeToken<List<SourceVO>>() {};
+		List<SourceVO> sourceList = gson.fromJson(sourceArr.toString(), token3.getType());
 
 		request.setAttribute("results", resultList);
+		request.setAttribute("languages", langList);
+		request.setAttribute("sources", sourceList);
+
+		request.setAttribute("page", page);
+		request.setAttribute("search", search);
 		request.setAttribute("count", total);
-
-		// 2筌�?野꺜�??
-		for (SearchResultVO results2 : resultList) {
-			String tempUrl = results2.getRepo().replaceAll("[.]git", "");
-			System.out.println(tempUrl);
-
-			String[] parameters = tempUrl.split("/");
-			/*System.out.println(parameters[2]);
-			System.out.println(parameters[3]);*/
-
-			StringBuilder urlBuilder2 = new StringBuilder("https://searchcode.com/api/codesearch_I/");
-			urlBuilder2.append(
-					"?" + URLEncoder.encode("q", "UTF-8") + "=<" + "+" + "repo:" + parameters[3] + "/" + parameters[4]);
-
-			System.out.println(urlBuilder2.toString());
-
-			URL url2 = new URL(urlBuilder2.toString());
-			HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
-			conn2.setRequestMethod("GET");
-			conn2.setRequestProperty("Content-type", "application/json");
-
-			// System.out.println("Response code: " + conn2.getResponseCode());
-
-			BufferedReader rd2;
-
-			if (conn2.getResponseCode() >= 200 && conn2.getResponseCode() <= 300) {
-				rd2 = new BufferedReader(new InputStreamReader(conn2.getInputStream(), "UTF-8"));
-			} else {
-				rd2 = new BufferedReader(new InputStreamReader(conn2.getErrorStream(), "UTF-8"));
-			}
-
-			StringBuilder sb2 = new StringBuilder();
-			String line2;
-			while ((line2 = rd2.readLine()) != null) {
-				sb2.append(line2);
-			}
-
-			System.out.println(sb2.toString());
-			rd2.close();
-			conn2.disconnect();
-
-			JSONObject object2 = new JSONObject(sb2.toString());
-
-			JSONArray langArr = object2.getJSONArray("language_filters");
-
-			String langTotal = object2.get("total").toString();
-
-			
-			
-			if (!langTotal.equals("0")) {
-
-				TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {
-				};
-				List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
-				
-				
-				results2.setLangArr(langList);
-				
-				
-			}
-
-		}
-
 		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/list.jsp");
-		
-		
-		
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);
 
 	}
+	
+	/*
+	public void tokenList(JSONArray resultArr, T t) {
+		Gson gson = new Gson();
+		TypeToken<List<?>> token = new TypeToken<List<?>>() {};
+		List<?> result = gson.fromJson(resultArr.toString(), token.getType());
+	}
+	*/
 
 }
-

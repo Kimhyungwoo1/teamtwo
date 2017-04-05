@@ -72,6 +72,10 @@
 
 				if (jsonObj.duplicated) {
 					alert("입력한 ID는 사용중입니다.\n다른 ID를 입력하세요");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 				} else {
 					$("#signUpForm").attr({
 						"method" : "post",
@@ -105,6 +109,10 @@
 </head>
 <body>
 	<c:if test="${not empty param.errorCode }">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 		<div>
 			<c:choose>
 				<c:when test="${param.errorCode == 0 }">
@@ -119,7 +127,10 @@
 				<c:when test="${param.errorCode == 3 }">
 					이미 사용중인 ID 입니다.
 				</c:when>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 				<c:otherwise>
 					????
 				</c:otherwise>
@@ -128,7 +139,10 @@
 	</c:if>
 	<h1>회원가입 페이지</h1>
 	<form id="signUpForm">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 		<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
 			placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
 
@@ -146,7 +160,10 @@
 			type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
 
 		<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 	</form>
 </body>
 </html>

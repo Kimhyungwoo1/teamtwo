@@ -9,5 +9,7 @@ public interface OpensourceDao {
 	public int insertOneOpensource(String opensourceId);
 	
 	public int updateOneOpensource(String opensourceId);
+	
+	public OpensourceVO selectRankLikeCount();
 
 }

@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.meister.common.constants.AuthConst;
+
 import com.meister.user.vo.UserVO;
+
 
 public class ViewSignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +36,7 @@ public class ViewSignInServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
 			dispatcher.forward(request, response);
 		} 
+		
 		else{
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
 			dispatcher.forward(request, response);

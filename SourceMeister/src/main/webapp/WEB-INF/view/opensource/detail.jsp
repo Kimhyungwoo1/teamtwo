@@ -63,6 +63,7 @@
 
 			<input type="hidden" id="sourceUrl" value="${sourceUrl}">
 			<input type="hidden" id="repoName" value="${repoName}">
+			<input type="hidden" id="title" value="${title}">
 			<div class="header">
 				<div style="display:inline-block;">
 					<table class="table">
