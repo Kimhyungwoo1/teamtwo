@@ -74,7 +74,6 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setGender(userGender);
 		user.setEmail(userEmail);
 		user.setAuthorizationId(AuthConst.NOMAL_USER);
-		
 
 		if (userService.registNewUser(user)) { 
 			System.out.println("�쉶�썝媛��엯 �꽦怨�");
