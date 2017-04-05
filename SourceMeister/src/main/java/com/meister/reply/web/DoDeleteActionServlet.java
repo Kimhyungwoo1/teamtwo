@@ -42,8 +42,16 @@ public class DoDeleteActionServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String replyId = request.getParameter("replyId");
-	System.out.println("deletePost");
-		if( replyService.deleteReply(replyId) ) {
+		String childCntParam = request.getParameter("childCnt");
+		
+		int childCnt = 0;
+		try {
+			childCnt = Integer.parseInt(childCntParam);
+		} catch (NumberFormatException e) {
+			throw new RuntimeException("대댓글 count 를 가져오지 못했습니다(delete)");
+		}
+		
+		if( replyService.deleteReply(replyId,childCnt) ) {
 			PrintWriter out = response.getWriter();
 			out.write("OK");
 			out.flush();

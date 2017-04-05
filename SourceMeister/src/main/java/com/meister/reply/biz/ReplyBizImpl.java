@@ -35,7 +35,11 @@ public class ReplyBizImpl implements ReplyBiz {
 	}
 
 	@Override
-	public boolean deleteReply(String replyId) {
+	public boolean deleteReply(String replyId,int childCnt) {
+		if (childCnt != 0 ){
+			replyDao.deleteReplyByParentId(replyId);
+		}
+		replyDao.deleteReplyByParentId(replyId);
 		return replyDao.deleteReply(replyId) > 0;
 	}
 

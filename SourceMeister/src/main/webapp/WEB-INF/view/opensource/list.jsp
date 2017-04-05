@@ -9,8 +9,6 @@
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/list_layout.css" />
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
-
-
 $().ready(function() {
 	$("tr").click(function(){
 		var opensourceId = $(this).data("opensourceid");
@@ -34,6 +32,7 @@ $().ready(function() {
 	<div id=table-content>
 
 		<table id="listTable" border = 1>
+
 
 			<colgroup>
 				<col span="1" style="width: 15%;">
@@ -65,8 +64,7 @@ $().ready(function() {
 
 </div>
 
-<div id="detail"></div><br/>
-
+<div id="detail"></div><hr/>
 <div id="replyMain"></div>
 
 </body>
