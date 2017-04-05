@@ -24,6 +24,7 @@
 				}
 			});
 		});	
+
 		//등록
 			$("#writeReplyBtn").click(function(){
 				//validation check
