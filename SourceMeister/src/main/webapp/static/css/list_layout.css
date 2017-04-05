@@ -17,7 +17,7 @@ span {
 	word-break: break-all;
 }
 
-table {
+#tbl {
 	margin : auto;
 	text-align:center;
 	width : 900px;

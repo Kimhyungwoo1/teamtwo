@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/list_layout.css" />
 <script type="text/javascript">
 
 	$().ready(function() {
@@ -27,44 +28,9 @@
 
 <div id="list">
 	<p>총 ${count}개가 나왔습니다.</p>
-
-<<<<<<< HEAD
-	
-	<div id=table-content>
-	
-	<table>
-	
-		<colgroup>
-			<col span="1" style="width: 15%;">
-			<col span="1" style="width: 85%;">
-		</colgroup>
-		
-		<c:forEach items="${results}" var="result">
-			<tr>
-				<td>
-					<c:forEach items="${result.langArr}" var="lang" begin="0" end="2">
-						${lang.language}:${lang.count }<br>
-					</c:forEach><br />
-				</td>
-				<td>
-					<div id="detailLink"><a href="/SourceMeister/opensource/detail?opensourceId=${result.id}">${result.name}---${result.repo }</a><br /> <br /> 
-							<c:forEach items="${result.lines }" var="line">
-								<div>
-									<span>${line.value}</span>
-								</div>
-							</c:forEach>
-					</div>
-					
-					<br/>
-					<br/>
-				</td>
-			</tr>
-		</c:forEach>
-
-=======
 	<div id=table-content>
 
-		<table border="1">
+		<table id="tbl" border="1">
 
 			<colgroup>
 				<col span="1" style="width: 15%;">
@@ -91,7 +57,6 @@
 			</c:forEach>
 
 		</table>
->>>>>>> jun
 
 	</div>
 

@@ -70,10 +70,10 @@ public class ViewSignInServlet extends HttpServlet {
 			
 			StringBuffer script = new StringBuffer();
 			
-			script.append(" <script type='text/javascript'>    ");
+		/*	script.append(" <script type='text/javascript'>    ");
 			script.append(" alert('�븘�씠�뵒 諛� 鍮꾨쾲�씠 �삱諛붾Ⅴ寃� �엯�젰�릺吏� �븡�븯嫄곕굹  �뾾�뒗�젙蹂� �엯�땲�떎!');   ");
 			script.append(" location='/SourceMeister/opensource';   ");
-			script.append(" </script>    ");
+			script.append(" </script>    ");*/
 			
 			
 			PrintWriter writer = response.getWriter();
