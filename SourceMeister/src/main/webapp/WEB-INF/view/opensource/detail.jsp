@@ -87,7 +87,7 @@
 				<textarea readonly="readonly" style="resize: none; wrap:hard;" cols="110" rows="20">${code}</textarea>
 			</div><br/>
 			
-			<a id="fileTreeBtn">Show File Tree</a><br/><br/>
+			<a id="fileTreeBtn" style="cursor:pointer;">Show File Tree</a><br/><br/>
 			<div class="fileTree" style="display:none;">
 				${fileTree}
 			</div><br/><br/>

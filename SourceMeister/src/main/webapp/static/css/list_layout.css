@@ -8,6 +8,8 @@ body {
 
 span {
 	font-size : 15px;
+	color : #5194f9;
+	font-weight: bold;
 }
 
 #tableContent {
