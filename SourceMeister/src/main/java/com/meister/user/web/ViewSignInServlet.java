@@ -33,12 +33,12 @@ public class ViewSignInServlet extends HttpServlet {
 		UserVO users = (UserVO) session.getAttribute("_USER_");
 		if(users != null){
 			request.setAttribute("isAdminUser", users.getAuthorizationId().equals(AuthConst.ADMIN_USER));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
-			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
+			dispatcher.include(request, response);
 		} 
 		else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
-			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
+			dispatcher.include(request, response);
 		}
 		
 	}
@@ -65,9 +65,7 @@ public class ViewSignInServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("_USER_", userVO);
 			System.out.println("User ID : " + userVO.getUserId());
-			doGet(request, response);
-			return ;
-			//response.sendRedirect("/SourceMeister/opensource");
+			response.sendRedirect("/SourceMeister/opensource");
 
 		} else {
 

@@ -56,7 +56,7 @@ $().ready(function () {
 		
 		<div id="left">
 			<div class="login">
-				<c:import url="/WEB-INF/view/user/signIn.jsp" />
+				<jsp:include page="/user/signIn" />
 			</div>
 			
 			<div class="rank-repo" style="overflow-y: auto">
