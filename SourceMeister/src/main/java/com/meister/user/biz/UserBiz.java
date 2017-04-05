@@ -14,6 +14,8 @@ public interface UserBiz {
 	public UserVO getOneUser(UserVO userVO);
 
 	public boolean updateUser(UserVO user);
+	
+	public boolean updateUsers(UserVO user);
 
 	public boolean deleteOneUser(String userId);
 

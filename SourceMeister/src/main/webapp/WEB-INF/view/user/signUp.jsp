@@ -74,6 +74,7 @@
 						"method" : "post",
 						"action" : "/SourceMeister/user/signUp"
 					});
+					alert("회원가입 완료")
 					$("#signUpForm").submit();
 
 				}

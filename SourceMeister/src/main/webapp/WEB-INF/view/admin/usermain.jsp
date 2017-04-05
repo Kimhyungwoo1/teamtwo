@@ -19,8 +19,10 @@
 				"method":"post",
 				"action":"/SourceMeister/user/delete"
 			});
+			alert("삭제 완료");
 			$("#removeUser").submit();
 		});
+		
 		
 	});
 </script>
