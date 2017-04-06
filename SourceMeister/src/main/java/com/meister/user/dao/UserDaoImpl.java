@@ -172,7 +172,7 @@ public class UserDaoImpl implements UserDao {
 			query.append("				, A.ATHRZTN_NM                    ");
 			query.append("	FROM 		USR U                            ");
 			query.append("	 			, ATHRZTN A                        ");
-			query.append("	WHERE 		U.ATHRZTN_ID = A.ATHRZTN_ID   ");
+			query.append("	WHERE 		U.ATHRZTN_ID = A.ATHRZTN_ID(+)   ");
 			query.append("	AND   		U.USR_ID = ?                    ");
 
 			stmt = conn.prepareStatement(query.toString());
@@ -193,6 +193,7 @@ public class UserDaoImpl implements UserDao {
 				userVO.setNickName(rs.getString("USR_NM"));
 				userVO.getAuthorizationVO().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				userVO.getAuthorizationVO().setAuthorizationName(rs.getString("ATHRZTN_NM"));
+				System.out.println("email dao2" +userVO.getEmail() );
 			}
 
 			// System.out.println("user pwd" + userVO.getPassword());
@@ -202,13 +203,18 @@ public class UserDaoImpl implements UserDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
 			if (stmt != null) {
 				try {
 					stmt.close();
 				} catch (SQLException e) {
 				}
 			}
-
 			if (conn != null) {
 				try {
 					conn.close();
@@ -269,7 +275,7 @@ public class UserDaoImpl implements UserDao {
 				user.setAuthorizationId(rs.getString("U_ATHRZTN_ID"));
 				user.getAuthorizationVO().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				user.getAuthorizationVO().setAuthorizationName(rs.getString("ATHRZTN_NM"));
-
+				System.out.println("email dao"+user.getEmail());
 			}
 
 			return user;
