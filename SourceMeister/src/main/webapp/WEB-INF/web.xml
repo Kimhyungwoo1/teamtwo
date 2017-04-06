@@ -103,8 +103,8 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>DoSignInActionServlet</display-name>
-		<servlet-name>DoSignInActionServlet</servlet-name>
+		<display-name>DoSignInServlet</display-name>
+		<servlet-name>DoSignInServlet</servlet-name>
 		<servlet-class>com.meister.user.web.DoSignInActionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
@@ -147,10 +147,6 @@
 		<servlet-name>IndexActionServlet</servlet-name>
 		<url-pattern>/index</url-pattern>
 	</servlet-mapping>
-	
-	
-	
-	
 	<servlet>
 		<description></description>
 		<display-name>ViewReplyWriteServlet</display-name>
