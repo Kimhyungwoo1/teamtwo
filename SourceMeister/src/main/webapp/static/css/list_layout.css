@@ -8,7 +8,7 @@ body {
 
 span {
 	font-size : 15px;
-	color : #5194f9;
+	color : #111c42;
 	font-weight: bold;
 }
 
@@ -27,4 +27,17 @@ span {
 	height : 570px;
 	table-layout: fixed;
 	word-break: break-all;
+}
+
+.odd {
+	background-color: #FFFFFF;
+}
+
+.even {
+	background-color: #e3e6ea;
+}
+
+.odd td, .even td  {
+	padding-top : 8px;
+	padding-bottom: 8px;
 }

@@ -41,7 +41,7 @@
 			</form>
 			
 			<form id="userHelp">
-				<a href="/SourceMeister/user/signUp"> 회원가입</a>
+				<a href="/SourceMeister/user/signUp" style="text-decoration: none; color: #000000"> 회원가입</a>
 			</form>
 		</c:if>
 	

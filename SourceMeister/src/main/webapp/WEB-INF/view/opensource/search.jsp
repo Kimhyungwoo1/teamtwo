@@ -9,8 +9,8 @@
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/hilitor.js"></script>
 
-<link rel="stylesheet" type="text/css"
-	href="/SourceMeister/static/css/search_layout.css" />
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/search_layout.css" />
+<link href="https://fonts.googleapis.com/css?family=Damion|Work+Sans" rel="stylesheet">
 
 <script type="text/javascript">
 	$().ready(function() {
@@ -21,14 +21,18 @@
 			}
 		});
 
-		$("#searchForm").find("input[type=image]").click(function() {
+		/* $("#searchForm").find("input[type=image]").click(function() {
+			submitForm();
+		}); */
+		
+		$("#Submit").click(function() {
 			submitForm();
 		});
 
 		function submitForm() {
 
 			$("#searchForm").attr({
-				"action" : "/SourceMeister/opensource",
+				"action" : "/SourceMeister/opensource?search="+$("#keyword").val(),
 				"method" : "post"
 			}).submit();
 		}
@@ -49,7 +53,7 @@
 </head>
 <body>
 
-	<div id="container">
+	<div id="container" style="font-family: Work Sans">
 
 		<div id="left">
 		
@@ -90,18 +94,20 @@
 
 			<div id="search">
 
-				<img src="/SourceMeister/static/img/index.png">
-  
-				<form id="searchForm">
+				<a href = "/SourceMeister/index" style="color:black; font-family:'Damion', sans-serif; font-size: 45px; text-decoration: none">Source Meister</a>
+				<form id="searchForm" style="margin-top:10px">
 
-					<input id="keyword" name="search" type="text" value="${search}" />
-					<input type="image"
+
+					<input id="keyword" type="text" value="${search}" style="height:19px; margin-left:55px;" />
+					<!-- <input type="image"
 						src="/SourceMeister/static/img/search-icon2.png" alt="Submit"
-						width="33" height="33" style="position: relative; top: 17px;">
+						width="33" height="33" style="position: relative; top: 17px;"> -->
+					<input type="button" style="margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" id="Submit" value="Search">
 
 
 				</form>
--
+
+
 				<c:if test="${ not empty page}">
 
 					<c:if test="${page == 1}">
@@ -128,20 +134,8 @@
 							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 4 }">${page+5}</a>
 
 					</c:if>
-					<c:if test="${page gt 1}">
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page-1}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page}">${page}</a>
-						<span>${page+1}</span>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
-					</c:if>
-
 				</c:if>
-
+				</div>
 
 			</div>
 

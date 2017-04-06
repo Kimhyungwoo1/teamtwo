@@ -46,6 +46,7 @@
 		});
 		
 		
+
 	});
 
 </script>
@@ -56,8 +57,8 @@
 		
 		<div class="row">
 			<div class="title">
-				<h4 class="codepath">
-					<a href="${sourceUrl}">${repoName}</a>
+				<h4 class="codepath" style="font-size: 17px">
+					<a href="${sourceUrl}" style="text-decoration: none;">${repoName}</a>
 					${location}/${fileName}
 				</h4>
 			</div>
@@ -74,7 +75,7 @@
 							</tr>
 							<tr>
 								<th>Repository</th>
-								<td><a href="${sourceUrl}">${sourceUrl}</a></td>
+								<td><a href="${sourceUrl}" style="text-decoration: none; color:black">${sourceUrl}</a></td>
 							</tr>
 						</tbody>
 					</table>
