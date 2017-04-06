@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.meister.common.constants.AuthConst;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
@@ -72,6 +73,7 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setNickName(userNickName);
 		user.setGender(userGender);
 		user.setEmail(userEmail);
+		user.setAuthorizationId(AuthConst.NOMAL_USER);
 
 		if (userService.registNewUser(user)) { 
 			System.out.println("�쉶�썝媛��엯 �꽦怨�");

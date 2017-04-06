@@ -18,6 +18,15 @@ strong {
 	height : 40px;
 }
 
+#search > img {
+	display: initial;
+	height:60px;
+	width : 250px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+
 #container {
 	width:1200px;
 	margin : 0px auto;
@@ -80,7 +89,7 @@ strong {
 
 
 #search {
-	width: 75%;
+	width: 100%;
 	height:145px;
 	text-align:center;
 	border : 1px solid #bcbcbc;

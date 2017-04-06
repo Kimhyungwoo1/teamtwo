@@ -14,13 +14,15 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function () {
-		$("#delete").click(function() {
-			$.post("/SourceMeister/user/delete", {
-				"userId":$("#userId").val()
-			}, function(){
+		$("#removeUser").find("input[type=button]").click(function () {
+			$("#removeUser").attr({
+				"method":"post",
+				"action":"/SourceMeister/user/delete"
 			});
-			location.reload();
+			alert("삭제 완료");
+			$("#removeUser").submit();
 		});
+		
 		
 	});
 </script>
@@ -51,7 +53,7 @@
 					</tr>
 					<c:forEach items="${userList}" var="user">
 					<tr>
-						<td><input type="checkbox" name="authCheck" value="${user.userId}" form="removeUser"/></td>
+						<td><input type="checkbox" name="userCheck" value="${user.userId}" form="removeUser"/></td>
 						<td>${user.userId}</td>
 						<td>${user.userName}</td>
 						<td>${user.nickName}</td>
@@ -62,36 +64,14 @@
 					</c:forEach>
 			</table>
 		</div>
-		<!-- <select id="deleteUser" name="authBefore">
-						 <option value="">선택하세요</option>
-						<c:forEach items="${userList}" var="userList">
-							<option id="userId" value="${userList.userId}">${userList.userName}</option>
-						</c:forEach> 
-				</select> -->
 		<div id=add>
-			<form id="removeUser">
-				<a>유저 삭제</a>
-					
-					<input type="button" id="delete" value="확인"/>
-				</form>
+			 <form id="removeUser">
+				 <a>유저 삭제</a>
+			 	<input type="button" value="확인" />
+			 </form>
 		</div>
 		<form id="allAuth">
-			<!-- <a>권한 변경</a>
-			<select name="authBefore">
-				<option value="">권한없음</option>
-				<c:forEach items="${authList}" var="authList">
-					<option value="${authList.authorizationId}">${authList.authorizationName}</option>
-				</c:forEach>
-			</select>
-			<span>을</span>
-			<select name="authAfter">
-				<option value="">권한없음</option>
-				<c:forEach items="${authList}" var="authList">
-					<option value="${authList.authorizationId}">${authList.authorizationName}</option>
-				</c:forEach>
-			</select>
-			<span>로</span>
-			<input type="button" value="변경"/> -->
+			
 		</form>
 	</div>
 	<div id=writer> copy writer Source Meister</div>

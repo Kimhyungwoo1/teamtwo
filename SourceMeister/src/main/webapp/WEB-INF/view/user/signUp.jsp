@@ -6,12 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/signUp.css"/>
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/json2.js"></script>
 
 <script type="text/javascript">
 	$().ready(function() {
+		
+		var checkPassword = 0;
+		
 		$("#signUpForm").find("input[type=button]").click(function() {
 
 			if ($("#userId").val() == "") {
@@ -32,14 +36,14 @@
 				return;
 			}
 
-			if ($("#email").val() == "") {
-				alert("이메일을 @와같이 입력해주세요");
-				$("#email").focus();
+			if ($("#userPassword").val().length < 7) {
+				alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
+				$("#userPassword").focus();
 				return;
 			}
-
-			if ($("#userPassword").val().length < 7) { 
-				alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
+			
+			if(checkPassword == 0) {
+				alert("비밀번호가 일치하지 않습니다.");
 				$("#userPassword").focus();
 				return;
 			}
@@ -72,15 +76,13 @@
 
 				if (jsonObj.duplicated) {
 					alert("입력한 ID는 사용중입니다.\n다른 ID를 입력하세요");
-<<<<<<< HEAD
-=======
 
->>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 				} else {
 					$("#signUpForm").attr({
 						"method" : "post",
 						"action" : "/SourceMeister/user/signUp"
 					});
+					alert("회원가입 완료")
 					$("#signUpForm").submit();
 
 				}
@@ -89,6 +91,8 @@
 			});
 
 		});
+		
+		
 
 		$("#userId").keyup(function() {
 			$.post("/SourceMeister/user/checkDuplicate", {
@@ -104,15 +108,28 @@
 				}
 			});
 		});
+			$("#userPassword").keyup(function () {
+				$("font[name=check]").text("");
+				
+			});
+			$("#checkPassword").keyup(function(){
+				if($("#userPassword").val()!=$("#checkPassword").val()){
+					$("font[name=check]").text("");
+					$("font[name=check]").html("암호틀림");
+					checkPassword = 0;
+					
+				}else{
+					$("font[name=check]").text("");
+					$("font[name=check]").html("암호일치");
+					checkPassword = 1;
+					
+				}
+			});
 	});
 </script>
 </head>
 <body>
 	<c:if test="${not empty param.errorCode }">
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 		<div>
 			<c:choose>
 				<c:when test="${param.errorCode == 0 }">
@@ -127,43 +144,44 @@
 				<c:when test="${param.errorCode == 3 }">
 					이미 사용중인 ID 입니다.
 				</c:when>
-<<<<<<< HEAD
 
-=======
->>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
 				<c:otherwise>
 					????
 				</c:otherwise>
 			</c:choose>
 		</div>
 	</c:if>
-	<h1>회원가입 페이지</h1>
-	<form id="signUpForm">
-<<<<<<< HEAD
 
-=======
->>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
-		<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
-			placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
+	<div id=total>
+		<h1>회원가입</h1>
+		<form id="signUpForm">
+	
+			<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
+				placeholder="아이디를 입력하세요" /> <br/>
+				
+				<font id="duplicated" size="2" color="red" ></font> <br /> 
+	
+			<span>닉네임 </span><br /> <input type="text" name="NickName"
+				id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
+			<br /> <input type="password" name="userPassword" id="userPassword"
+				placeholder="비밀번호 입력하세요" /><br /><br/>
+				 <span>비밀번호 확인</span> <br/>
+   				<input type="password" name="checkPassword" id= "checkPassword" placeholder="비밀번호 재입력 해주세요" /><br/>
+    		 	<font name="check" size="2" color="red"></font> 
+	
+			<h2>개인 정보</h2>
+			<hr />
+			<span>이름 </span> <br /> <input type="text" name="userName"
+				id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
+			</span> <br /> <input type="text" name="userGender" id="userGender"
+				placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
+				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
+				 
+	
+			<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
+	
+		</form>
+	</div>
 
-		<span>닉네임 </span><br /> <input type="text" name="NickName"
-			id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
-		<br /> <input type="password" name="userPassword" id="userPassword"
-			placeholder="비밀번호 입력하세요" /><br />
-
-		<h2>개인 정보</h2>
-		<hr />
-		<span>이름 </span> <br /> <input type="text" name="userName"
-			id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
-		</span> <br /> <input type="text" name="userGender" id="userGender"
-			placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
-			type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
-
-		<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
-<<<<<<< HEAD
-
-=======
->>>>>>> 0f19ccd332475ebcd36f20c822793fa20c170cc5
-	</form>
 </body>
 </html>

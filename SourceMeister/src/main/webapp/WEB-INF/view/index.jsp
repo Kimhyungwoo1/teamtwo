@@ -20,13 +20,13 @@ $().ready(function () {
 	});
 		
 	
-	$("#searchForm").find("input[type=image]").click(function() {
+	$("#indexForm").find("input[type=image]").click(function() {
 		submitForm();
 	});
 	
 	
 	function submitForm() {
-		$("#searchForm").attr({
+		$("#indexForm").attr({
 			"action" : "/SourceMeister/opensource",
 			"method" : "post"
 		}).submit();
@@ -41,7 +41,7 @@ $().ready(function () {
 <title></title>
 </head>
 <body>
-	<form id="searchForm">
+	<form id="indexForm">
 			<img src="/SourceMeister/static/img/index.png">
 			<input id="keyword" name="search" type="text"/> 
 			<input type="image" src="/SourceMeister/static/img/search-icon2.png" alt="Submit" width="40" height="40" style="position:relative; top:17px;">
