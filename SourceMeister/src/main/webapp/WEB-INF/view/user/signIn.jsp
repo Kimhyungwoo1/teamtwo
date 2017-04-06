@@ -33,13 +33,12 @@
 					placeholder="아이디를 입력하세요" /><br /> <input type="password"
 					name="userPassword" id="userPassword" placeholder="비밀번호를 입력하세요" /><br />
 			</div>
-			<div id="btn">
+			<br>
 				<input id="loginBtn" type="button" value="로그인" />
-			</div>
-			<div id="userHelp">
+			
 				<a href="/SourceMeister/user/signUp"><input type="button"
 					value="회원가입" /></a>
-			</div>
+			
 		</form>
 	</c:if>
 
