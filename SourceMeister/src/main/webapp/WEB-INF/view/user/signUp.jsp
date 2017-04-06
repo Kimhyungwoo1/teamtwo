@@ -177,7 +177,7 @@
 				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
 				 
 	
-			<br /> <br /> <input type="button" value="Submit" id="button" style="margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" /><br />
+			<br /> <br /> <input type="button" value="Submit" id="button" style="margin-left: -10px; border:0; outline: 0; background-color: #FFFFFF" /><br />
 	
 		</form>
 	</div>
