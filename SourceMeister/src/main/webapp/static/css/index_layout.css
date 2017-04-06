@@ -1,141 +1,157 @@
 @CHARSET "UTF-8";
 
 body {
-	font-size : 12px;
-	font-family : "Noto Sans Korean", "Apple SD Gothic Neo", "Nanum Barun Gothic", "Malgun Gothic", "돋옴", Dotum, sans-serif;
+	font-size: 12px;
+	font-family: "Noto Sans Korean", "Apple SD Gothic Neo",
+		"Nanum Barun Gothic", "Malgun Gothic", "돋옴", Dotum, sans-serif;
 }
 
 span {
+	font-size: 15px;
+}
+
+strong {
 	font-size : 15px;
 }
 
-#searchForm > input[type="text"] {
-	width : 400px;
-	height : 33px;
+#searchForm>input[type="text"] {
+	width: 400px;
+	height: 33px;
 }
 
 #container {
-	width:1200px;
-	margin : 0px auto;
-	text-align:center; 
-	
+	width: 1200px;
+	margin: 0px auto;
+	text-align: center;
 }
 
 #left {
-	width:20%;
-	display : inline-block;
+	width: 20%;
+	display: inline-block;
 	float: left;
 }
 
-#left > .login {
+#left>.login {
 	width: 100%;
 	height: 135px;
 	text-align: center;
 	display: table;
-	
 }
 
-#left > .searchRank {
-	width : 236px;
-	height : 145px;
-	margin : 0px;
-	padding : 0px;
-	background-color:#8000ff;
-	border : 1px solid #bcbcbc;
-	
-}
-
-
-
-#left > .rank-repo { 
-
-	width:100%;
-	height:304px;
-	text-align:center;
-	margin:0;
-	padding: 0 ;
+#left>.rank-repo {
+	width: 100%;
+	height: 304px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
 	background-color: #F4F3EF;
-	border-top : 1px solid #bcbcbc;
-	display : inline-block;
-	line-height : 270%;
+	border-top: 1px solid #bcbcbc;
+	display: inline-block;
+	line-height: 270%;
 	overflow-y: auto;
-	
 }
 
-#left > .rank-lan {
-	
-	width:100%;
-	height:292px;
-	text-align:center;
-	margin: 0 ;
-	padding: 0 ;
+#left > .rank-repo > a {
+	text-decoration: none;
+	color : #000000;
+}
+
+#left>.rank-lan {
+	width: 100%;
+	height: 292px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
 	background-color: #F4F3EF;
-	border-top : 1px solid #bcbcbc;
-	display : inline-block;
-	line-height : 270%;
+	border-top: 1px solid #bcbcbc;
+	display: inline-block;
+	line-height: 270%;
 	overflow-y: auto;
-	
+}
+
+#left > .rank-lan > a {
+	text-decoration: none;
+	color : #000000;
 }
 
 #middle {
-	width:80%;
-	display : inline-block;
+	width: 80%;
+	display: inline-block;
 	float: right;
 }
 
-
-
 #search {
 	width: 100%;
-	height:135px;
-	text-align:center;
+	height: 135px;
+	text-align: center;
 	/* border : 1px solid #bcbcbc; */
-	display : inline-block;
-	float : left;
+	display: inline-block;
+	float: left;
 }
 
-
-
+.pager > a {
+	text-decoration: none;
+	color:#000000;
+}
 
 #middle-content {
-	width : 100%;
-	height : 580px;
-	margin : 0px;
-	padding : 0px;
+	width: 100%;
+	height: 580px;
+	margin: 0px;
+	padding: 0px;
 	/* border-top : 1px solid #bcbcbc;  */
-	display : inline-block;
+	display: inline-block;
 	overflow-x: auto;
 	overflow-y: auto;
 }
 
-#right > #reply {
-	width : 236px;
-	height : 610px;
-	margin : 0px;
-	padding : 0px;
-	border : 1px solid #bcbcbc;
+#right>#reply {
+	width: 236px;
+	height: 610px;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #bcbcbc;
 }
 
-::-webkit-scrollbar-track
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 7px;
-    background-color: #F5F5F5;
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 7px;
+	background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar
-{
-    width: 7px;
-    background-color: #F5F5F5;
+::-webkit-scrollbar {
+	width: 7px;
+	background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar-thumb
-{
-    border-radius: 7px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #47befe;
+::-webkit-scrollbar-thumb {
+	border-radius: 7px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #727272;
+}
+
+#footer {
+	clear: both;
+	height: 80px;
+	text-align:center;
+}
+
+#footer > span {
+	font-size : 13px;
+}
+
+#indexForm {
+	vertical-align: middle;
+	position : absolute;
+	left : 32.2%;
+	top : 36%;
 }
 #copy > #copys {
 	text-align: center;
 }
 
+#indexForm > input[type="text"] {
+	width : 400px;
+	height : 33px;
+	margin-left:55px;
+}

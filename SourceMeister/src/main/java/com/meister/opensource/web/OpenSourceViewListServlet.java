@@ -35,8 +35,9 @@ public class OpenSourceViewListServlet<T> extends HttpServlet {
 		String pageNum = request.getParameter("pageNum");
 		String langId = request.getParameter("langId");
 		String srcId = request.getParameter("srcId");
+		String search = request.getParameter("search");
 
-		if (pageNum != null || langId != null || srcId != null) {
+		if (pageNum != null || langId != null || srcId != null|| search != null) {
 
 			doPost(request, response);
 
@@ -60,8 +61,8 @@ public class OpenSourceViewListServlet<T> extends HttpServlet {
 		langId = (langId == null) ? "" : "&lan=" + langId;
 		srcId = (srcId == null) ? "" : "&src=" + srcId;
 
-		System.out.println(search);
-		System.out.println(pageNum);
+		//System.out.println(search);
+		//System.out.println(pageNum);
 
 		search = search.replaceAll(" ", "+");
 
