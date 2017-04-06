@@ -88,6 +88,7 @@
 					<input type="image"
 						src="/SourceMeister/static/img/search-icon2.png" alt="Submit"
 						width="33" height="33" style="position: relative; top: 17px;">
+						width="33" height="33" style="position: relative; top: 17px;"/>
 
 				</form>
 
