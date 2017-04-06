@@ -52,6 +52,8 @@ public class DoSignInServlet extends HttpServlet {
 			response.sendRedirect(url);
 
 		} else {
+
+			
 			StringBuffer script = new StringBuffer();
 			
 			script.append(" <script type='text/javascript'>    ");
