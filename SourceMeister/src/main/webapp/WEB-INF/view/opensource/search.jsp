@@ -13,6 +13,18 @@
 	href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
 	$().ready(function() {
+		
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		$("#keyword").keydown(function(e) {
 			if (e.which == 13) { //13 : Enter코드
@@ -26,10 +38,15 @@
 
 		function submitForm() {
 
+			
+			
+			
 			$("#searchForm").attr({
-				"action" : "/SourceMeister/opensource",
+				"action" : "/SourceMeister/opensource?search="+$("#keyword").val(),
 				"method" : "post"
 			}).submit();
+			
+			
 		}
 
 		var myHilitor = new Hilitor("#table-content");
@@ -84,7 +101,7 @@
 				<a href = "/SourceMeister/opensource"><img src="/SourceMeister/static/img/screenshot_2017-04-05-17-13-s33_720.png" style="height:60px; width : 250px; cursor: pointer;"></a>
 				<form id="searchForm">
 
-					<input id="keyword" name="search" type="text" value="${search}" />
+					<input id="keyword" type="text" value="${search}" />
 					<input type="image"
 						src="/SourceMeister/static/img/search-icon2.png" alt="Submit"
 						width="33" height="33" style="position: relative; top: 17px;"/>
