@@ -26,9 +26,9 @@
 </head>
 <body>
 				
-	<div id=total>
+	<div id="total">
 		<c:if test="${empty sessionScope._USER_ }">
-	
+			<h3>로그인</h3>
 			<form id="signInForm">
 				<div id="userInfo">
 					<input type="text" name="userId" id="userId"
@@ -38,9 +38,10 @@
 				<br>
 					<input id="loginBtn" type="button" value="로그인" />
 				
-					<a href="/SourceMeister/user/signUp"><input type="button"
-						value="회원가입" /></a>
-				
+			</form>
+			
+			<form id="userHelp">
+				<a href="/SourceMeister/user/signUp"> 회원가입</a>
 			</form>
 		</c:if>
 	
