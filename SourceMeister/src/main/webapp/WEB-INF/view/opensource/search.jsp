@@ -151,10 +151,13 @@
 					<h3>검색해주세요</h3>
 				</c:if>
 				<jsp:include page="${includeUrl}"></jsp:include>
-			</div></div></div>
-
-			<p style="text-align : center;">Copyright </p>
-
+			</div>
+		</div>
+		<div id=copy>
+			<a id=copys>Copyright</a>
+		</div>
+	</div>
+			
 
 </body>
 </html>

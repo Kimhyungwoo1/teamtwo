@@ -28,7 +28,7 @@
 				
 	<div id="total">
 		<c:if test="${empty sessionScope._USER_ }">
-			<h3>로그인</h3>
+		
 			<form id="signInForm">
 				<div id="userInfo">
 					<input type="text" name="userId" id="userId"
