@@ -6,3 +6,34 @@
 	margin: 0 auto;
 	text-align: center;
 }
+
+#loginBtn {
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: normal;
+	height: 30px;
+	border: 1px solid #dcdcdc;
+	background: #f9f9f9;
+	border-radius: 5px;
+	margin-top: -50px;
+	width: 24.5%;
+	text-align: center;
+	border: 1px solid #bcbcbc;
+	margin-right: 3px;
+	float: right;
+}
+
+#userInfo {
+	margin-right: 60px;
+}
+
+*::-webkit-input-placeholder {
+	color: gray;
+	font-size: 12px;
+}
+
+#userHelp {
+	margin-top: -16px;
+	padding-right: 170px;
+
+}

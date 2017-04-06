@@ -120,7 +120,7 @@
 					
 				}else{
 					$("font[name=check]").text("");
-					$("font[name=check]").html("암호맞음");
+					$("font[name=check]").html("암호일치");
 					checkPassword = 1;
 					
 				}
@@ -157,12 +157,17 @@
 		<form id="signUpForm">
 	
 			<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
-				placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
+				placeholder="아이디를 입력하세요" /> <br/>
+				
+				<font id="duplicated" size="2" color="red" ></font> <br /> 
 	
 			<span>닉네임 </span><br /> <input type="text" name="NickName"
 				id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
 			<br /> <input type="password" name="userPassword" id="userPassword"
-				placeholder="비밀번호 입력하세요" /><br />
+				placeholder="비밀번호 입력하세요" /><br /><br/>
+				 <span>비밀번호 확인</span> <br/>
+   				<input type="password" name="checkPassword" id= "checkPassword" placeholder="비밀번호 재입력 해주세요" /><br/>
+    		 	<font name="check" size="2" color="red"></font> 
 	
 			<h2>개인 정보</h2>
 			<hr />
@@ -171,6 +176,7 @@
 			</span> <br /> <input type="text" name="userGender" id="userGender"
 				placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
 				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
+				 
 	
 			<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
 	

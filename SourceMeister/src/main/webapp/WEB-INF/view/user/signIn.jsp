@@ -22,46 +22,13 @@
 		});
 	});
 </script>
-<style type="text/css">
-#loginBtn {
-	font-size: 12px;
-	font-family: Arial;
-	font-weight: normal;
-	height: 30px;
-	border: 1px solid #dcdcdc;
-	background: #f9f9f9;
-	border-radius: 5px;
-	margin-top: -35px;
-	
-	width: 24.5%;
-	text-align: center;
-	border: 1px solid #bcbcbc;
-	margin-right: 20px;
-	float: right;
-}
-
-#userInfo {
-	margin-right: 60px;
-}
-
-*::-webkit-input-placeholder {
-	color: gray;
-	font-size: 12px;
-	
-}
-
-#userHelp {
-	margin-right: 132px;
-}
-</style>
-
 
 </head>
 <body>
 				
-	<div id=total>
+	<div id="total">
 		<c:if test="${empty sessionScope._USER_ }">
-	
+			<h3>로그인</h3>
 			<form id="signInForm">
 				<div id="userInfo">
 					<input type="text" name="userId" id="userId"
@@ -71,9 +38,10 @@
 				<br>
 					<input id="loginBtn" type="button" value="로그인" />
 				
-					<a href="/SourceMeister/user/signUp"><input type="button"
-						value="회원가입" /></a>
-				
+			</form>
+			
+			<form id="userHelp">
+				<a href="/SourceMeister/user/signUp"> 회원가입</a>
 			</form>
 		</c:if>
 	
