@@ -117,7 +117,7 @@
 			<!-- XX01 수정할것 -->
 			<input type="hidden" id="openSourceId" name="openSourceId"value="${opensourceId}" /> 
 			<input type="hidden" id="parentReplyId" name="parentReplyId" value="" />
-			<textarea id="comment" name="comment" style="width: 500px; text-align: left;"></textarea>
+			<textarea id="comment" name="comment" style="resize:none; width: 500px; text-align: left;"></textarea>
 			<input type="button" id="writeReplyBtn" value="등록"  style="position: relative; top: -15px;"/>
 		</form>
 	</div>

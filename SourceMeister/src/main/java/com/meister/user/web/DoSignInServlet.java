@@ -30,6 +30,9 @@ public class DoSignInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String url = request.getHeader("referer");
+		
+		
 		String userId = request.getParameter("userId");
 		String userPassword = request.getParameter("userPassword");
 		
@@ -46,16 +49,14 @@ public class DoSignInServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("_USER_", userVO);
 			System.out.println("User ID : " + userVO.getUserId());
-			response.sendRedirect("/SourceMeister/opensource");
+			response.sendRedirect(url);
 
 		} else {
-
-			
 			StringBuffer script = new StringBuffer();
 			
 			script.append(" <script type='text/javascript'>    ");
 			script.append(" alert('비밀번호가 맞지 않습니다.');   ");
-			script.append(" location='/SourceMeister/opensource';   ");
+			script.append(" location='"+url+"';   ");
 			script.append(" </script>    ");
 			
 			

@@ -6,12 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/signUp.css"/>
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/json2.js"></script>
 
 <script type="text/javascript">
 	$().ready(function() {
+		
+		var checkPassword = 0;
+		
 		$("#signUpForm").find("input[type=button]").click(function() {
 
 			if ($("#userId").val() == "") {
@@ -37,8 +41,12 @@
 				$("#userPassword").focus();
 				return;
 			}
-		
 			
+			if(checkPassword == 0) {
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#userPassword").focus();
+				return;
+			}
 
 			var email = $('#email');
 			var CheckEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
@@ -78,11 +86,12 @@
 					$("#signUpForm").submit();
 
 				}
-
 				
 			});
 
 		});
+		
+		
 
 		$("#userId").keyup(function() {
 			$.post("/SourceMeister/user/checkDuplicate", {
@@ -98,6 +107,23 @@
 				}
 			});
 		});
+			$("#userPassword").keyup(function () {
+				$("font[name=check]").text("");
+				
+			});
+			$("#checkPassword").keyup(function(){
+				if($("#userPassword").val()!=$("#checkPassword").val()){
+					$("font[name=check]").text("");
+					$("font[name=check]").html("암호틀림");
+					checkPassword = 0;
+					
+				}else{
+					$("font[name=check]").text("");
+					$("font[name=check]").html("암호일치");
+					checkPassword = 1;
+					
+				}
+			});
 	});
 </script>
 </head>
@@ -124,27 +150,37 @@
 			</c:choose>
 		</div>
 	</c:if>
-	<h1>회원가입 페이지</h1>
-	<form id="signUpForm">
 
-		<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
-			placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
+	<div id=total>
+		<h2>회원가입</h2>
+		<form id="signUpForm">
+	
+			<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
+				placeholder="아이디를 입력하세요" /> <br/>
+				
+				<font id="duplicated" size="2" color="red" ></font> <br /> 
+	
+			<span>닉네임 </span><br /> <input type="text" name="NickName"
+				id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
+			<br /> <input type="password" name="userPassword" id="userPassword"
+				placeholder="비밀번호 입력하세요" /><br /><br/>
+				 <span>비밀번호 확인</span> <br/>
+   				<input type="password" name="checkPassword" id= "checkPassword" placeholder="비밀번호 재입력 해주세요" /><br/>
+    		 	<font name="check" size="2" color="red"></font> 
+	
+			<h2>개인 정보</h2>
+			<hr style="width: 75%"/>
+			<span>이름 </span> <br /> <input type="text" name="userName"
+				id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
+			</span> <br /> <input type="text" name="userGender" id="userGender"
+				placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
+				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
+				 
+	
+			<br /> <br /> <input type="button" value="Submit" id="button" style="margin-left: -10px; border:0; outline: 0; background-color: #FFFFFF" /><br />
+	
+		</form>
+	</div>
 
-		<span>닉네임 </span><br /> <input type="text" name="NickName"
-			id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
-		<br /> <input type="password" name="userPassword" id="userPassword"
-			placeholder="비밀번호 입력하세요" /><br />
-
-		<h2>개인 정보</h2>
-		<hr />
-		<span>이름 </span> <br /> <input type="text" name="userName"
-			id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
-		</span> <br /> <input type="text" name="userGender" id="userGender"
-			placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
-			type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
-
-		<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
-
-	</form>
 </body>
 </html>

@@ -1,0 +1,143 @@
+@CHARSET "UTF-8";
+
+body {
+	font-size : 12px;
+	font-family : "Noto Sans Korean", "Apple SD Gothic Neo", "Nanum Barun Gothic", "Malgun Gothic", "돋옴", Dotum, sans-serif;
+}
+
+span {
+	font-size : 15px;
+}
+
+strong {
+	font-size : 15px;
+}
+
+#searchForm > input[type="text"] {
+	width : 400px;
+	height : 40px;
+}
+
+#search > img {
+	display: initial;
+	height:60px;
+	width : 250px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+
+#container {
+	width:1200px;
+	margin : 0px auto;
+	text-align:center; 
+	
+}
+
+#left {
+	width:20%;
+	display : inline-block;
+	float: left;
+}
+
+
+#left > .searchRank {
+	width : 236px;
+	height : 145px;
+	margin : 0px;
+	padding : 0px;
+	background-color:#8000ff;
+	border : 1px solid #bcbcbc;
+	
+}
+
+
+
+#left > .rank-repo { 
+
+	width:100%;
+	height:304px;
+	text-align:center;
+	margin:0;
+	padding: 0 ;
+	border : 1px solid #bcbcbc;
+	display : inline-block;
+	line-height : 270%;
+	overflow-y: auto;
+	
+}
+
+#left > .rank-lan {
+	
+	width:100%;
+	height:450px;
+	text-align:center;
+	margin: 0 ;
+	padding: 0 ;
+	border : 1px solid #bcbcbc;
+	display : inline-block;
+	line-height : 270%;
+	overflow-y: auto;
+	
+}
+
+#middle {
+	width:80%;
+	display : inline-block;
+}
+
+
+
+#search {
+	width: 100%;
+	height:145px;
+	text-align:center;
+	border : 1px solid #bcbcbc;
+	display : inline-block;
+	float : left;
+}
+
+
+
+
+#middle-content {
+	width : 100%;
+	height : 610px;
+	margin : 0px;
+	padding : 0px;
+	border : 1px solid #bcbcbc;
+	display : inline-block;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+#middle > .login {
+	width:24.5%;
+	height:145px;
+	text-align:center;
+	border : 1px solid #bcbcbc;
+	float : right;
+}
+
+
+
+#right > #reply {
+	width : 236px;
+	height : 610px;
+	margin : 0px;
+	padding : 0px;
+	border : 1px solid #bcbcbc;
+}
+
+
+#footer {
+	clear: both;
+	height: 80px;
+	text-align:center;
+	border : 1px solid #bcbcbc;	
+}
+
+#footer > span {
+	font-size : 13px;
+}
+

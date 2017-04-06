@@ -12,10 +12,9 @@ import com.meister.user.vo.UserVO;
 
 public class UserDaoImpl implements UserDao {
 
-	//private String URL = "jdbc:oracle:thin:@localhost:1521:XE";
-	private final String URL = "jdbc:oracle:thin:@172.20.10.9:1521:XE";
-	private final String ID = "TEST";
-	private final String PWD = "test";
+	private final String URL = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+	private final String ID = "TEAMTWO";
+	private final String PWD = "teamtwo";
 
 	@Override
 	public int insertNewUser(UserVO newUserVO) {
@@ -197,6 +196,7 @@ public class UserDaoImpl implements UserDao {
 				userVO.setNickName(rs.getString("USR_NM"));
 				userVO.getAuthorizationVO().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				userVO.getAuthorizationVO().setAuthorizationName(rs.getString("ATHRZTN_NM"));
+				System.out.println("email dao2" +userVO.getEmail() );
 			}
 
 			// System.out.println("user pwd" + userVO.getPassword());
@@ -206,13 +206,18 @@ public class UserDaoImpl implements UserDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+				}
+			}
 			if (stmt != null) {
 				try {
 					stmt.close();
 				} catch (SQLException e) {
 				}
 			}
-
 			if (conn != null) {
 				try {
 					conn.close();
@@ -273,7 +278,7 @@ public class UserDaoImpl implements UserDao {
 				user.setAuthorizationId(rs.getString("U_ATHRZTN_ID"));
 				user.getAuthorizationVO().setAuthorizationId(rs.getString("ATHRZTN_ID"));
 				user.getAuthorizationVO().setAuthorizationName(rs.getString("ATHRZTN_NM"));
-
+				System.out.println("email dao"+user.getEmail());
 			}
 
 			return user;

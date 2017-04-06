@@ -22,7 +22,8 @@
 			alert("삭제 완료");
 			$("#removeUser").submit();
 		});
-
+		
+		
 	});
 </script>
 <body>
