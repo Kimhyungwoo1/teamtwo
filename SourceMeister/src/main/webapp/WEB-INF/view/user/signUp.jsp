@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/signUp.css"/>
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/json2.js"></script>
@@ -124,27 +125,29 @@
 			</c:choose>
 		</div>
 	</c:if>
-	<h1>회원가입 페이지</h1>
-	<form id="signUpForm">
-
-		<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
-			placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
-
-		<span>닉네임 </span><br /> <input type="text" name="NickName"
-			id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
-		<br /> <input type="password" name="userPassword" id="userPassword"
-			placeholder="비밀번호 입력하세요" /><br />
-
-		<h2>개인 정보</h2>
-		<hr />
-		<span>이름 </span> <br /> <input type="text" name="userName"
-			id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
-		</span> <br /> <input type="text" name="userGender" id="userGender"
-			placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
-			type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
-
-		<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
-
-	</form>
+	<div id=total>
+		<h1>회원가입</h1>
+		<form id="signUpForm">
+	
+			<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
+				placeholder="아이디를 입력하세요" /><span id="duplicated"></span> <br /> <br />
+	
+			<span>닉네임 </span><br /> <input type="text" name="NickName"
+				id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
+			<br /> <input type="password" name="userPassword" id="userPassword"
+				placeholder="비밀번호 입력하세요" /><br />
+	
+			<h2>개인 정보</h2>
+			<hr />
+			<span>이름 </span> <br /> <input type="text" name="userName"
+				id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
+			</span> <br /> <input type="text" name="userGender" id="userGender"
+				placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
+				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
+	
+			<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
+	
+		</form>
+	</div>
 </body>
 </html>

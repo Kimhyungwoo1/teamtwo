@@ -99,6 +99,7 @@ span {
 }
 
 #middle > .login {
+	display: table;
 	width:24.5%;
 	height:145px;
 	text-align:center;
