@@ -46,11 +46,9 @@ public class DoSignInServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("_USER_", userVO);
 			System.out.println("User ID : " + userVO.getUserId());
-			response.sendRedirect("/SourceMeister/index");
+			response.sendRedirect("/SourceMeister/opensource");
 
 		} else {
-
-			
 			StringBuffer script = new StringBuffer();
 			
 			script.append(" <script type='text/javascript'>    ");

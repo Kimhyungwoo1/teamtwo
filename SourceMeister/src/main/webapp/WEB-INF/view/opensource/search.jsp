@@ -155,7 +155,7 @@
 
 
 			<div id="middle-content">
-
+				
 				<c:if test="${empty includeUrl}">
 					<img style="vertical-align:center;" src="/SourceMeister/static/img/screenshot_2017-04-05-17-13-33_720.png"/>
 					<h3>검색해주세요</h3>
