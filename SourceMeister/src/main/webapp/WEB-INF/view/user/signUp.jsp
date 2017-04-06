@@ -12,6 +12,9 @@
 
 <script type="text/javascript">
 	$().ready(function() {
+		
+		var checkPassword = 0;
+		
 		$("#signUpForm").find("input[type=button]").click(function() {
 
 			if ($("#userId").val() == "") {
@@ -37,8 +40,12 @@
 				$("#userPassword").focus();
 				return;
 			}
-		
 			
+			if(checkPassword == 0) {
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#userPassword").focus();
+				return;
+			}
 
 			var email = $('#email');
 			var CheckEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
@@ -83,6 +90,8 @@
 			});
 
 		});
+		
+		
 
 		$("#userId").keyup(function() {
 			$.post("/SourceMeister/user/checkDuplicate", {
@@ -98,6 +107,23 @@
 				}
 			});
 		});
+			$("#userPassword").keyup(function () {
+				$("font[name=check]").text("");
+				
+			});
+			$("#checkPassword").keyup(function(){
+				if($("#userPassword").val()!=$("#checkPassword").val()){
+					$("font[name=check]").text("");
+					$("font[name=check]").html("암호틀림");
+					checkPassword = 0;
+					
+				}else{
+					$("font[name=check]").text("");
+					$("font[name=check]").html("암호맞음");
+					checkPassword = 1;
+					
+				}
+			});
 	});
 </script>
 </head>
@@ -134,7 +160,9 @@
 			id="NickName" placeholder="닉네임을 입력하세요" /><br /> <br /> <span>비밀번호</span>
 		<br /> <input type="password" name="userPassword" id="userPassword"
 			placeholder="비밀번호 입력하세요" /><br />
-
+			<span> 비밀번호 확인</span><br/>
+			<input type="password" name="checkPassword" id="checkPassword"  placeholder="비밀번호  재입력 해주세요"/>
+			<font name = "check" size="2" color="red"></font>
 		<h2>개인 정보</h2>
 		<hr />
 		<span>이름 </span> <br /> <input type="text" name="userName"

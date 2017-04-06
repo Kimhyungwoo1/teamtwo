@@ -10,6 +10,7 @@
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
+		var checkPassword = 0;
 	
 		$("#modifySignUpForm").find("input[type=button]").click(function() {
 		if ($("#nickName").val() == "") {
@@ -70,6 +71,23 @@
 		}
 		
 			});
+	$("#userPassword").keyup(function () {
+		$("font[name=check]").text("");
+		
+	});
+	$("#checkPassword").keyup(function(){
+		if($("#userPassword").val()!=$("#checkPassword").val()){
+			$("font[name=check]").text("");
+			$("font[name=check]").html("암호틀림");
+			checkPassword = 0;
+			
+		}else{
+			$("font[name=check]").text("");
+			$("font[name=check]").html("암호맞음");
+			checkPassword = 1;
+			
+		}
+	});
 		
 		
 });	
@@ -100,15 +118,19 @@
 		<input type="text" name="userNickName" id="nickName" value="${userVO.nickName}" /><br /> 
 		
 		<span>비밀번호</span> <br />
-		<input type="password" name="userPassword" id="userPassword" value="${userVO.password }" /><br /><br/>  
+		<input type="password" name="userPassword" id="userPassword" value="${userVO.password }" /><br /> 
+		<span> 비밀번호 확인</span><br/>
 		
-		<input type="button" value="정보수정"  /> <br />
+		<input type="password" name="checkPassword" id="checkPassword"  placeholder="비밀번호  재입력 해주세요"/> <br/>
+		<font name = "check" size="2" color="red"></font> <br/>
 		
-	</form> <br/>
+		<input type="button" value="정보수정"  /> 
+		
+	</form>  <br/>
+	 
+	<form id="dropout"  >
 	
-	<form id="dropout">
-	
-	<input type="button" value="회원탈퇴" id="drop_out"/> 
+	<input type="button" value="회원탈퇴" id="drop_out"/ > 
 	
 	</form>
 	

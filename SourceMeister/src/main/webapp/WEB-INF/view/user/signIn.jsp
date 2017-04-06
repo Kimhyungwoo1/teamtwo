@@ -8,6 +8,8 @@
 <title>로그인 페이지</title>
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
 	$().ready(function() {
 		$("#loginBtn").click(function() {
@@ -19,6 +21,40 @@
 		});
 	});
 </script>
+<style type="text/css">
+#loginBtn {
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: normal;
+	height: 30px;
+	border: 1px solid #dcdcdc;
+	background: #f9f9f9;
+	border-radius: 5px;
+	margin-top: -35px;
+	
+	width: 24.5%;
+	text-align: center;
+	border: 1px solid #bcbcbc;
+	margin-right: 20px;
+	float: right;
+}
+
+#userInfo {
+	margin-right: 60px;
+}
+
+*::-webkit-input-placeholder {
+	color: gray;
+	font-size: 12px;
+	
+}
+
+#userHelp {
+	margin-right: 132px;
+}
+</style>
+
+
 </head>
 <body>
 	<h3>로그인 페이지</h3>
@@ -30,16 +66,19 @@
 		<form id="signInForm">
 			<div id="userInfo">
 				<input type="text" name="userId" id="userId"
-					placeholder="아이디를 입력하세요" /><br /> <input type="password"
-					name="userPassword" id="userPassword" placeholder="비밀번호를 입력하세요" /><br />
+					placeholder="아이디를 입력하세요" size="14"  /><br />  
+					<input
+					type="password" name="userPassword" id="userPassword"
+					placeholder="비밀번호를 입력하세요" size="14"  /><br />
 			</div>
 			<br>
 				<input id="loginBtn" type="button" value="로그인" />
-			
-				<a href="/SourceMeister/user/signUp"><input type="button"
-					value="회원가입" /></a>
-			
+
+			<div id="userHelp">
+				<a href="/SourceMeister/user/signUp"> 회원가입</a>
+			</div>
 		</form>
+
 	</c:if>
 
 	<c:if test="${not empty sessionScope._USER_}">
