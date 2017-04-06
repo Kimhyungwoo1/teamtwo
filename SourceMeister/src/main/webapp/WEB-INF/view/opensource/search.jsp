@@ -32,7 +32,7 @@
 		function submitForm() {
 
 			$("#searchForm").attr({
-				"action" : "/SourceMeister/opensource",
+				"action" : "/SourceMeister/opensource?search="+$("#keyword").val(),
 				"method" : "post"
 			}).submit();
 		}
@@ -93,11 +93,11 @@
 
 			<div id="search">
 
-				<a href = "/SourceMeister/opensource" style="color:black; font-family:'Damion', sans-serif; font-size: 45px; text-decoration: none">Source Meister</a>
+				<a href = "/SourceMeister/index" style="color:black; font-family:'Damion', sans-serif; font-size: 45px; text-decoration: none">Source Meister</a>
 				<form id="searchForm" style="margin-top:10px">
 
 
-					<input id="keyword" name="search" type="text" value="${search}" style="height:19px; margin-left:55px;" />
+					<input id="keyword" type="text" value="${search}" style="height:19px; margin-left:55px;" />
 					<!-- <input type="image"
 						src="/SourceMeister/static/img/search-icon2.png" alt="Submit"
 						width="33" height="33" style="position: relative; top: 17px;"> -->

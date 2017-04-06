@@ -44,6 +44,22 @@
 				$('.fileTree').css("display", "none");
 			}
 		});
+		
+		
+		if (window.history && window.history.pushState) {
+			$(window).on('popstate', function() {
+				var hashLocation = location.hash;
+				var hashSplit = hashLocation.split("#!/");
+				var hashName = hashSplit[1];
+				if (hashName !== '') {
+					var hash = window.location.hash;
+					if (hash === '') {
+						window.location.reload(true);
+					}
+				}
+			});
+			window.history.pushState('forward', null, './#forward');
+		}
 	});
 
 </script>
@@ -54,7 +70,7 @@
 		
 		<div class="row">
 			<div class="title">
-				<h4 class="codepath">
+				<h4 class="codepath" style="font-size: 17px">
 					<a href="${sourceUrl}" style="text-decoration: none;">${repoName}</a>
 					${location}/${fileName}
 				</h4>

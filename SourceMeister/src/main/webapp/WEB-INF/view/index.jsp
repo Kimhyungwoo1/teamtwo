@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
+<link href="https://fonts.googleapis.com/css?family=Damion|Work+Sans" rel="stylesheet">
 <script type="text/javascript">
 
 
@@ -20,7 +21,7 @@ $().ready(function () {
 	});
 		
 	
-	$("#indexForm").find("input[type=image]").click(function() {
+	$("#Submit").click(function() {
 		submitForm();
 	});
 	
@@ -42,9 +43,11 @@ $().ready(function () {
 </head>
 <body>
 	<form id="indexForm">
-			<img src="/SourceMeister/static/img/index.png">
-			<input id="keyword" name="search" type="text"/> 
-			<input type="image" src="/SourceMeister/static/img/search-icon2.png" alt="Submit" width="40" height="40" style="position:relative; top:17px;">
+		<div style="text-align:center; vertical-align:middle;">
+			<a href = "/SourceMeister/index" style="margin-left: -52px; color:black; font-family:'Damion', sans-serif; font-size: 75px; text-decoration: none">Source Meister</a><br/>
+			<input id="keyword" name="search" type="text" style="margin-top: 30px; width:530px; height:30px;"/>
+			<input type="button" style="font-size: 15px; margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" id="Submit" value="Search">
+		</div>
 	</form>
 </body>
 </html>

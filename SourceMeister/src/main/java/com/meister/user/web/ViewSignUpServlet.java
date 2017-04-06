@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.meister.common.constants.AuthConst;
 import com.meister.user.service.UserService;
@@ -76,6 +77,8 @@ public class ViewSignUpServlet extends HttpServlet {
 		user.setAuthorizationId(AuthConst.NOMAL_USER);
 
 		if (userService.registNewUser(user)) { 
+			HttpSession session = request.getSession();
+			session.setAttribute("_USER_", user);
 			System.out.println("�쉶�썝媛��엯 �꽦怨�");
 			response.sendRedirect("/SourceMeister/opensource");
 		} else { 

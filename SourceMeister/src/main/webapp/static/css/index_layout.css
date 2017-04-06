@@ -10,6 +10,10 @@ span {
 	font-size: 15px;
 }
 
+strong {
+	font-size : 15px;
+}
+
 #searchForm>input[type="text"] {
 	width: 400px;
 	height: 33px;
@@ -126,23 +130,25 @@ span {
 	background-color: #727272;
 }
 
-#copy>#copys {
-	text-align: center;
+#footer {
+	clear: both;
+	height: 80px;
+	text-align:center;
 }
-/* =======
+
+#footer > span {
+	font-size : 13px;
+}
+
 #indexForm {
 	vertical-align: middle;
 	position : absolute;
-	left : 35%;
-	top : 38%;
+	left : 32.2%;
+	top : 36%;
 }
 
 #indexForm > input[type="text"] {
 	width : 400px;
 	height : 33px;
+	margin-left:55px;
 }
-
-img {
-	display: block;
-}
->>>>>>> c5dd1ff160f5d88f0108a6cc411f92e8660f3cfd */
