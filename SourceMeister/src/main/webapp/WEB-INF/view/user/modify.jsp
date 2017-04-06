@@ -24,7 +24,15 @@
 			$("#userPassword").focus();
 			return;
 		}
-
+		
+		
+		if (checkPassword == 0) {
+			alert("비밀번호가 일치하지 않습니다.");
+			$("#userPassword").focus();
+			return;
+		}
+		
+		
 		if ($("#userPassword").val().length < 7) {
 			alert("문자와 숫자를 포함해서 비밀번호는 8자 이상 입력해주세요.");
 			$("#userPassword").focus();

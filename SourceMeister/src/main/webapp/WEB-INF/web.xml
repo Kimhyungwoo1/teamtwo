@@ -135,7 +135,7 @@
 		<error-code>500</error-code>
 		<location>/WEB-INF/view/error/500Error.jsp</location>
 	</error-page>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>DoChangeAuthorizationServlet</display-name>
@@ -146,7 +146,7 @@
 		<servlet-name>DoChangeAuthorizationServlet</servlet-name>
 		<url-pattern>/auth/change</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>IndexActionServlet</display-name>
@@ -186,6 +186,26 @@
 	<servlet-mapping>
 		<servlet-name>DoDeleteActionServlet</servlet-name>
 		<url-pattern>/reply/delete</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ViewSignUpModifyServlet</display-name>
+		<servlet-name>ViewSignUpModifyServlet</servlet-name>
+		<servlet-class>com.meister.user.web.ViewSignUpModifyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewSignUpModifyServlet</servlet-name>
+		<url-pattern>/user/signUpModify</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DoSignUpModifyServelt</display-name>
+		<servlet-name>DoSignUpModifyServelt</servlet-name>
+		<servlet-class>com.meister.user.web.DoSignUpModifyServelt</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DoSignUpModifyServelt</servlet-name>
+		<url-pattern>/user/doSignUpModify</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
