@@ -28,7 +28,7 @@ $().ready(function () {
 	
 	function submitForm() {
 		$("#indexForm").attr({
-			"action" : "/SourceMeister/opensource",
+			"action" : "/SourceMeister/opensource?search="+$("#keyword").val(),
 			"method" : "post"
 		}).submit();
 	}
@@ -45,7 +45,7 @@ $().ready(function () {
 	<form id="indexForm">
 		<div style="text-align:center; vertical-align:middle;">
 			<a href = "/SourceMeister/index" style="margin-left: -52px; color:black; font-family:'Damion', sans-serif; font-size: 75px; text-decoration: none">Source Meister</a><br/>
-			<input id="keyword" name="search" type="text" style="margin-top: 30px; width:530px; height:30px;"/>
+			<input id="keyword" type="text" style="margin-top: 30px; width:530px; height:30px;"/>
 			<input type="button" style="font-size: 15px; margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" id="Submit" value="Search">
 		</div>
 	</form>

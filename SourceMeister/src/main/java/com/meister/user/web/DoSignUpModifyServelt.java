@@ -2,13 +2,13 @@ package com.meister.user.web;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.meister.common.constants.AuthConst;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
@@ -43,6 +43,7 @@ public class DoSignUpModifyServelt extends HttpServlet {
 		user.setPassword(userPassword);
 		user.setNickName(userNickName);
 		user.setEmail(userEmail);
+		user.setAuthorizationId(AuthConst.NOMAL_USER);
 		
 		System.out.println("test:" + user.getEmail());
 		
