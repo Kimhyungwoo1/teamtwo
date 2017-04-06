@@ -129,3 +129,20 @@ span {
 #copy>#copys {
 	text-align: center;
 }
+/* =======
+#indexForm {
+	vertical-align: middle;
+	position : absolute;
+	left : 35%;
+	top : 38%;
+}
+
+#indexForm > input[type="text"] {
+	width : 400px;
+	height : 33px;
+}
+
+img {
+	display: block;
+}
+>>>>>>> c5dd1ff160f5d88f0108a6cc411f92e8660f3cfd */

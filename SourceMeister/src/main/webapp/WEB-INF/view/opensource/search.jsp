@@ -8,9 +8,10 @@
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/hilitor.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="/SourceMeister/static/css/index_layout.css" />
+
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <link href="https://fonts.googleapis.com/css?family=Damion|Work+Sans" rel="stylesheet">
+
 <script type="text/javascript">
 	$().ready(function() {
 
@@ -58,7 +59,9 @@
 			<div class="login"></div>
 
 			<div class="rank-repo">
-				<span>저장소별 소스 수</span><br />
+
+				<strong>저장소별 소스 수</strong><br/>
+
 				<c:forEach items="${sources}" var="sources">
 
 					<a
@@ -72,7 +75,8 @@
 
 
 			<div class="rank-lan">
-				<span>언어별 소스 수</span><br />
+				<strong>언어별 소스 수</strong><br/>
+
 				<c:forEach items="${languages}" var="languages">
 					<a
 						href="/SourceMeister/opensource?srcId=${param.srcId}&q=${search}&langId=${languages.id}">${languages.language}:
@@ -91,6 +95,7 @@
 
 				<a href = "/SourceMeister/opensource" style="color:black; font-family:'Damion', sans-serif; font-size: 45px; text-decoration: none">Source Meister</a>
 				<form id="searchForm" style="margin-top:10px">
+
 
 					<input id="keyword" name="search" type="text" value="${search}" style="height:19px; margin-left:55px;" />
 					<!-- <input type="image"
@@ -139,6 +144,7 @@
 								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
 						</c:if>
 	
+
 					</c:if>
 				</div>
 
@@ -159,11 +165,22 @@
 				<jsp:include page="${includeUrl}"></jsp:include>
 			</div>
 		</div>
-		<div id=copy>
-			<a id=copys>Copyright</a>
-		</div>
-	</div>
-			
+
+		
+		
+		<div id="footer">
+			 <strong> Copyright </strong> 
+			 	<br/>
+				<span>
+				<br/>
+				SourceMeister 서울특별시 서초구 효령로 176 <br/>
+				Copyright Meister. 2017-2017. All rights reserved.
+				</span>
+		</div>	
+		
+		
+</div>
+
 
 </body>
 </html>

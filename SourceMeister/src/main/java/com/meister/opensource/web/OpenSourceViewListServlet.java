@@ -60,8 +60,8 @@ public class OpenSourceViewListServlet<T> extends HttpServlet {
 		langId = (langId == null) ? "" : "&lan=" + langId;
 		srcId = (srcId == null) ? "" : "&src=" + srcId;
 
-		System.out.println(search);
-		System.out.println(pageNum);
+		//System.out.println(search);
+		//System.out.println(pageNum);
 
 		search = search.replaceAll(" ", "+");
 

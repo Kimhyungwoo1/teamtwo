@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/list_layout.css" />
-<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/search_layout.css" />
 <script type="text/javascript">
 $().ready(function() {
 	$("tr").click(function(){
