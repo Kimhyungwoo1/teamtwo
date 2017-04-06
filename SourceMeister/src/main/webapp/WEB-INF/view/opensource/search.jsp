@@ -10,6 +10,7 @@
 <script type="text/javascript" src="/SourceMeister/static/js/hilitor.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/SourceMeister/static/css/index_layout.css" />
+<link href="https://fonts.googleapis.com/css?family=Damion|Work+Sans" rel="stylesheet">
 <script type="text/javascript">
 	$().ready(function() {
 
@@ -19,7 +20,11 @@
 			}
 		});
 
-		$("#searchForm").find("input[type=image]").click(function() {
+		/* $("#searchForm").find("input[type=image]").click(function() {
+			submitForm();
+		}); */
+		
+		$("#Submit").click(function() {
 			submitForm();
 		});
 
@@ -46,7 +51,7 @@
 </head>
 <body>
 
-	<div id="container">
+	<div id="container" style="font-family: Work Sans">
 
 		<div id="left">
 		
@@ -84,57 +89,58 @@
 
 			<div id="search">
 
-				<a href = "/SourceMeister/opensource"><img src="/SourceMeister/static/img/screenshot_2017-04-05-17-13-s33_720.png" style="height:60px; width : 250px; cursor: pointer;"></a>
-				<form id="searchForm">
+				<a href = "/SourceMeister/opensource" style="color:black; font-family:'Damion', sans-serif; font-size: 45px; text-decoration: none">Source Meister</a>
+				<form id="searchForm" style="margin-top:10px">
 
-					<input id="keyword" name="search" type="text" value="${search}" />
-					<input type="image"
+					<input id="keyword" name="search" type="text" value="${search}" style="height:19px; margin-left:55px;" />
+					<!-- <input type="image"
 						src="/SourceMeister/static/img/search-icon2.png" alt="Submit"
-						width="33" height="33" style="position: relative; top: 17px;">
+						width="33" height="33" style="position: relative; top: 17px;"> -->
+					<input type="button" style="margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" id="Submit" value="Search">
 
 
 				</form>
-
-				<c:if test="${ not empty page}">
-
-					<c:if test="${page == 1}">
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page}</a>
-						<span>${page+1}</span>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+4}</a>
-
+				<div class="pager">
+					<c:if test="${ not empty page}">
+	
+						<c:if test="${page == 1}">
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page}</a>
+							<span>${page+1}</span>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+4}</a>
+	
+						</c:if>
+						<c:if test="${page == 0}">
+							<span>${page+1}</span>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 3 }">${page+4}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 4 }">${page+5}</a>
+	
+						</c:if>
+						<c:if test="${page gt 1}">
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page-1}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page}">${page}</a>
+							<span>${page+1}</span>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
+							<a
+								href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
+						</c:if>
+	
 					</c:if>
-					<c:if test="${page == 0}">
-						<span>${page+1}</span>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 3 }">${page+4}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 4 }">${page+5}</a>
-
-					</c:if>
-					<c:if test="${page gt 1}">
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page - 1}">${page-1}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page}">${page}</a>
-						<span>${page+1}</span>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 1 }">${page+2}</a>
-						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
-					</c:if>
-
-				</c:if>
-
+				</div>
 
 			</div>
 

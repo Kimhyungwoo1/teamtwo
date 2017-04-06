@@ -86,7 +86,6 @@
 					$("#signUpForm").submit();
 
 				}
-
 				
 			});
 
@@ -153,7 +152,7 @@
 	</c:if>
 
 	<div id=total>
-		<h1>회원가입</h1>
+		<h2>회원가입</h2>
 		<form id="signUpForm">
 	
 			<span>아이디</span> <br /> <input type="text" name="userId" id="userId"
@@ -170,7 +169,7 @@
     		 	<font name="check" size="2" color="red"></font> 
 	
 			<h2>개인 정보</h2>
-			<hr />
+			<hr style="width: 75%"/>
 			<span>이름 </span> <br /> <input type="text" name="userName"
 				id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
 			</span> <br /> <input type="text" name="userGender" id="userGender"
@@ -178,7 +177,7 @@
 				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
 				 
 	
-			<br /> <br /> <input type="button" value="가입완료" id="button" /><br />
+			<br /> <br /> <input type="button" value="Submit" id="button" style="margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" /><br />
 	
 		</form>
 	</div>

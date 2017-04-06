@@ -37,9 +37,9 @@ table {
 	width: 100px; text-align: left;
 } 
 .ReReply{
-	width: 20px; cursor: pointer; background: #C8FF0D; padding-left: 300px
+	width: 20px; cursor: pointer; background: #d5dcf2; padding-left: 300px
 }
 .delete{
-	cursor: pointer; background: #C8FF0D; width: 20px; text-align: center;
+	cursor: pointer; background: #d5dcf2; width: 20px; text-align: center;
 }						
 

@@ -17,6 +17,10 @@ $().ready(function() {
 			 $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
 		 });
 	});
+	
+	$('tr:odd').addClass('odd');
+	$('tr:even').addClass('even');
+
 });
 
 
@@ -31,7 +35,7 @@ $().ready(function() {
 
 	<div id=table-content>
 
-		<table id="listTable" border = 1>
+		<table id="listTable" style="border-collapse:collapse;">
 
 
 			<colgroup>
