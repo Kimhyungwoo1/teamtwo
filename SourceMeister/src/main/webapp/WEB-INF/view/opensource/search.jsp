@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/hilitor.js"></script>
-<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
+<link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/search_layout.css" />
 <script type="text/javascript">
 
 $().ready(function () {
@@ -54,7 +54,7 @@ $().ready(function () {
 			
 		
 			<div class="rank-repo">
-				<span>저장소별 소스 수</span><br/>
+				<strong>저장소별 소스 수</strong><br/>
 				<c:forEach items="${sources}" var="sources">
 
 					<a href="/SourceMeister/opensource?langId=${param.langId}&q=${search}&srcId=${sources.id}">${sources.source}: ${sources.count}</a><br>
@@ -64,7 +64,7 @@ $().ready(function () {
 			
 			
 			<div class="rank-lan">
-				<span>언어별 소스 수</span><br/>
+				<strong>언어별 소스 수</strong><br/>
 				<c:forEach items="${languages}" var="languages">
 						<a href="/SourceMeister/opensource?srcId=${param.srcId}&q=${search}&langId=${languages.id}">${languages.language}: ${languages.count}</a><br>
 				</c:forEach><br />
@@ -76,7 +76,7 @@ $().ready(function () {
 		
 			<div id="search">
 			
-				<br/><br/><br/>
+				<br/><br/>
 				<form id="searchForm">
 					<input id="keyword" name="search" type="text" value="${search}" /> 
 					<input type="image" src="/SourceMeister/static/img/search-icon2.png" alt="Submit" width="40" height="40" style="position:relative; top:17px;">
@@ -125,7 +125,13 @@ $().ready(function () {
 		
 		
 		<div id="footer">
-			 <span>Copyright </span>
+			 <strong> Copyright </strong> 
+			 	<br/>
+				<span>
+				<br/>
+				SourceMeister 서울특별시 서초구 효령로 176 <br/>
+				Copyright Meister. 2017-2017. All rights reserved.
+				</span>
 		</div>	
 		
 		
