@@ -89,7 +89,7 @@ strong {
 
 
 #search {
-	width: 100%;
+	width: 70%;
 	height:145px;
 	text-align:center;
 	border : 1px solid #bcbcbc;
@@ -112,7 +112,7 @@ strong {
 }
 
 #middle > .login {
-	width:24.5%;
+	width:29%;
 	height:145px;
 	text-align:center;
 	border : 1px solid #bcbcbc;

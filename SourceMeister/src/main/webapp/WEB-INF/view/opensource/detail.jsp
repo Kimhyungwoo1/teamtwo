@@ -44,6 +44,8 @@
 				$('.fileTree').css("display", "none");
 			}
 		});
+		
+		
 	});
 
 </script>

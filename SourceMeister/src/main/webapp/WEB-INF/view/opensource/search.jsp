@@ -38,8 +38,9 @@
 		myHilitor.apply($("#keyword").val());
 
 
-		$(".login").load("/SourceMeister/user/signIn")
-
+		$(".login").load("/SourceMeister/user/signIn");
+		
+	
 	});
 </script>
 
@@ -52,7 +53,7 @@
 
 		<div id="left">
 		
-			<div class="login"></div>
+		
 
 			<div class="rank-repo">
 
@@ -112,7 +113,7 @@
 						<a
 							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+3}</a>
 						<a
-							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 2 }">${page+4}</a>
+							href="/SourceMeister/opensource?srcId=${param.srcId}&langId=${param.langId}&q=${search}&pageNum=${page + 3 }">${page+4}</a>
 
 					</c:if>
 					<c:if test="${page == 0}">
@@ -144,7 +145,7 @@
 
 			</div>
 
-
+		<div class="login"></div>
 		<hr style="width: 85%;">
 
 
@@ -160,7 +161,7 @@
 			</div>
 		</div>
 
-		
+
 		
 		<div id="footer">
 			 <strong> Copyright </strong> 
