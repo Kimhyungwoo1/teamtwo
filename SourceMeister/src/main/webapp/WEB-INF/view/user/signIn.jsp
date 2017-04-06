@@ -13,13 +13,25 @@
 	href="/SourceMeister/static/css/index_layout.css" />
 <script type="text/javascript">
 	$().ready(function() {
+		
+		
 		$("#loginBtn").click(function() {
 			$("#signInForm").attr({
 				"method" : "post",
-				"action" : "/SourceMeister/user/doSignIn"
+				"action" : "/SourceMeister/user/doSignIn?urlBefore="+ $("#isDetail").val() +
+						"&opensourceId=" + $("#opensourceId").val()
 			});
 			$("#signInForm").submit();
 		});
+		$("#logoutBtn").click(function() {
+			$("#logoutForm").attr({
+				"method" : "post",
+				"action" : "/SourceMeister/user/doSignOut?urlBefore="+ $("#isDetail").val() +
+						"&opensourceId=" + $("#opensourceId").val()
+			});
+			$("#logoutForm").submit();
+		});
+
 	});
 </script>
 
@@ -41,13 +53,15 @@
 			</form>
 			
 			<form id="userHelp">
-				<a href="/SourceMeister/user/signUp" style="text-decoration: none; color: #000000"> 회원가입</a>
+				<a href="/SourceMeister/user/signUp"> 회원가입</a>
 			</form>
 		</c:if>
 	
 		<c:if test="${not empty sessionScope._USER_}">
 			${sessionScope._USER_.userName}님, 환영합니다! <br/>
-			<a href="/SourceMeister/user/doSignOut">로그아웃</a>
+			<form id="logoutForm">
+			<input type="button" value="로그아웃" id="logoutBtn"/>
+			</form>
 			<a href="/SourceMeister/user/signUpModify?userId=${sessionScope._USER_.userId}">회원정보수정</a>
 		</c:if>
 		<br/>

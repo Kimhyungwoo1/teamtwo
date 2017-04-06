@@ -10,6 +10,19 @@
 <!-- <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/search_layout.css" /> -->
 <script type="text/javascript">
 $().ready(function() {
+	
+	
+	if($("#detailShow").val() == "ok"){
+		var opensourceId = $("#opensourceIds").val();
+		$("#list").hide();
+		 $("#detail").load("/SourceMeister/opensource/detail?opensourceId="+opensourceId,{},function(){
+			 $("#replyMain").load("/SourceMeister/reply/list?opensourceId="+opensourceId); 
+		 });
+		
+	}
+	
+	
+	
 	$("tr").click(function(){
 		var opensourceId = $(this).data("opensourceid");
 		$("#list").hide();
@@ -70,6 +83,9 @@ $().ready(function() {
 
 <div id="detail"></div><hr/>
 <div id="replyMain"></div>
+
+<input id="detailShow" type="hidden" value="${isDetail}">
+<input id="opensourceIds" type="hidden" value="${opensourceIds}">
 
 </body>
 </html>

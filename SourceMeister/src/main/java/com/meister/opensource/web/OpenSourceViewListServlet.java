@@ -37,7 +37,8 @@ public class OpenSourceViewListServlet<T> extends HttpServlet {
 		String srcId = request.getParameter("srcId");
 		String search = request.getParameter("search");
 
-		if (pageNum != null || langId != null || srcId != null|| search != null) {
+
+		if (pageNum != null || langId != null || srcId != null || search != null) {
 
 			doPost(request, response);
 
@@ -52,6 +53,9 @@ public class OpenSourceViewListServlet<T> extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		
+		String opensourceId = request.getParameter("opensourceId");
+		String isDetail = request.getParameter("isDetail");
 		String langId = request.getParameter("langId");
 		String srcId = request.getParameter("srcId");
 		String search = (request.getParameter("search") == null) ? request.getParameter("q")
@@ -145,6 +149,8 @@ public class OpenSourceViewListServlet<T> extends HttpServlet {
 		request.setAttribute("search", search);
 		request.setAttribute("count", total);
 		request.setAttribute("includeUrl", "/WEB-INF/view/opensource/list.jsp");
+		request.setAttribute("isDetail", isDetail);
+		request.setAttribute("opensourceIds", opensourceId);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/opensource/search.jsp");
 		dispatcher.forward(request, response);

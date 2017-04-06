@@ -10,7 +10,8 @@
 	$().ready(function() {
 		var loginCheck = "${ sessionScope._USER_}" ;
 		$("#likeBtn").click(function() {
-			/* $.post("/SourceMeister/opensource/detail/likeCount", {
+
+			$.post("/SourceMeister/opensource/detail/likeCount", {
 				"opensourceId" : $("#likeBtn").data("opensourceid"),
 				"likeCount" : $("#likeCount").text()
 			}, function(response) {
@@ -33,23 +34,6 @@
 					alert("로그인해주세요.");
 				}
 			});
-			 */
-			if (loginCheck) {
-				$.post("/SourceMeister/opensource/detail/likeCount", {
-					"opensourceId" : $("#likeBtn").data("opensourceid"),
-					"likeCount" : $("#likeCount").text()
-				}, function(response) {
-					var jsonObj = JSON.parse(response);
-					console.log(jsonObj);
-	
-					if (jsonObj.success) {
-						$("#likeCount").text(jsonObj.likeCount);
-					} 
-				});
-			}
-			else {
-				alert("로그인해주세요.");
-			}
 			
 		});
 		
@@ -125,7 +109,8 @@
 			</div><br/><br/>
 			
 		</div>
-
+<input id="isDetail" type="hidden" value="${urlBefore}">
+<input id="opensourceId" type="hidden" value="${opensourceId}">
 	</div>
 </body>
 </html>

@@ -16,9 +16,25 @@ public class DoSignOutActionServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String urlBeforeDetail = request.getParameter("urlBefore");
+		String opensourceId = request.getParameter("opensourceId");
+		String url = request.getHeader("referer");
+		
+		System.out.println("before url to logout" + urlBeforeDetail);
+		System.out.println("before url to logout" + opensourceId);
+		
+		
 		request.getSession().invalidate();
 
-		response.sendRedirect("/SourceMeister/opensource");
+		if (!urlBeforeDetail.equals("undefined")) {
+
+			
+			response.sendRedirect(urlBeforeDetail+"&isDetail=ok"+ "&opensourceId="+opensourceId);
+
+		} else {
+
+			response.sendRedirect(url);
+		}
 	}
 
 }

@@ -15,6 +15,7 @@
 				$("#comment").focus();
 				return;
 	    	} 
+			alert("childcnt" + $(this).data("childcnt"));
 			$.post("/SourceMeister/reply/delete",{
 				"replyId" :$(this).data("replyid"),
 				"childCnt" :$(this).data("childcnt")

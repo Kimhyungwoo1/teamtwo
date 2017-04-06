@@ -8,8 +8,10 @@
 <script type="text/javascript"
 	src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/SourceMeister/static/js/hilitor.js"></script>
+
 <link rel="stylesheet" type="text/css" href="/SourceMeister/static/css/index_layout.css" />
 <link href="https://fonts.googleapis.com/css?family=Damion|Work+Sans" rel="stylesheet">
+
 <script type="text/javascript">
 	$().ready(function() {
 
@@ -155,7 +157,7 @@
 
 
 			<div id="middle-content">
-				
+
 				<c:if test="${empty includeUrl}">
 					<img style="vertical-align:center;" src="/SourceMeister/static/img/screenshot_2017-04-05-17-13-33_720.png"/>
 					<h3>검색해주세요</h3>
@@ -163,6 +165,8 @@
 				<jsp:include page="${includeUrl}"></jsp:include>
 			</div>
 		</div>
+
+		
 		
 		<div id="footer">
 			 <strong> Copyright </strong> 
@@ -176,5 +180,7 @@
 		
 		
 </div>
+
+
 </body>
 </html>
