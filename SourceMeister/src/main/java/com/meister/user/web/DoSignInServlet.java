@@ -49,7 +49,11 @@ public class DoSignInServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("_USER_", userVO);
 			System.out.println("User ID : " + userVO.getUserId());
+<<<<<<< HEAD
 			response.sendRedirect(url);
+=======
+			response.sendRedirect("/SourceMeister/index");
+>>>>>>> e65fd281f33d2e32127ac3b750bf09ab5646c376
 
 		} else {
 

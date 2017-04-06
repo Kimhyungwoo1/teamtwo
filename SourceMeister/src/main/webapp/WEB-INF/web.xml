@@ -189,6 +189,7 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
+<<<<<<< HEAD
 		<display-name>ViewSignUpModifyServlet</display-name>
 		<servlet-name>ViewSignUpModifyServlet</servlet-name>
 		<servlet-class>com.meister.user.web.ViewSignUpModifyServlet</servlet-class>
@@ -209,6 +210,8 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
+=======
+>>>>>>> e65fd281f33d2e32127ac3b750bf09ab5646c376
 		<display-name>DoUserRemoveServlet</display-name>
 		<servlet-name>DoUserRemoveServlet</servlet-name>
 		<servlet-class>com.meister.user.web.DoUserRemoveServlet</servlet-class>
