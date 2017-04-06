@@ -27,6 +27,15 @@ span {
 	float: left;
 }
 
+#left > .login {
+	display: table;
+	width:24.5%;
+	height:135px;
+	text-align:center;
+	/*  border : 1px solid #bcbcbc;  */
+	float : right;
+}
+
 
 #left > .searchRank {
 	width : 236px;
@@ -34,7 +43,7 @@ span {
 	margin : 0px;
 	padding : 0px;
 	background-color:#8000ff;
-	border : 1px solid #bcbcbc;
+	border-top : 1px solid #bcbcbc;
 	
 }
 
@@ -43,11 +52,12 @@ span {
 #left > .rank-repo { 
 
 	width:100%;
-	height:304px;
+	height:293px;
 	text-align:center;
 	margin:0;
 	padding: 0 ;
-	border : 1px solid #bcbcbc;
+	background-color: #F4F3EF;
+	border-top : 1px solid #bcbcbc;
 	display : inline-block;
 	line-height : 270%;
 	overflow-y: auto;
@@ -57,11 +67,12 @@ span {
 #left > .rank-lan {
 	
 	width:100%;
-	height:419px;
+	height:292px;
 	text-align:center;
 	margin: 0 ;
 	padding: 0 ;
-	border : 1px solid #bcbcbc;
+	background-color: #F4F3EF;
+	border-top : 1px solid #bcbcbc;
 	display : inline-block;
 	line-height : 270%;
 	overflow-y: auto;
@@ -71,15 +82,16 @@ span {
 #middle {
 	width:80%;
 	display : inline-block;
+	float: right;
 }
 
 
 
 #search {
-	width: 75%;
-	height:145px;
+	width: 100%;
+	height:135px;
 	text-align:center;
-	border : 1px solid #bcbcbc;
+	/* border : 1px solid #bcbcbc; */
 	display : inline-block;
 	float : left;
 }
@@ -88,26 +100,15 @@ span {
 
 
 #middle-content {
-	width : 99.7%;
+	width : 100%;
 	height : 580px;
 	margin : 0px;
 	padding : 0px;
-	border : 1px solid #bcbcbc;
+	/* border-top : 1px solid #bcbcbc;  */
 	display : inline-block;
 	overflow-x: auto;
 	overflow-y: auto;
 }
-
-#middle > .login {
-	display: table;
-	width:24.5%;
-	height:145px;
-	text-align:center;
-	border : 1px solid #bcbcbc;
-	float : right;
-}
-
-
 
 #right > #reply {
 	width : 236px;

@@ -49,6 +49,8 @@
 	<div id="container">
 
 		<div id="left">
+		
+			<div class="login"></div>
 
 			<div class="rank-repo">
 				<span>저장소별 소스 수</span><br />
@@ -137,7 +139,7 @@
 			</div>
 
 
-			<div class="login"></div>
+		<hr style="width: 85%;">
 
 
 
