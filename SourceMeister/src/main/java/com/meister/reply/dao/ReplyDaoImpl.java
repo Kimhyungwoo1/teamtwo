@@ -452,4 +452,53 @@ public class ReplyDaoImpl implements ReplyDao{
 		}
 	}
 
+	@Override
+	public int deleteReplyByParentId(String parentId) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(),e);
+		}
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		String url = "jdbc:oracle:thin:@192.168.201.14:1521:XE";
+		
+		try {
+			conn = DriverManager.getConnection(url, "TEAMTWO", "teamtwo");
+			
+			StringBuffer query  = new StringBuffer();
+			
+			query.append(" DELETE    		");
+			query.append(" FROM   	RPLY 	");
+			query.append(" WHERE  	PRNT_RPLY_ID = ? ");
+			
+				
+			stmt = conn.prepareStatement(query.toString());
+			
+			stmt.setString(1, parentId);
+			
+			return stmt.executeUpdate();
+		
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(),e);
+		}finally {
+			try {
+				if ( stmt != null ) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+			}
+			try {
+				if ( conn != null ) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+			}
+
+		}
+	}
+
 }

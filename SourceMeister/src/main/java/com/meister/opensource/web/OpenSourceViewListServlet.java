@@ -23,7 +23,7 @@ import com.meister.opensource.vo.LanguageVO;
 import com.meister.opensource.vo.SearchResultVO;
 import com.meister.opensource.vo.SourceVO;
 
-public class OpenSourceViewListServlet extends HttpServlet {
+public class OpenSourceViewListServlet<T> extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public OpenSourceViewListServlet() {
@@ -32,20 +32,11 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-
 		String pageNum = request.getParameter("pageNum");
 		String langId = request.getParameter("langId");
 		String srcId = request.getParameter("srcId");
 
-		if (pageNum != null) {
-			
-			doPost(request, response);
-
-		} else if (langId != null) {
-
-			doPost(request, response);
-
-		} else if (srcId != null) {
+		if (pageNum != null || langId != null || srcId != null) {
 
 			doPost(request, response);
 
@@ -60,26 +51,24 @@ public class OpenSourceViewListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-
 		String langId = request.getParameter("langId");
 		String srcId = request.getParameter("srcId");
-		String search = (request.getParameter("search") == null) ? request.getParameter("q") :  request.getParameter("search"); 
+		String search = (request.getParameter("search") == null) ? request.getParameter("q")
+				: request.getParameter("search");
 		String pageNum = (request.getParameter("pageNum") == null) ? "0" : request.getParameter("pageNum");
-		
-		langId = (langId == null) ? "" :  "&lan=" + langId;
+
+		langId = (langId == null) ? "" : "&lan=" + langId;
 		srcId = (srcId == null) ? "" : "&src=" + srcId;
 
-	
 		System.out.println(search);
 		System.out.println(pageNum);
 
-		
 		search = search.replaceAll(" ", "+");
 
 		StringBuilder urlBuilder = new StringBuilder("https://searchcode.com/api/codesearch_I/");
 
-		urlBuilder.append("?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum + langId+srcId);
-
+		urlBuilder.append(
+				"?" + URLEncoder.encode("q", "UTF-8") + "=" + "readme+" + search + "&p=" + pageNum + langId + srcId);
 
 		URL url = new URL(urlBuilder.toString());
 		System.out.println("first address = " + urlBuilder.toString());
@@ -109,26 +98,43 @@ public class OpenSourceViewListServlet extends HttpServlet {
 
 		JSONObject object = new JSONObject(sb.toString());
 
-		JSONArray resultarr = object.getJSONArray("results"); // 諛곗뿴?⑥쐞濡?異붿텧?섍퀬
-																// ?띠쓣??
+		JSONArray resultarr = object.getJSONArray("results");
+
 		JSONArray langArr = object.getJSONArray("language_filters");
 		JSONArray sourceArr = object.getJSONArray("source_filters");
 
 		// System.out.println("sourceArr = " + sourceArr.toString());
 
-		String total = object.get("total").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
-		String page = object.get("page").toString(); // Object濡?異붿텧?섍퀬 ?띠쓣??
+		String total = object.get("total").toString();
+		String page = object.get("page").toString();
 
 		Gson gson = new Gson();
 
-		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {};
+		TypeToken<List<SearchResultVO>> token = new TypeToken<List<SearchResultVO>>() {
+		};
 		List<SearchResultVO> resultList = gson.fromJson(resultarr.toString(), token.getType());
 
-		TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {};
+		TypeToken<List<LanguageVO>> token2 = new TypeToken<List<LanguageVO>>() {
+		};
 		List<LanguageVO> langList = gson.fromJson(langArr.toString(), token2.getType());
 
-		TypeToken<List<SourceVO>> token3 = new TypeToken<List<SourceVO>>() {};
+		TypeToken<List<SourceVO>> token3 = new TypeToken<List<SourceVO>>() {
+		};
 		List<SourceVO> sourceList = gson.fromJson(sourceArr.toString(), token3.getType());
+
+		for (LanguageVO lang : langList) {
+
+			System.out.println(lang.getLanguage());
+
+		}
+
+		System.out.println("-----------------");
+		
+		for (SourceVO src : sourceList) {
+			System.out.println(src.getSource());
+			
+
+		}
 
 		request.setAttribute("results", resultList);
 		request.setAttribute("languages", langList);
@@ -143,5 +149,11 @@ public class OpenSourceViewListServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
+
+	/*
+	 * public void tokenList(JSONArray resultArr, T t) { Gson gson = new Gson();
+	 * TypeToken<List<?>> token = new TypeToken<List<?>>() {}; List<?> result =
+	 * gson.fromJson(resultArr.toString(), token.getType()); }
+	 */
 
 }

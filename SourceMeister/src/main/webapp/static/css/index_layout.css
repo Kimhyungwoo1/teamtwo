@@ -2,11 +2,16 @@
 
 body {
 	font-size : 12px;
-	font-family : Dotum, '돋움', Helvetica, AppleSDGothicNeo, sans-serif;
+	font-family : "Noto Sans Korean", "Apple SD Gothic Neo", "Nanum Barun Gothic", "Malgun Gothic", "돋옴", Dotum, sans-serif;
 }
 
 span {
 	font-size : 15px;
+}
+
+#searchForm > input[type="text"] {
+	width : 400px;
+	height : 33px;
 }
 
 #container {
@@ -22,55 +27,73 @@ span {
 	float: left;
 }
 
-
 #left > .login {
-	width:100%;
-	height:145px;
+	display: table;
+	width:24.5%;
+	height:135px;
 	text-align:center;
-	border : 1px solid #bcbcbc;
+	/*  border : 1px solid #bcbcbc;  */
+	float : right;
 }
 
 
-#left > .rank-repo {
+#left > .searchRank {
+	width : 236px;
+	height : 145px;
+	margin : 0px;
+	padding : 0px;
+	background-color:#8000ff;
+	border-top : 1px solid #bcbcbc;
+	
+}
+
+
+
+#left > .rank-repo { 
 
 	width:100%;
-	height:304px;
-	background-color:#86743A;
+	height:293px;
 	text-align:center;
 	margin:0;
 	padding: 0 ;
-	border : 1px solid #bcbcbc;
+	background-color: #F4F3EF;
+	border-top : 1px solid #bcbcbc;
 	display : inline-block;
-/*	overflow-y: auto;*/
+	line-height : 270%;
+	overflow-y: auto;
 	
 }
 
 #left > .rank-lan {
 	
 	width:100%;
-	height:304px;
-	background-color:#8080c0;
+	height:292px;
 	text-align:center;
 	margin: 0 ;
 	padding: 0 ;
-	border : 1px solid #bcbcbc;
+	background-color: #F4F3EF;
+	border-top : 1px solid #bcbcbc;
 	display : inline-block;
-/*	overflow-y: auto;*/
+	line-height : 270%;
+	overflow-y: auto;
 	
 }
 
 #middle {
-	width:60%;
+	width:80%;
 	display : inline-block;
+	float: right;
 }
 
 
 
 #search {
 	width: 100%;
-	height:145px;
+	height:135px;
 	text-align:center;
-	border : 1px solid #bcbcbc;
+	/* border : 1px solid #bcbcbc; */
+	display : inline-block;
+	float : left;
 }
 
 
@@ -78,31 +101,13 @@ span {
 
 #middle-content {
 	width : 100%;
-	height : 610px;
+	height : 580px;
 	margin : 0px;
 	padding : 0px;
-	border : 1px solid #bcbcbc;
+	/* border-top : 1px solid #bcbcbc;  */
 	display : inline-block;
 	overflow-x: auto;
 	overflow-y: auto;
-}
-
-#right {
-	width : 236px;
-	margin : 0px;
-	padding : 0px;
-	display : inline-block;
-	float : right;
-}
-
-#right > #serchRank {
-	width : 236px;
-	height : 145px;
-	margin : 0px;
-	padding : 0px;
-	background-color:#8000ff;
-	border : 1px solid #bcbcbc;
-	
 }
 
 #right > #reply {
@@ -113,12 +118,26 @@ span {
 	border : 1px solid #bcbcbc;
 }
 
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 7px;
+    background-color: #F5F5F5;
+}
 
-#footer {
-	clear: both;
-	height: 80px;
-	text-align:center;
-	background-color:#ffff80;
-	border : 1px solid #bcbcbc;	
+::-webkit-scrollbar
+{
+    width: 7px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #47befe;
+}
+#copy > #copys {
+	text-align: center;
 }
 

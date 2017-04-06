@@ -14,15 +14,14 @@
 <script type="text/javascript" src="/SourceMeister/static/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	$().ready(function () {
-		$("#removeUser").find("input[type=button]").click(function () {
-			$("#removeUser").attr({
+		$("#allAuth").find("input[type=button]").click(function() {
+			$("#allAuth").attr({
 				"method":"post",
-				"action":"/SourceMeister/user/delete"
+				"action":"/SourceMeister/auth/change"
 			});
-			alert("삭제 완료");
-			$("#removeUser").submit();
+			alert("권한 변경 완료")
+			$("#allAuth").submit();
 		});
-		
 		
 	});
 </script>
@@ -53,7 +52,7 @@
 					</tr>
 					<c:forEach items="${userList}" var="user">
 					<tr>
-						<td><input type="checkbox" name="userCheck" value="${user.userId}" form="removeUser"/></td>
+						<td><input type="checkbox" name="authCheck" value="${user.userId}" form="allAuth"/></td>
 						<td>${user.userId}</td>
 						<td>${user.userName}</td>
 						<td>${user.nickName}</td>
@@ -65,13 +64,25 @@
 			</table>
 		</div>
 		<div id=add>
-			 <form id="removeUser">
-				 <a>유저 삭제</a>
-			 	<input type="button" value="확인" />
-			 </form>
+			<jsp:include page="/WEB-INF/view/admin/addauth.jsp"/>
 		</div>
 		<form id="allAuth">
-			
+			<a>권한 변경</a>
+			<select name="authBefore">
+				<option value="">권한없음</option>
+				<c:forEach items="${authList}" var="authList">
+					<option value="${authList.authorizationId}">${authList.authorizationName}</option>
+				</c:forEach>
+			</select>
+			<span>을</span>
+			<select name="authAfter">
+				<option value="">권한없음</option>
+				<c:forEach items="${authList}" var="authList">
+					<option value="${authList.authorizationId}">${authList.authorizationName}</option>
+				</c:forEach>
+			</select>
+			<span>로</span>
+			<input type="button" value="변경"/>
 		</form>
 	</div>
 	<div id=writer> copy writer Source Meister</div>

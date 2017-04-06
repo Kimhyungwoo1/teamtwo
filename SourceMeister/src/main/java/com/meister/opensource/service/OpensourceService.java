@@ -9,5 +9,7 @@ public interface OpensourceService {
 	public boolean addOneOpensource (String opensourceId);
 	
 	public boolean updateLikeCount(String opensourceId);
+	
+	public OpensourceVO selectRankLikeCount();
 
 }

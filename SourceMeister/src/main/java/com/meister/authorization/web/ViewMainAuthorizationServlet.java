@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.meister.authorization.service.AuthorizationService;
 import com.meister.authorization.service.AuthorizationServiceImpl;
 import com.meister.authorization.vo.AuthorizationVO;
+import com.meister.common.constants.AuthConst;
 import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
@@ -45,12 +46,12 @@ public class ViewMainAuthorizationServlet extends HttpServlet {
 		request.setAttribute("userList", userList);
 		request.setAttribute("authList", authList);
 		
-		//if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER)){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/main.jsp");
+		if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER)){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/authorizationmain.jsp");
 			dispatcher.forward(request, response);
-		//} else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
-		//	response.sendError(404);
-		//}
+		} else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
+			response.sendError(404);
+		}
 		
 	}
 

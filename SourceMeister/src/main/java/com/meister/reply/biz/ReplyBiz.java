@@ -14,7 +14,7 @@ public interface ReplyBiz {
 
 	public boolean insertReply(ReplyVO replyVO);
 
-	public boolean deleteReply(String replyId);
+	public boolean deleteReply(String replyId,int childCnt);
 
 	public boolean updateReply(ReplyVO replyVO);
 }

@@ -1,6 +1,7 @@
-package com.meister.user.web;
+package com.meister.authorization.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +15,14 @@ import com.meister.user.service.UserService;
 import com.meister.user.service.UserServiceImpl;
 import com.meister.user.vo.UserVO;
 
-
-public class ViewSignInServlet extends HttpServlet {
+public class ViewUserMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private UserService userService;
-
-	public ViewSignInServlet() {
+	
+	public ViewUserMainServlet() {
 		userService = new UserServiceImpl();
-
 	}
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -34,19 +33,20 @@ public class ViewSignInServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		UserVO users = (UserVO) session.getAttribute("_USER_");
-		if(users != null){
-			request.setAttribute("isAdminUser", users.getAuthorizationId().equals(AuthConst.ADMIN_USER));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
-			dispatcher.forward(request, response);
-		} 
-
-		else {
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/user/signIn.jsp");
+		UserVO userVO = (UserVO) session.getAttribute("_USER_");
+		
+		List<UserVO> userList = userService.getAllUsers();
+		
+		request.setAttribute("userList", userList);
+		
+		if ( userVO.getAuthorizationId().equals(AuthConst.ADMIN_USER) ){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/usermain.jsp");
 			dispatcher.forward(request, response);
 		}
-
+		else if ( userVO.getAuthorizationId().equals(AuthConst.NOMAL_USER)){
+			response.sendError(404);
+		}
+		
 	}
-}
 
+}
