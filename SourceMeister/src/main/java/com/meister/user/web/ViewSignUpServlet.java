@@ -37,7 +37,7 @@ public class ViewSignUpServlet extends HttpServlet {
 		String userPassword = request.getParameter("userPassword");
 		String userName = request.getParameter("userName");
 		String userNickName = request.getParameter("NickName");
-		String userGender = request.getParameter("userGender");
+		String userGender = request.getParameter("gender");
 		String userEmail = request.getParameter("email");
 		
 		

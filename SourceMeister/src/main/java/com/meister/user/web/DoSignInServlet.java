@@ -17,7 +17,7 @@ public class DoSignInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UserService userService;
-	
+
 	public DoSignInServlet() {
 		userService = new UserServiceImpl();
 	}
@@ -30,12 +30,16 @@ public class DoSignInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String urlBeforeDetail = request.getParameter("urlBefore");
+		String opensourceId = request.getParameter("opensourceId");
+		System.out.println("before url to login" + urlBeforeDetail);
+		System.out.println("before url to login" + opensourceId);
+
 		String url = request.getHeader("referer");
-		
-		
+
 		String userId = request.getParameter("userId");
 		String userPassword = request.getParameter("userPassword");
-		
+
 		UserVO user = new UserVO();
 		user.setUserId(userId);
 		user.setPassword(userPassword);
@@ -49,26 +53,33 @@ public class DoSignInServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("_USER_", userVO);
 			System.out.println("User ID : " + userVO.getUserId());
-			response.sendRedirect(url);
+
+			if (!urlBeforeDetail.equals("undefined")) {
+
+				
+				response.sendRedirect(urlBeforeDetail+"&isDetail=ok"+ "&opensourceId="+opensourceId);
+
+			} else {
+
+				response.sendRedirect(url);
+			}
 
 		} else {
 
-			
 			StringBuffer script = new StringBuffer();
-			
+
 			script.append(" <script type='text/javascript'>    ");
 			script.append(" alert('비밀번호가 맞지 않습니다.');   ");
-			script.append(" location='"+url+"';   ");
+			script.append(" location='" + url + "';   ");
 			script.append(" </script>    ");
-			
-			
+
 			PrintWriter writer = response.getWriter();
 			writer.write(script.toString());
 			writer.flush();
 			writer.close();
-			
+
 		}
-	
+
 	}
 
 }

@@ -171,13 +171,14 @@
 			<h2>개인 정보</h2>
 			<hr style="width: 75%"/>
 			<span>이름 </span> <br /> <input type="text" name="userName"
-				id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별
-			</span> <br /> <input type="text" name="userGender" id="userGender"
-				placeholder="성별을 입력하세요" /> <br /> <br /> <span>이메일 </span> <br /> <input
+				id="userName" placeholder="이름을 입력하세요" /> <br /> <br /> <span>성별</span> <br />
+				<input type="radio" name="gender" value="man">남 
+			<input type="radio" name="gender" value="woman" checked="checked">여 
+			<br /> <br /> <span>이메일 </span> <br /> <input
 				type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
 				 
 	
-			<br /> <br /> <input type="button" value="Submit" id="button" style="margin-left: -10px; border:0; outline: 0; background-color: #FFFFFF" /><br />
+			<br /> <br /> <input type="button" value="Submit" id="button" style="margin-left: 15px; border:0; outline: 0; background-color: #FFFFFF" /><br />
 	
 		</form>
 	</div>

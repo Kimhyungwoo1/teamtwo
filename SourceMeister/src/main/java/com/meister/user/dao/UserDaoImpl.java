@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -482,15 +483,32 @@ public class UserDaoImpl implements UserDao {
 
 			StringBuffer query = new StringBuffer();
 			query.append("	UPDATE USR                     ");
-			query.append(" 	SET                           ");
-			query.append(" 				ATHRZTN_ID = ?       ");
+			query.append(" 	SET      ATHRZTN_ID = ?        ");
 
-			query.append(" 	WHERE		ATHRZTN_ID = ?   ");
+			if (beforeAuthriztion == null || beforeAuthriztion.length() == 0) {
 
-			stmt = conn.prepareStatement(query.toString());
+				query.append("        WHERE        ATHRZTN_ID    IS NULL    ");
+            }
 
-			stmt.setString(1, afterAuthriztion);
-			stmt.setString(2, beforeAuthriztion);
+            else {
+            	query.append("        WHERE        ATHRZTN_ID    =    ?    ");
+            }
+
+            stmt = conn.prepareStatement(query.toString());
+
+            if (afterAuthriztion == null || afterAuthriztion.length() == 0) {
+
+                stmt.setNull(1, Types.VARCHAR);
+            } else {
+                stmt.setString(1, afterAuthriztion);
+            }
+
+            
+            if (beforeAuthriztion != null && beforeAuthriztion.length() > 0) {
+
+                stmt.setString(2, beforeAuthriztion);
+            }
+			
 
 			return stmt.executeUpdate();
 		} catch (SQLException e) {

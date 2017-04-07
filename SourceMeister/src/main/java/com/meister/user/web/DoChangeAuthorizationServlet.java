@@ -40,6 +40,9 @@ public class DoChangeAuthorizationServlet extends HttpServlet {
 			changeCheck = userService.changeCheckUser(userId, authBefore, authAfter);
 		}
 
+		System.out.println("authBefore" + authBefore);
+		System.out.println(authAfter);
+		
 		if( change || changeCheck ) {
 			response.sendRedirect("/SourceMeister/authorizationadmin");
 		}

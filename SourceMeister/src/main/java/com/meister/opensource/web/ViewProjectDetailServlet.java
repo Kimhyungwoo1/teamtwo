@@ -96,6 +96,11 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		int id = jsonObject.getInt("id");
 		String fileName = jsonObject.getString("filename");
 
+		String urlBefore = request.getHeader("referer");
+		System.out.println("fromlist to detail url "+urlBefore);
+		
+		
+		
 		request.setAttribute("repoName", reponame);
 		request.setAttribute("source", source);
 		request.setAttribute("sourceUrl", sourceUrl);
@@ -105,6 +110,7 @@ public class ViewProjectDetailServlet extends HttpServlet {
 		request.setAttribute("md5hash", md5hash);
 		request.setAttribute("opensourceId", id);
 		request.setAttribute("fileName", fileName);
+		request.setAttribute("urlBefore", urlBefore);
 
 		/*
 		 * 파일 트리 파싱
